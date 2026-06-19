@@ -601,34 +601,15 @@ p.body strong{color:var(--gc-text);font-weight:600}
 <div class="main" id="main"></div>
 </div>
 
-<!-- Lessons + quizzes live in content.js. Swap this file to reuse for any subject. -->
-<script src="math-content.js"></script>
+<!-- Content is loaded from math-content.md via content-engine.js -->
+<script>window.CONTENT_FILE = 'math-content.md';</script>
+<script src="content-engine.js"></script>
 <script>
 /* =====================================================================
-   SUBJECT_CONFIG — single source of truth for branding + feature flags.
-   Edit this block to reuse the template for any subject.
+   SUBJECT_CONFIG is now loaded from math-content.md by content-engine.js.
+   The engine fires 'content-ready' when window.SUBJECT_CONFIG,
+   window.topics, and window.summaryData are all set.
 ===================================================================== */
-const SUBJECT_CONFIG = {
-  title:                   "Foundational Math — Study Materials",
-  brand:                   "Foundational Math",
-  subtitleTemplate:        "{N} lessons · interactive quizzes",  // {N} = topic count
-  defaultCourse:           "Foundational Math",  // fallback if a topic has no `course`
-  showPeriodicTable:       false,          // no periodic table for math
-  showComprehensiveQuiz:   true,
-  comprehensiveQuizSize:   90,
-  comprehensiveQuizLabel:  "🎓 Comprehensive Quiz (90)",
-  showSummary:             true,
-  summaryLabel:            "📋 Summary (Formulas & Terms)"
-};
-
-// Apply title + static brand text from config (runs once at parse time).
-document.title = SUBJECT_CONFIG.title;
-(function applyStaticBranding(){
-  const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
-  set('srHeading',        SUBJECT_CONFIG.title);
-  set('mobileTopicName',  SUBJECT_CONFIG.brand);
-  set('drawerCloseBrand', SUBJECT_CONFIG.brand);
-})();
 
 /* =====================================================================
    PERIODIC TABLE — data + rendering
@@ -1046,7 +1027,8 @@ function topicSeed(ti) {
    Builds a 120-question exam by sampling questions evenly across all topics.
    Same seed → same exact quiz (question selection, order, and option order).
 ============================================================================= */
-const CQ_TOTAL = SUBJECT_CONFIG.comprehensiveQuizSize;
+// CQ_TOTAL is resolved lazily from SUBJECT_CONFIG (loaded async by content-engine.js)
+let CQ_TOTAL; // set in content-ready handler before renderNav/renderMain
 let cqState = null;
 
 function cqAllocate(numTopics, total) {
@@ -1618,10 +1600,14 @@ function onResize() {
 }
 window.addEventListener('resize', onResize);
 
-renderNav();
-renderMain();
-updateMobileTopicName();
-showMobileUI(isMobile());
+// Initialize once content-engine.js has loaded topics + config from math-content.md
+document.addEventListener('content-ready', function () {
+  CQ_TOTAL = SUBJECT_CONFIG.comprehensiveQuizSize;
+  renderNav();
+  renderMain();
+  updateMobileTopicName();
+  showMobileUI(isMobile());
+});
 </script>
 </body>
 </html>
