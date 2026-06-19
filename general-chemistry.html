@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Materials</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js" integrity="sha384-ifpG+NlgMq0kvOSGqGQxW1mJKpjjMDmZdpKGq3tbvD3WPhyshCEEYClriK/wRVU0" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}], throwOnError:false, trust:true, strict:false});"></script>
+<style>
+.katex { font-size: 1.05em; }
+.katex-display { margin: 0.4em 0; overflow-x:auto; overflow-y:hidden; padding:4px 0; }
+.sm-formula .katex { font-size: 1em; }
+.sm-formula { font-family: var(--font-sans, system-ui, sans-serif); }
+.formula-box { font-family: var(--font-sans, system-ui, sans-serif); }
+.formula-box .katex { font-size: 1.02em; }
+</style>
+<!--
+  ===========================================================================
+  STUDY TEMPLATE — How to reuse this file for another subject
+  ===========================================================================
+  This file is a self-contained, single-page study template with:
+    • Sidebar nav of lessons (auto-grouped by `course`)
+    • Per-lesson content + interactive quizzes (seeded shuffle)
+    • Optional Periodic Table modal (chemistry only — toggle in config)
+    • Optional Comprehensive Quiz that samples N questions from all lessons
+
+  TO REBRAND FOR A NEW SUBJECT (e.g. Biology, Physics, Calculus):
+    1. Open content.js — replace the `topics = [...]` array with your lessons.
+       Each topic: { title, sub, course, content (HTML string), quiz: [...] }
+       Each quiz item: { q, opts:[...], ans:<index>, exp }
+    2. Below in <script>, edit SUBJECT_CONFIG (title, brand, course labels).
+    3. Set showPeriodicTable:false for non-chemistry subjects.
+    4. Set showComprehensiveQuiz:true/false and comprehensiveQuizSize.
+    5. Set showSummary:true if you also define a `summaryData = [...]` array
+       (per-lesson formulas + key terms) in content.js. KaTeX is loaded via CDN.
+
+  Single-file mode: paste content.js contents back inline if you prefer.
+  ===========================================================================
+-->
+</head>
+<body>
+<style>
+/* SOFT, EASY-ON-THE-EYES PALETTE — warm off-whites and slate text */
+:root{
+  --gc-border: #e2e4ea;
+  --gc-border-strong: #c4c8d2;
+  --gc-bg: #fbfaf7;
+  --gc-bg-alt: #f4f3ee;
+  --gc-bg-soft: #ecebe5;
+  --gc-text: #2a2d36;
+  --gc-text-soft: #4f5563;
+  --gc-text-muted: #7a8090;
+  --gc-info-bg: #eef4fb;
+  --gc-info-border: #b9d2ee;
+  --gc-info-text: #2563a3;
+  --gc-warn-bg: #fbf5e6;
+  --gc-warn-border: #e8d39c;
+  --gc-warn-text: #8a6915;
+  --gc-ok-bg: #ecf4ec;
+  --gc-ok-border: #b5d5b5;
+  --gc-ok-text: #2f6a3e;
+  --gc-err-bg: #f8ecec;
+  --gc-err-border: #e0b9b9;
+  --gc-err-text: #984040;
+  --gc-radius-sm: 6px;
+  --gc-radius-md: 10px;
+  --gc-radius-lg: 14px;
+  --gc-shadow-sm: 0 1px 2px rgba(40,45,55,.04);
+  --gc-shadow-md: 0 2px 6px rgba(40,45,55,.06);
+  --gc-shadow-lg: 0 4px 16px rgba(40,45,55,.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root{
+    --gc-border: #353841;
+    --gc-border-strong: #4a4f5b;
+    --gc-bg: #1f2128;
+    --gc-bg-alt: #262932;
+    --gc-bg-soft: #2c3038;
+    --gc-text: #e3e5ea;
+    --gc-text-soft: #b7bcc7;
+    --gc-text-muted: #8a909d;
+    --gc-info-bg: #233247;
+    --gc-info-border: #3a5677;
+    --gc-info-text: #8db8e8;
+    --gc-warn-bg: #3a3220;
+    --gc-warn-border: #5e4e2a;
+    --gc-warn-text: #e0c177;
+    --gc-ok-bg: #243828;
+    --gc-ok-border: #3f6048;
+    --gc-ok-text: #92c8a0;
+    --gc-err-bg: #3b2727;
+    --gc-err-border: #5d3a3a;
+    --gc-err-text: #e29696;
+    --gc-shadow-sm: 0 1px 2px rgba(0,0,0,.2);
+    --gc-shadow-md: 0 2px 6px rgba(0,0,0,.25);
+    --gc-shadow-lg: 0 4px 16px rgba(0,0,0,.35);
+  }
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+html{font-size:16px}
+body{font-family:var(--font-sans, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif);color:var(--gc-text);background:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+/* ===== RESPONSIVE APP CONTAINER ===== */
+/* Default: full viewport */
+.app{display:flex;gap:0;width:100vw;height:100vh;height:100dvh;margin:0;overflow:hidden;border:none;background:var(--gc-bg)}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:260px;flex-shrink:0;border-right:1px solid var(--gc-border);padding:18px 0;height:100%;overflow-y:auto;background:var(--gc-bg-alt)}
+.sidebar-header{padding:0 20px 16px;border-bottom:1px solid var(--gc-border);margin-bottom:12px}
+.sidebar-brand{font-size:15px;font-weight:600;color:var(--gc-text);letter-spacing:-.012em;margin-bottom:3px;line-height:1.3}
+.sidebar-subtitle{font-size:11.5px;color:var(--gc-text-muted);letter-spacing:.02em;line-height:1.4}
+.sidebar-title{font-size:10px;font-weight:700;color:var(--gc-text-muted);letter-spacing:.12em;text-transform:uppercase;padding:10px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:11px;padding:10px 20px;cursor:pointer;font-size:13px;color:var(--gc-text-soft);line-height:1.4;transition:background .18s ease, color .18s ease;border:none;background:none;text-align:left;width:100%;position:relative}
+.nav-item:hover{background:var(--gc-bg-soft);color:var(--gc-text)}
+.nav-item.active{background:var(--gc-bg);color:var(--gc-text);font-weight:500}
+.nav-item.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--gc-info-text);border-radius:0 3px 3px 0}
+.nav-num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;font-size:11px;font-weight:600;color:var(--gc-text-muted);background:var(--gc-bg);border:1px solid var(--gc-border);border-radius:50%;flex-shrink:0;transition:all .18s}
+.nav-item.active .nav-num{background:var(--gc-info-bg);color:var(--gc-info-text);border-color:var(--gc-info-border)}
+.nav-text{flex:1;font-size:13px}
+.nav-check{font-size:9px;color:var(--gc-ok-text);opacity:0;transition:opacity .18s}
+.nav-check.visible{opacity:1}
+
+/* ===== MAIN CONTENT ===== */
+.main{flex:1;min-width:0;padding:32px 44px 36px;overflow-y:auto;height:100%;background:var(--gc-bg);font-size:15px;line-height:1.6}
+.topic-header{margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--gc-border)}
+.topic-meta{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.topic-badge{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;font-size:13px;font-weight:700;color:var(--gc-info-text);background:var(--gc-info-bg);border:1px solid var(--gc-info-border);border-radius:9px;letter-spacing:-.02em;padding:0 8px}
+.topic-counter{font-size:11.5px;font-weight:600;color:var(--gc-text-muted);text-transform:uppercase;letter-spacing:.08em}
+h2.topic-title{font-size:clamp(20px, 2.2vw, 26px);font-weight:700;letter-spacing:-.015em;margin-bottom:8px;color:var(--gc-text);line-height:1.25}
+.topic-sub{font-size:14.5px;color:var(--gc-text-soft);margin-bottom:14px;line-height:1.55;max-width:75ch}
+
+/* ===== PROGRESS BAR ===== */
+.progress-wrap{display:flex;align-items:center;gap:12px;margin-top:10px}
+.progress-bar{flex:1;height:6px;background:var(--gc-bg-soft);border-radius:6px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg, var(--gc-info-text), var(--gc-ok-text));border-radius:6px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.progress-label{font-size:11.5px;font-weight:600;color:var(--gc-text-muted);letter-spacing:.04em;min-width:90px;text-align:right;white-space:nowrap}
+
+/* ===== SECTIONS ===== */
+.section{margin-bottom:32px;padding-bottom:28px;border-bottom:1px dashed var(--gc-border)}
+.section:last-of-type{border-bottom:none}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--gc-text);margin-bottom:14px;padding:8px 14px;background:var(--gc-bg-alt);border-left:3px solid var(--gc-info-text);border-radius:0 var(--gc-radius-sm) var(--gc-radius-sm) 0}
+
+/* ===== CARDS ===== */
+.card{background:var(--gc-bg);border:1px solid var(--gc-border);border-radius:var(--gc-radius-lg);padding:18px 22px;margin-bottom:14px;box-shadow:var(--gc-shadow-sm);transition:border-color .2s, box-shadow .2s}
+.card:hover{border-color:var(--gc-border-strong);box-shadow:var(--gc-shadow-md)}
+
+/* ===== CONCEPT GRID ===== */
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:14px}
+.concept-card{background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-md);padding:16px 18px;font-size:13.5px;transition:all .2s}
+.concept-card:hover{background:var(--gc-bg);border-color:var(--gc-border-strong);transform:translateY(-1px);box-shadow:var(--gc-shadow-md)}
+.concept-card strong{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:var(--gc-text);letter-spacing:-.005em;padding-bottom:8px;border-bottom:1px solid var(--gc-border)}
+.concept-card span{color:var(--gc-text-soft);line-height:1.6;font-size:13px;display:block;margin-top:8px}
+
+/* ===== FORMULA BOX ===== */
+.formula-box{background:var(--gc-bg-soft);border:1px solid var(--gc-border);border-radius:var(--gc-radius-md);padding:14px 18px;font-family:var(--font-mono, ui-monospace, "JetBrains Mono", "SF Mono", Consolas, monospace);font-size:13px;margin:12px 0;border-left:4px solid var(--gc-info-text);color:var(--gc-text);line-height:1.55;word-wrap:break-word;overflow-x:auto}
+
+/* ===== TABLES ===== */
+.table-wrap{overflow-x:auto;margin:14px 0;border:1px solid var(--gc-border);border-radius:var(--gc-radius-md);background:var(--gc-bg);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+th{background:var(--gc-bg-alt);padding:11px 16px;text-align:left;font-weight:700;font-size:11px;color:var(--gc-text);border-bottom:1px solid var(--gc-border-strong);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+td{padding:11px 16px;border-bottom:1px solid var(--gc-border);color:var(--gc-text);line-height:1.55;background:var(--gc-bg)}
+tr:nth-child(even) td{background:var(--gc-bg-alt)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--gc-info-bg)}
+
+/* ===== CALLOUTS ===== */
+.tip{background:var(--gc-info-bg);border:1px solid var(--gc-info-border);border-left:4px solid var(--gc-info-text);border-radius:var(--gc-radius-md);padding:14px 18px;font-size:13.5px;color:var(--gc-info-text);margin:14px 0;line-height:1.6}
+.tip strong{color:var(--gc-info-text);font-weight:700}
+.warn{background:var(--gc-warn-bg);border:1px solid var(--gc-warn-border);border-left:4px solid var(--gc-warn-text);border-radius:var(--gc-radius-md);padding:14px 18px;font-size:13.5px;color:var(--gc-warn-text);margin:14px 0;line-height:1.6}
+.warn strong{color:var(--gc-warn-text);font-weight:700}
+.example-box{background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-left:4px solid var(--gc-info-text);padding:16px 18px;margin:14px 0;font-size:13.5px;border-radius:0 var(--gc-radius-md) var(--gc-radius-md) 0;line-height:1.7;color:var(--gc-text)}
+.example-box strong{display:block;font-size:10.5px;color:var(--gc-info-text);margin-bottom:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;padding-bottom:8px;border-bottom:1px solid var(--gc-border)}
+
+/* ===== QUIZ ===== */
+.quiz-section{background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-lg);padding:24px 26px;margin-top:8px;box-shadow:var(--gc-shadow-sm)}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--gc-border);flex-wrap:wrap;gap:8px}
+.quiz-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--gc-text)}
+.quiz-counter{font-size:11.5px;color:var(--gc-text-muted);background:var(--gc-bg);padding:5px 12px;border-radius:14px;border:1px solid var(--gc-border);font-weight:600}
+.quiz-score{font-size:11.5px;color:var(--gc-ok-text);background:var(--gc-ok-bg);padding:5px 12px;border-radius:14px;border:1px solid var(--gc-ok-border);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.quiz-score-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.quiz-seed{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--gc-text-muted);background:var(--gc-bg);padding:3px 4px 3px 10px;border-radius:14px;border:1px solid var(--gc-border);font-weight:600}
+.quiz-seed label{letter-spacing:.04em;text-transform:uppercase;font-size:10.5px}
+.quiz-seed input{width:88px;font:inherit;font-size:11.5px;font-weight:600;color:var(--gc-text);background:transparent;border:none;outline:none;padding:0 2px;font-variant-numeric:tabular-nums}
+.quiz-seed input:focus{color:var(--gc-info-text)}
+.quiz-seed button{border:1px solid var(--gc-border);background:var(--gc-bg-alt);border-radius:11px;width:24px;height:22px;padding:0;cursor:pointer;font-size:12px;line-height:1;color:var(--gc-text);transition:all .15s}
+.quiz-seed button:hover{background:var(--gc-info-bg);border-color:var(--gc-info-border);color:var(--gc-info-text)}
+.quiz-question{font-size:15.5px;font-weight:500;margin-bottom:16px;color:var(--gc-text);line-height:1.55}
+.quiz-btn{border:1px solid var(--gc-border);background:var(--gc-bg);border-radius:var(--gc-radius-md);padding:12px 16px;font-size:13.5px;cursor:pointer;color:var(--gc-text);width:100%;text-align:left;margin-bottom:9px;transition:all .18s ease;display:flex;align-items:center;gap:12px;font-family:inherit;line-height:1.45}
+.quiz-btn::before{content:attr(data-letter);display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;font-size:11.5px;font-weight:700;color:var(--gc-text-muted);background:var(--gc-bg-soft);border:1px solid var(--gc-border);border-radius:7px;flex-shrink:0;transition:all .18s}
+.quiz-btn:hover:not(:disabled){background:var(--gc-info-bg);border-color:var(--gc-info-border);transform:translateX(3px)}
+.quiz-btn:hover:not(:disabled)::before{background:var(--gc-info-text);color:#fff;border-color:var(--gc-info-text)}
+.quiz-btn.correct{background:var(--gc-ok-bg);border-color:var(--gc-ok-border);color:var(--gc-ok-text);font-weight:600}
+.quiz-btn.correct::before{background:var(--gc-ok-text);color:#fff;border-color:var(--gc-ok-text);content:"✓"}
+.quiz-btn.wrong{background:var(--gc-err-bg);border-color:var(--gc-err-border);color:var(--gc-err-text)}
+.quiz-btn.wrong::before{background:var(--gc-err-text);color:#fff;border-color:var(--gc-err-text);content:"✕"}
+.quiz-btn:disabled{cursor:default;transform:none}
+.quiz-feedback{font-size:13.5px;margin-top:14px;padding:14px 16px;border-radius:var(--gc-radius-md);background:var(--gc-bg);border:1px solid var(--gc-border);line-height:1.6;color:var(--gc-text)}
+.quiz-feedback.correct{border-left:4px solid var(--gc-ok-text)}
+.quiz-feedback.wrong{border-left:4px solid var(--gc-err-text)}
+.feedback-prefix{display:inline-block;font-weight:700;margin-right:6px}
+.feedback-prefix.correct{color:var(--gc-ok-text)}
+.feedback-prefix.wrong{color:var(--gc-err-text)}
+.next-q{border:1px solid var(--gc-border-strong);background:var(--gc-bg);border-radius:var(--gc-radius-md);padding:10px 20px;font-size:13.5px;font-weight:600;cursor:pointer;margin-top:14px;color:var(--gc-text);transition:all .18s;font-family:inherit}
+.next-q:hover{background:var(--gc-info-text);color:#fff;border-color:var(--gc-info-text)}
+.quiz-complete{text-align:center;padding:16px;background:var(--gc-ok-bg);border:1px solid var(--gc-ok-border);border-radius:var(--gc-radius-md);margin-top:14px;color:var(--gc-ok-text);font-size:14px;font-weight:600}
+.quiz-nocalc-btn{border:1px solid var(--gc-border);background:var(--gc-bg);border-radius:14px;padding:5px 12px;font-size:11.5px;font-weight:600;cursor:pointer;color:var(--gc-text-muted);transition:all .18s;font-family:inherit;white-space:nowrap}
+.quiz-nocalc-btn:hover{border-color:var(--gc-warn-border);color:var(--gc-warn-text);background:var(--gc-warn-bg)}
+.quiz-nocalc-btn.active{border-color:var(--gc-warn-border);color:var(--gc-warn-text);background:var(--gc-warn-bg);font-weight:700}
+
+/* ===== LISTS ===== */
+.list-styled{font-size:14px;padding-left:22px;line-height:1.8;color:var(--gc-text-soft);margin:8px 0}
+.list-styled li{margin-bottom:6px;padding-left:4px}
+.list-styled li strong{color:var(--gc-text);font-weight:600}
+
+/* ===== MISC ===== */
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:14px;margin-right:5px;margin-bottom:5px;font-weight:600;border:1px solid currentColor}
+.tag-blue{background:var(--gc-info-bg);color:var(--gc-info-text)}
+.tag-green{background:var(--gc-ok-bg);color:var(--gc-ok-text)}
+.tag-amber{background:var(--gc-warn-bg);color:var(--gc-warn-text)}
+.tag-red{background:var(--gc-err-bg);color:var(--gc-err-text)}
+.divider{height:1px;background:var(--gc-border);margin:20px 0;border:none}
+p.body{font-size:14px;color:var(--gc-text-soft);line-height:1.7;margin-bottom:12px;max-width:75ch}
+p.body strong{color:var(--gc-text);font-weight:600}
+
+/* ===== SCROLLBAR ===== */
+.main::-webkit-scrollbar,.sidebar::-webkit-scrollbar{width:10px;height:10px}
+.main::-webkit-scrollbar-track,.sidebar::-webkit-scrollbar-track{background:transparent}
+.main::-webkit-scrollbar-thumb,.sidebar::-webkit-scrollbar-thumb{background:var(--gc-border);border-radius:5px;border:2px solid transparent;background-clip:padding-box}
+.main::-webkit-scrollbar-thumb:hover,.sidebar::-webkit-scrollbar-thumb:hover{background:var(--gc-border-strong);background-clip:padding-box}
+
+/* ============================================ */
+/* RESPONSIVE BREAKPOINTS                       */
+/* ============================================ */
+
+/* Large desktops (1440px+): more breathing room */
+@media (min-width: 1440px) {
+  .main{padding:36px 56px 40px}
+  .sidebar{width:280px}
+  h2.topic-title{font-size:28px}
+  .topic-sub{font-size:15px}
+}
+
+/* Mid-size desktops (1024px–1280px): default works well */
+@media (max-width: 1280px) {
+  .main{padding:28px 32px 30px}
+  .sidebar{width:240px}
+}
+
+/* Small desktops / large tablets (820px–1024px): tighter sidebar */
+@media (max-width: 1024px) {
+  .sidebar{width:220px;padding:14px 0}
+  .sidebar-header{padding:0 16px 12px}
+  .nav-item{padding:9px 16px;font-size:12.5px}
+  .nav-text{font-size:12.5px}
+  .main{padding:24px 28px 28px;font-size:14px}
+  h2.topic-title{font-size:22px}
+  .concept-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+  .card{padding:14px 16px}
+}
+
+/* Tablets (640px–820px): sidebar narrower; could collapse if needed */
+@media (max-width: 820px) {
+  .sidebar{width:200px}
+  .nav-item{padding:8px 14px}
+  .nav-num{min-width:20px;height:20px;font-size:10px}
+  .main{padding:20px 22px 24px}
+  .quiz-section{padding:18px 20px}
+  .quiz-question{font-size:14.5px}
+  .example-box, .tip, .warn{padding:12px 14px;font-size:13px}
+  .formula-box{font-size:12px;padding:11px 14px}
+  table{min-width:380px;font-size:12px}
+  th,td{padding:9px 12px}
+}
+
+/* Mobile bar hidden by default (shown by JS on small screens) */
+.mobile-bar { display: none }
+.drawer-close { display: none }
+.drawer-backdrop { display: none }
+
+/* ============================================ */
+/* MOBILE — drawer-based navigation < 640px     */
+/* ============================================ */
+@media (max-width: 640px) {
+  /* Hide sidebar; show mobile header + drawer */
+  .app{flex-direction:column}
+
+  /* Mobile top bar */
+  .mobile-bar{
+    display:flex;align-items:center;gap:10px;
+    padding:0 16px;height:52px;flex-shrink:0;
+    background:var(--gc-bg-alt);border-bottom:1px solid var(--gc-border);
+    position:sticky;top:0;z-index:200;
+  }
+  .mobile-menu-btn{
+    border:1px solid var(--gc-border);background:var(--gc-bg-soft);border-radius:8px;
+    width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;flex-shrink:0;padding:0;
+  }
+  .mobile-menu-btn svg{width:18px;height:18px;stroke:var(--gc-text);fill:none;stroke-width:2;stroke-linecap:round}
+  .mobile-topic-name{
+    flex:1;font-size:14px;font-weight:600;color:var(--gc-text);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.01em;
+  }
+
+  /* Drawer backdrop */
+  .drawer-backdrop{
+    display:none;position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:300;
+    opacity:0;transition:opacity .25s ease;
+  }
+  .drawer-backdrop.open{display:block;opacity:1}
+
+  /* Sidebar becomes slide-in drawer */
+  .sidebar{
+    position:fixed;left:0;top:0;bottom:0;z-index:400;
+    width:80%;max-width:300px;
+    height:100%;transform:translateX(-100%);
+    transition:transform .27s cubic-bezier(.4,0,.2,1);
+    border-right:1px solid var(--gc-border);
+    box-shadow:var(--gc-shadow-lg);
+    overflow-y:auto;padding:16px 0;
+    background:var(--gc-bg-alt);
+  }
+  .sidebar.drawer-open{transform:translateX(0)}
+
+  /* Drawer close button inside sidebar */
+  .drawer-close{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px 14px;margin-bottom:8px;border-bottom:1px solid var(--gc-border);
+  }
+  .drawer-close-brand{font-size:14px;font-weight:700;color:var(--gc-text)}
+  .drawer-close-btn{
+    border:1px solid var(--gc-border);background:var(--gc-bg-soft);border-radius:8px;
+    width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;padding:0;
+  }
+  .drawer-close-btn svg{width:14px;height:14px;stroke:var(--gc-text);fill:none;stroke-width:2.5;stroke-linecap:round}
+
+  /* Main content: full width below top bar */
+  .main{
+    flex:1;height:auto;padding:20px 16px 28px;font-size:14px;
+    padding-top:20px; /* no top bar offset needed; bar is sticky */
+  }
+
+  /* Content adjustments */
+  h2.topic-title{font-size:20px}
+  .topic-sub{font-size:13px;max-width:100%}
+  .topic-meta{gap:8px}
+  .topic-badge{min-width:30px;height:30px;font-size:12px}
+  .concept-grid{grid-template-columns:1fr;gap:10px}
+  .section{margin-bottom:24px;padding-bottom:20px}
+  .section-label{font-size:10px;padding:6px 10px}
+  .card{padding:14px 16px}
+  .quiz-section{padding:16px;border-radius:var(--gc-radius-md)}
+  .quiz-header{flex-direction:column;align-items:flex-start;gap:10px}
+  .quiz-score-meta{flex-wrap:wrap;gap:6px}
+  .quiz-question{font-size:14px}
+  .quiz-btn{padding:11px 14px;font-size:13px}
+  .next-q{padding:10px 18px;font-size:13.5px;width:100%}
+  .quiz-complete{font-size:13.5px}
+  .quiz-seed input{width:68px}
+  .quiz-seed{font-size:11px}
+  .progress-label{min-width:auto;font-size:10.5px}
+  table{min-width:340px;font-size:12px}
+  th,td{padding:8px 10px}
+  .formula-box{font-size:12px;padding:10px 12px}
+  .example-box,.tip,.warn{padding:12px 14px;font-size:13px}
+  p.body{font-size:13.5px}
+  .nav-item{padding:11px 16px;font-size:13px}
+}
+
+/* Focus accessibility */
+.nav-item:focus-visible, .quiz-btn:focus-visible, .next-q:focus-visible{outline:2px solid var(--gc-info-text);outline-offset:2px}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .quiz-btn:hover:not(:disabled){transform:none}
+  .concept-card:hover{transform:none}
+}
+
+/* ===== PERIODIC TABLE ===== */
+.pt-sidebar-btn{display:flex;align-items:center;gap:7px;width:calc(100% - 24px);margin:8px 12px 0;padding:9px 14px;background:var(--gc-info-bg);border:1px solid var(--gc-info-border);color:var(--gc-info-text);border-radius:var(--gc-radius-md);font-size:13px;font-weight:600;cursor:pointer;letter-spacing:-.01em;transition:background .18s}
+.pt-sidebar-btn:hover{background:var(--gc-bg-soft);border-color:var(--gc-info-text)}
+.pt-inline-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:var(--gc-info-bg);border:1px solid var(--gc-info-border);color:var(--gc-info-text);border-radius:var(--gc-radius-md);font-size:13px;font-weight:600;cursor:pointer;margin:8px 0;transition:background .18s}
+.pt-inline-btn:hover{background:var(--gc-bg-soft)}
+/* Modal */
+.pt-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center}
+.pt-modal[hidden]{display:none!important}
+.pt-modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.52);backdrop-filter:blur(3px)}
+.pt-dialog{position:relative;background:var(--gc-bg);border-radius:var(--gc-radius-lg);box-shadow:0 8px 40px rgba(0,0,0,.22);width:min(99vw,1300px);max-height:96vh;overflow-y:auto;z-index:1;padding:20px 22px 24px}
+.pt-dialog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--gc-border)}
+.pt-dialog-hd h3{font-size:17px;font-weight:700;letter-spacing:-.015em;color:var(--gc-text)}
+.pt-dialog-hd-right{display:flex;align-items:center;gap:10px}
+.pt-search{padding:6px 11px;border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);background:var(--gc-bg-alt);color:var(--gc-text);font-size:13px;width:170px}
+.pt-search:focus{outline:2px solid var(--gc-info-text);outline-offset:1px}
+.pt-close-btn{background:none;border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);padding:5px 11px;font-size:13px;cursor:pointer;color:var(--gc-text-soft);transition:background .15s}
+.pt-close-btn:hover{background:var(--gc-bg-alt)}
+/* Grid */
+.pt-wrap{overflow-x:auto;padding-bottom:4px}
+.pt-grid{display:grid;grid-template-columns:repeat(18,minmax(54px,1fr));gap:2px;min-width:860px;padding:2px}
+.pt-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:4px 2px 5px;border-radius:4px;cursor:pointer;border:1px solid transparent;text-align:center;transition:transform .12s,box-shadow .12s,opacity .15s;min-height:58px;user-select:none}
+.pt-cell:hover{transform:scale(1.14);z-index:20;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.pt-cell.pt-dimmed{opacity:.18}
+.pt-cell.pt-selected{outline:2.5px solid var(--gc-info-text);outline-offset:1px;z-index:10}
+.pt-z{font-size:8px;font-weight:700;line-height:1;opacity:.75;align-self:flex-start;padding-left:3px;margin-bottom:1px}
+.pt-sym{font-size:17px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.pt-name{font-size:6px;font-weight:500;line-height:1.2;opacity:.85;max-width:100%;overflow:hidden;white-space:nowrap;margin-top:1px}
+.pt-mass{font-size:6px;font-weight:400;line-height:1;opacity:.65;margin-top:1px}
+.pt-cell.pt-placeholder{border-style:dashed;opacity:.55;cursor:default;align-items:center;justify-content:center}
+.pt-cell.pt-placeholder:hover{transform:none;box-shadow:none}
+.pt-gap{grid-column:1/-1;height:14px;display:flex;align-items:center;gap:8px;padding:0 4px}
+.pt-gap-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gc-text-muted);white-space:nowrap}
+.pt-gap-line{flex:1;height:1px;background:var(--gc-border)}
+/* Category colors – light */
+.pt-cell.hydrogen        {background:#fff8e6;border-color:#f0d080;color:#6b4700}
+.pt-cell.alkali-metal    {background:#ffe6e6;border-color:#f08080;color:#7a1a1a}
+.pt-cell.alkaline-earth  {background:#fff0db;border-color:#f0b870;color:#7a3d00}
+.pt-cell.transition-metal{background:#fffce6;border-color:#d8cc60;color:#504800}
+.pt-cell.post-transition {background:#edfaed;border-color:#88cc88;color:#1a5a1a}
+.pt-cell.metalloid       {background:#e4f5f5;border-color:#70c0c0;color:#005050}
+.pt-cell.nonmetal        {background:#e6f0ff;border-color:#7090f0;color:#1a2a80}
+.pt-cell.halogen         {background:#e8faf5;border-color:#70c8b8;color:#004840}
+.pt-cell.noble-gas       {background:#f5e6ff;border-color:#c070f0;color:#480070}
+.pt-cell.lanthanide      {background:#ffe6f5;border-color:#f090d0;color:#780048}
+.pt-cell.actinide        {background:#ede6ff;border-color:#b090f0;color:#400070}
+/* Category colors – dark */
+@media(prefers-color-scheme:dark){
+  .pt-cell.hydrogen        {background:#3a2e08;border-color:#7a6018;color:#f0d080}
+  .pt-cell.alkali-metal    {background:#3a1010;border-color:#7a1a1a;color:#f09090}
+  .pt-cell.alkaline-earth  {background:#3a2008;border-color:#7a4010;color:#f0b870}
+  .pt-cell.transition-metal{background:#30300a;border-color:#686018;color:#e8d870}
+  .pt-cell.post-transition {background:#0e300e;border-color:#186018;color:#88d888}
+  .pt-cell.metalloid       {background:#0a2e2e;border-color:#186060;color:#70d0d0}
+  .pt-cell.nonmetal        {background:#0e183a;border-color:#183080;color:#80a0f0}
+  .pt-cell.halogen         {background:#0a2820;border-color:#185848;color:#70d8c0}
+  .pt-cell.noble-gas       {background:#220840;border-color:#500888;color:#d070f8}
+  .pt-cell.lanthanide      {background:#400018;border-color:#800038;color:#f898d0}
+  .pt-cell.actinide        {background:#200840;border-color:#480878;color:#c090f0}
+}
+/* Info panel */
+.pt-info{display:grid;grid-template-columns:90px 1fr;gap:12px 16px;align-items:start;background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-md);padding:14px 16px;margin-top:10px;min-height:90px}
+.pt-info-card{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:var(--gc-radius-md);padding:8px 6px;border:1px solid var(--gc-border);min-height:86px;text-align:center}
+.pt-info-card .pt-z{font-size:11px;align-self:flex-start}
+.pt-info-card .pt-sym{font-size:32px}
+.pt-info-card .pt-name{font-size:10px;opacity:1;color:var(--gc-text-soft)}
+.pt-info-card .pt-mass{font-size:10px;opacity:.7;color:var(--gc-text-muted)}
+.pt-info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px 12px}
+.pt-info-field{display:flex;flex-direction:column;gap:2px}
+.pt-info-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gc-text-muted)}
+.pt-info-val{font-size:13px;color:var(--gc-text);font-weight:500;line-height:1.4}
+.pt-info-hint{grid-column:1/-1;font-size:13px;color:var(--gc-text-muted);display:flex;align-items:center;gap:6px}
+/* Legend */
+.pt-legend{display:flex;flex-wrap:wrap;gap:5px 12px;margin-top:10px;padding-top:10px;border-top:1px solid var(--gc-border)}
+.pt-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gc-text-soft);cursor:pointer;padding:2px 4px;border-radius:3px;transition:background .12s}
+.pt-legend-item:hover{background:var(--gc-bg-soft)}
+.pt-legend-swatch{width:13px;height:13px;border-radius:3px;border:1px solid;flex-shrink:0}
+
+/* ===== COMPREHENSIVE QUIZ (120) ===== */
+.cq-sidebar-btn{display:flex;align-items:center;gap:7px;width:calc(100% - 24px);margin:6px 12px 0;padding:9px 14px;background:linear-gradient(135deg,#7c3aed12,#2563eb12);border:1px solid #7c3aed55;color:#5b21b6;border-radius:var(--gc-radius-md);font-size:13px;font-weight:700;cursor:pointer;letter-spacing:-.01em;transition:background .18s}
+.cq-sidebar-btn:hover{background:linear-gradient(135deg,#7c3aed26,#2563eb26)}
+@media(prefers-color-scheme:dark){.cq-sidebar-btn{color:#c4b5fd;border-color:#7c3aed88}}
+.cq-start{padding:20px 0 8px;display:flex;flex-direction:column;gap:14px;max-width:600px;margin:0 auto}
+.cq-start h4{font-size:15px;font-weight:700;color:var(--gc-text);margin:0}
+.cq-start p{font-size:13px;color:var(--gc-text-soft);line-height:1.5;margin:0}
+.cq-start-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.cq-start-row label{font-size:12px;font-weight:600;color:var(--gc-text-soft);text-transform:uppercase;letter-spacing:.05em}
+.cq-seed-input{padding:7px 11px;border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);background:var(--gc-bg-alt);color:var(--gc-text);font-size:14px;width:170px;font-family:ui-monospace,monospace}
+.cq-seed-input:focus{outline:2px solid #7c3aed;outline-offset:1px}
+.cq-roll-btn{padding:7px 11px;background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);cursor:pointer;font-size:14px;color:var(--gc-text)}
+.cq-roll-btn:hover{background:var(--gc-bg-soft)}
+.cq-go-btn{padding:11px 22px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none;border-radius:var(--gc-radius-md);font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:transform .1s}
+.cq-go-btn:hover{transform:translateY(-1px)}
+.cq-topics-summary{font-size:11.5px;color:var(--gc-text-muted);background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);padding:10px 12px;line-height:1.6}
+.cq-runner{padding:6px 0}
+.cq-progress-row{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.cq-progress-bar{flex:1;min-width:200px;height:8px;background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:4px;overflow:hidden}
+.cq-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#2563eb);transition:width .25s}
+.cq-progress-text{font-size:12px;font-weight:600;color:var(--gc-text-soft);white-space:nowrap}
+.cq-score-text{font-size:12px;font-weight:700;color:#16a34a;white-space:nowrap}
+.cq-topic-tag{display:inline-block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:#7c3aed18;color:#5b21b6;border:1px solid #7c3aed44;padding:3px 9px;border-radius:99px;margin-bottom:10px}
+@media(prefers-color-scheme:dark){.cq-topic-tag{background:#7c3aed30;color:#c4b5fd;border-color:#7c3aed66}}
+.cq-question{font-size:16px;font-weight:600;line-height:1.45;color:var(--gc-text);margin-bottom:14px}
+.cq-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.cq-opt{text-align:left;padding:11px 14px;background:var(--gc-bg-alt);border:1.5px solid var(--gc-border);border-radius:var(--gc-radius-md);color:var(--gc-text);font-size:13.5px;cursor:pointer;transition:background .12s,border-color .12s;line-height:1.4}
+.cq-opt:hover:not(:disabled){background:var(--gc-bg-soft);border-color:#7c3aed}
+.cq-opt:disabled{cursor:default}
+.cq-opt.correct{background:#dcfce7;border-color:#16a34a;color:#14532d}
+.cq-opt.wrong{background:#fee2e2;border-color:#dc2626;color:#7f1d1d}
+@media(prefers-color-scheme:dark){.cq-opt.correct{background:#14532d44;color:#86efac}.cq-opt.wrong{background:#7f1d1d44;color:#fca5a5}}
+.cq-opt-letter{display:inline-block;width:22px;font-weight:800;opacity:.65;margin-right:6px}
+.cq-feedback{padding:11px 14px;background:var(--gc-bg-alt);border-left:3px solid #7c3aed;border-radius:var(--gc-radius-sm);font-size:13px;color:var(--gc-text-soft);line-height:1.5;margin-bottom:12px}
+.cq-feedback.correct{border-left-color:#16a34a}
+.cq-feedback.wrong{border-left-color:#dc2626}
+.cq-feedback-prefix{font-weight:700;margin-right:6px;color:var(--gc-text)}
+.cq-nav-row{display:flex;justify-content:space-between;gap:10px;margin-top:8px}
+.cq-nav-btn{padding:9px 18px;background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-md);color:var(--gc-text);font-size:13px;font-weight:600;cursor:pointer}
+.cq-nav-btn:disabled{opacity:.4;cursor:not-allowed}
+.cq-nav-btn.primary{background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;border:none}
+.cq-results{padding:14px 0}
+.cq-results h3{font-size:22px;font-weight:800;margin:0 0 6px}
+.cq-final-score{font-size:42px;font-weight:800;letter-spacing:-.02em;margin:8px 0}
+.cq-pct{font-size:22px;font-weight:600;color:var(--gc-text-soft)}
+.cq-breakdown{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;margin-top:18px}
+.cq-bd-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);font-size:12.5px}
+.cq-bd-name{color:var(--gc-text);font-weight:600;flex:1;padding-right:8px}
+.cq-bd-score{font-weight:700;color:var(--gc-text-soft);white-space:nowrap}
+.cq-bd-score.perfect{color:#16a34a}
+.cq-bd-score.poor{color:#dc2626}
+.cq-results-actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+
+/* ===== SUMMARY (formulas + key terms) ===== */
+.sm-sidebar-btn{display:flex;align-items:center;gap:7px;width:calc(100% - 24px);margin:6px 12px 0;padding:9px 14px;background:linear-gradient(135deg,#0d948814,#06b6d414);border:1px solid #0d948855;color:#0e7490;border-radius:var(--gc-radius-md);font-size:13px;font-weight:700;cursor:pointer;letter-spacing:-.01em;transition:background .18s}
+.sm-sidebar-btn:hover{background:linear-gradient(135deg,#0d94882a,#06b6d42a)}
+@media(prefers-color-scheme:dark){.sm-sidebar-btn{color:#67e8f9;border-color:#0d948888}}
+.sm-tabs{display:flex;gap:6px;border-bottom:1px solid var(--gc-border);margin-bottom:18px;padding-bottom:2px;flex-wrap:wrap}
+.sm-tab{padding:8px 16px;border:none;background:none;font-size:13px;font-weight:600;color:var(--gc-text-soft);cursor:pointer;border-bottom:2px solid transparent;transition:all .18s;font-family:inherit;border-radius:6px 6px 0 0}
+.sm-tab:hover{background:var(--gc-bg-soft);color:var(--gc-text)}
+.sm-tab.active{color:var(--gc-info-text);border-bottom-color:var(--gc-info-text);background:var(--gc-bg-soft)}
+.sm-jump{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px;padding:12px;background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-md)}
+.sm-jump-label{font-size:10px;font-weight:700;color:var(--gc-text-muted);text-transform:uppercase;letter-spacing:.08em;width:100%;margin-bottom:4px}
+.sm-jump a{display:inline-block;padding:4px 9px;background:var(--gc-bg);border:1px solid var(--gc-border);border-radius:4px;font-size:11.5px;font-weight:600;color:var(--gc-text-soft);text-decoration:none;transition:all .15s}
+.sm-jump a:hover{background:var(--gc-info-bg);color:var(--gc-info-text);border-color:var(--gc-info-border)}
+.sm-lesson{margin-bottom:28px;padding-bottom:22px;border-bottom:1px dashed var(--gc-border);scroll-margin-top:80px}
+.sm-lesson:last-child{border-bottom:none}
+.sm-lesson-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sm-lesson-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;font-size:12px;font-weight:700;color:var(--gc-info-text);background:var(--gc-info-bg);border:1px solid var(--gc-info-border);border-radius:8px}
+.sm-lesson-title{font-size:16px;font-weight:700;color:var(--gc-text);letter-spacing:-.012em;line-height:1.25;flex:1}
+.sm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.sm-formula{background:var(--gc-bg-soft);border:1px solid var(--gc-border);border-left:3px solid var(--gc-info-text);border-radius:var(--gc-radius-sm);padding:10px 13px;font-family:var(--font-mono,ui-monospace,monospace);font-size:13px;color:var(--gc-text);line-height:1.5;word-wrap:break-word}
+.sm-formula-name{display:block;font-family:var(--font-sans,system-ui,sans-serif);font-size:11px;font-weight:700;color:var(--gc-info-text);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.sm-term{background:var(--gc-bg-alt);border:1px solid var(--gc-border);border-radius:var(--gc-radius-sm);padding:11px 14px;font-size:13px;line-height:1.55}
+.sm-term-name{display:block;font-weight:700;color:var(--gc-text);margin-bottom:4px;font-size:13px}
+.sm-term-def{color:var(--gc-text-soft);font-size:12.5px}
+.sm-subsection{font-size:11.5px;font-weight:700;color:var(--gc-text-muted);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 8px;padding-left:4px;border-left:2px solid var(--gc-info-text)}
+</style>
+
+<h2 class="sr-only" id="srHeading" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Study Materials</h2>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<div class="pt-modal" id="ptModal" hidden>
+  <div class="pt-modal-bg" id="ptModalBg"></div>
+  <div class="pt-dialog">
+    <div class="pt-dialog-hd">
+      <h3>Periodic Table of Elements — All 118</h3>
+      <div class="pt-dialog-hd-right">
+        <input class="pt-search" id="ptSearch" type="search" placeholder="Search element…" autocomplete="off">
+        <button class="pt-close-btn" id="ptClose">✕ Close</button>
+      </div>
+    </div>
+    <div id="ptDialogBody"></div>
+  </div>
+</div>
+<div class="pt-modal" id="cqModal" hidden>
+  <div class="pt-modal-bg" id="cqModalBg"></div>
+  <div class="pt-dialog" style="width:min(96vw,820px);">
+    <div class="pt-dialog-hd">
+      <h3 id="cqTitle">🎓 Comprehensive Quiz</h3>
+      <div class="pt-dialog-hd-right">
+        <button class="pt-close-btn" id="cqClose">✕ Close</button>
+      </div>
+    </div>
+    <div id="cqBody"></div>
+  </div>
+</div>
+<div class="pt-modal" id="smModal" hidden>
+  <div class="pt-modal-bg" id="smModalBg"></div>
+  <div class="pt-dialog" style="width:min(96vw,1000px);">
+    <div class="pt-dialog-hd">
+      <h3>📋 Summary — Formulas &amp; Key Terms</h3>
+      <div class="pt-dialog-hd-right">
+        <button class="pt-close-btn" id="smClose">✕ Close</button>
+      </div>
+    </div>
+    <div id="smBody"></div>
+  </div>
+</div>
+<div class="app">
+<div class="mobile-bar" id="mobileBar" style="display:none">
+  <button class="mobile-menu-btn" id="menuBtn" aria-label="Open navigation">
+    <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <span class="mobile-topic-name" id="mobileTopicName"></span>
+</div>
+<div class="sidebar" id="sidebar">
+  <div class="drawer-close" id="drawerCloseRow" style="display:none">
+    <span class="drawer-close-brand" id="drawerCloseBrand"></span>
+    <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+  </div>
+</div>
+<div class="main" id="main"></div>
+</div>
+
+<!-- Lessons + quizzes live in content.js. Swap this file to reuse for any subject. -->
+<script src="content.js"></script>
+<script>
+/* =====================================================================
+   SUBJECT_CONFIG — single source of truth for branding + feature flags.
+   Edit this block to reuse the template for any subject.
+===================================================================== */
+const SUBJECT_CONFIG = {
+  title:                   "General Chemistry 1 — Study Materials",
+  brand:                   "General Chemistry",
+  subtitleTemplate:        "{N} lessons · interactive quizzes",  // {N} = topic count
+  defaultCourse:           "Gen Chem 1",  // fallback if a topic has no `course`
+  showPeriodicTable:       true,           // false → hide PT button + modal entirely
+  showComprehensiveQuiz:   true,           // false → hide CQ button + modal
+  comprehensiveQuizSize:   120,
+  comprehensiveQuizLabel:  "🎓 Comprehensive Quiz (120)",
+  showSummary:             true,           // false → hide Summary button + modal
+  summaryLabel:            "📋 Summary (Formulas & Terms)"
+};
+
+// Apply title + static brand text from config (runs once at parse time).
+document.title = SUBJECT_CONFIG.title;
+(function applyStaticBranding(){
+  const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+  set('srHeading',        SUBJECT_CONFIG.title);
+  set('mobileTopicName',  SUBJECT_CONFIG.brand);
+  set('drawerCloseBrand', SUBJECT_CONFIG.brand);
+})();
+
+/* =====================================================================
+   PERIODIC TABLE — data + rendering
+   Each entry: [Z, symbol, name, mass, gridRow, gridCol, category,
+                electronConfig, electronegativity, oxidationStates,
+                atomicRadius_pm, firstIE_kJmol]
+   gridRow: 1-7 = periods 1-7 | 9 = lanthanides | 10 = actinides
+   gridCol: 1-18 (standard group numbering)
+   mass in parentheses () indicates most-stable-isotope (radioactive)
+===================================================================== */
+const ptElements=[
+[1,'H','Hydrogen',1.008,1,1,'hydrogen','1s¹',2.20,'+1, −1',53,1312],
+[2,'He','Helium',4.003,1,18,'noble-gas','1s²',null,'0',31,2372],
+[3,'Li','Lithium',6.941,2,1,'alkali-metal','[He] 2s¹',0.98,'+1',167,520],
+[4,'Be','Beryllium',9.012,2,2,'alkaline-earth','[He] 2s²',1.57,'+2',112,900],
+[5,'B','Boron',10.811,2,13,'metalloid','[He] 2s²2p¹',2.04,'+3',87,800],
+[6,'C','Carbon',12.011,2,14,'nonmetal','[He] 2s²2p²',2.55,'+4, ±2, −4',77,1086],
+[7,'N','Nitrogen',14.007,2,15,'nonmetal','[He] 2s²2p³',3.04,'+5, +3, −3',75,1402],
+[8,'O','Oxygen',15.999,2,16,'nonmetal','[He] 2s²2p⁴',3.44,'−2',73,1314],
+[9,'F','Fluorine',18.998,2,17,'halogen','[He] 2s²2p⁵',3.98,'−1',71,1681],
+[10,'Ne','Neon',20.180,2,18,'noble-gas','[He] 2s²2p⁶',null,'0',69,2081],
+[11,'Na','Sodium',22.990,3,1,'alkali-metal','[Ne] 3s¹',0.93,'+1',190,496],
+[12,'Mg','Magnesium',24.305,3,2,'alkaline-earth','[Ne] 3s²',1.31,'+2',145,738],
+[13,'Al','Aluminum',26.982,3,13,'post-transition','[Ne] 3s²3p¹',1.61,'+3',118,577],
+[14,'Si','Silicon',28.086,3,14,'metalloid','[Ne] 3s²3p²',1.90,'+4, −4',111,786],
+[15,'P','Phosphorus',30.974,3,15,'nonmetal','[Ne] 3s²3p³',2.19,'+5, +3, −3',106,1012],
+[16,'S','Sulfur',32.065,3,16,'nonmetal','[Ne] 3s²3p⁴',2.58,'+6, +4, −2',103,1000],
+[17,'Cl','Chlorine',35.453,3,17,'halogen','[Ne] 3s²3p⁵',3.16,'+7, +5, +1, −1',99,1251],
+[18,'Ar','Argon',39.948,3,18,'noble-gas','[Ne] 3s²3p⁶',null,'0',97,1521],
+[19,'K','Potassium',39.098,4,1,'alkali-metal','[Ar] 4s¹',0.82,'+1',243,419],
+[20,'Ca','Calcium',40.078,4,2,'alkaline-earth','[Ar] 4s²',1.00,'+2',194,590],
+[21,'Sc','Scandium',44.956,4,3,'transition-metal','[Ar] 3d¹4s²',1.36,'+3',184,633],
+[22,'Ti','Titanium',47.867,4,4,'transition-metal','[Ar] 3d²4s²',1.54,'+4, +3, +2',176,658],
+[23,'V','Vanadium',50.942,4,5,'transition-metal','[Ar] 3d³4s²',1.63,'+5, +4, +3, +2',171,650],
+[24,'Cr','Chromium',51.996,4,6,'transition-metal','[Ar] 3d⁵4s¹',1.66,'+6, +3, +2',166,653],
+[25,'Mn','Manganese',54.938,4,7,'transition-metal','[Ar] 3d⁵4s²',1.55,'+7, +4, +2',161,717],
+[26,'Fe','Iron',55.845,4,8,'transition-metal','[Ar] 3d⁶4s²',1.83,'+3, +2',156,762],
+[27,'Co','Cobalt',58.933,4,9,'transition-metal','[Ar] 3d⁷4s²',1.88,'+3, +2',152,760],
+[28,'Ni','Nickel',58.693,4,10,'transition-metal','[Ar] 3d⁸4s²',1.91,'+2',149,737],
+[29,'Cu','Copper',63.546,4,11,'transition-metal','[Ar] 3d¹⁰4s¹',1.90,'+2, +1',145,745],
+[30,'Zn','Zinc',65.38,4,12,'transition-metal','[Ar] 3d¹⁰4s²',1.65,'+2',142,906],
+[31,'Ga','Gallium',69.723,4,13,'post-transition','[Ar] 3d¹⁰4s²4p¹',1.81,'+3',136,579],
+[32,'Ge','Germanium',72.631,4,14,'metalloid','[Ar] 3d¹⁰4s²4p²',2.01,'+4, +2',125,762],
+[33,'As','Arsenic',74.922,4,15,'metalloid','[Ar] 3d¹⁰4s²4p³',2.18,'+5, +3, −3',114,947],
+[34,'Se','Selenium',78.971,4,16,'nonmetal','[Ar] 3d¹⁰4s²4p⁴',2.55,'+6, +4, −2',103,941],
+[35,'Br','Bromine',79.904,4,17,'halogen','[Ar] 3d¹⁰4s²4p⁵',2.96,'+5, +1, −1',94,1140],
+[36,'Kr','Krypton',83.798,4,18,'noble-gas','[Ar] 3d¹⁰4s²4p⁶',3.00,'+2, 0',88,1351],
+[37,'Rb','Rubidium',85.468,5,1,'alkali-metal','[Kr] 5s¹',0.82,'+1',265,403],
+[38,'Sr','Strontium',87.62,5,2,'alkaline-earth','[Kr] 5s²',0.95,'+2',219,550],
+[39,'Y','Yttrium',88.906,5,3,'transition-metal','[Kr] 4d¹5s²',1.22,'+3',212,600],
+[40,'Zr','Zirconium',91.224,5,4,'transition-metal','[Kr] 4d²5s²',1.33,'+4',206,640],
+[41,'Nb','Niobium',92.906,5,5,'transition-metal','[Kr] 4d⁴5s¹',1.60,'+5, +3',198,652],
+[42,'Mo','Molybdenum',95.96,5,6,'transition-metal','[Kr] 4d⁵5s¹',2.16,'+6, +4, +2',190,684],
+[43,'Tc','Technetium','(98)',5,7,'transition-metal','[Kr] 4d⁵5s²',1.90,'+7, +4',183,702],
+[44,'Ru','Ruthenium',101.07,5,8,'transition-metal','[Kr] 4d⁷5s¹',2.20,'+4, +3',178,710],
+[45,'Rh','Rhodium',102.906,5,9,'transition-metal','[Kr] 4d⁸5s¹',2.28,'+3',173,720],
+[46,'Pd','Palladium',106.42,5,10,'transition-metal','[Kr] 4d¹⁰',2.20,'+4, +2',169,805],
+[47,'Ag','Silver',107.868,5,11,'transition-metal','[Kr] 4d¹⁰5s¹',1.93,'+1',165,731],
+[48,'Cd','Cadmium',112.411,5,12,'transition-metal','[Kr] 4d¹⁰5s²',1.69,'+2',161,868],
+[49,'In','Indium',114.818,5,13,'post-transition','[Kr] 4d¹⁰5s²5p¹',1.78,'+3',156,558],
+[50,'Sn','Tin',118.711,5,14,'post-transition','[Kr] 4d¹⁰5s²5p²',1.96,'+4, +2',145,709],
+[51,'Sb','Antimony',121.760,5,15,'metalloid','[Kr] 4d¹⁰5s²5p³',2.05,'+5, +3, −3',133,834],
+[52,'Te','Tellurium',127.60,5,16,'metalloid','[Kr] 4d¹⁰5s²5p⁴',2.10,'+6, +4, −2',123,869],
+[53,'I','Iodine',126.905,5,17,'halogen','[Kr] 4d¹⁰5s²5p⁵',2.66,'+7, +5, +1, −1',115,1008],
+[54,'Xe','Xenon',131.293,5,18,'noble-gas','[Kr] 4d¹⁰5s²5p⁶',2.60,'+2, 0',108,1170],
+[55,'Cs','Cesium',132.905,6,1,'alkali-metal','[Xe] 6s¹',0.79,'+1',298,376],
+[56,'Ba','Barium',137.327,6,2,'alkaline-earth','[Xe] 6s²',0.89,'+2',253,503],
+/* --- Lanthanides: gridRow=9, gridCol=3..17 --- */
+[57,'La','Lanthanum',138.905,9,3,'lanthanide','[Xe] 5d¹6s²',1.10,'+3',247,538],
+[58,'Ce','Cerium',140.116,9,4,'lanthanide','[Xe] 4f¹5d¹6s²',1.12,'+4, +3',204,528],
+[59,'Pr','Praseodymium',140.908,9,5,'lanthanide','[Xe] 4f³6s²',1.13,'+3',247,523],
+[60,'Nd','Neodymium',144.242,9,6,'lanthanide','[Xe] 4f⁴6s²',1.14,'+3',206,530],
+[61,'Pm','Promethium','(145)',9,7,'lanthanide','[Xe] 4f⁵6s²',null,'+3',205,536],
+[62,'Sm','Samarium',150.36,9,8,'lanthanide','[Xe] 4f⁶6s²',1.17,'+3, +2',238,543],
+[63,'Eu','Europium',151.964,9,9,'lanthanide','[Xe] 4f⁷6s²',null,'+3, +2',231,547],
+[64,'Gd','Gadolinium',157.25,9,10,'lanthanide','[Xe] 4f⁷5d¹6s²',1.20,'+3',233,593],
+[65,'Tb','Terbium',158.925,9,11,'lanthanide','[Xe] 4f⁹6s²',null,'+4, +3',225,566],
+[66,'Dy','Dysprosium',162.500,9,12,'lanthanide','[Xe] 4f¹⁰6s²',1.22,'+3',228,573],
+[67,'Ho','Holmium',164.930,9,13,'lanthanide','[Xe] 4f¹¹6s²',1.23,'+3',226,581],
+[68,'Er','Erbium',167.259,9,14,'lanthanide','[Xe] 4f¹²6s²',1.24,'+3',226,589],
+[69,'Tm','Thulium',168.934,9,15,'lanthanide','[Xe] 4f¹³6s²',1.25,'+3, +2',222,597],
+[70,'Yb','Ytterbium',173.045,9,16,'lanthanide','[Xe] 4f¹⁴6s²',null,'+3, +2',222,603],
+[71,'Lu','Lutetium',174.967,9,17,'lanthanide','[Xe] 4f¹⁴5d¹6s²',1.27,'+3',217,524],
+/* --- Period 6 d-block --- */
+[72,'Hf','Hafnium',178.49,6,4,'transition-metal','[Xe] 4f¹⁴5d²6s²',1.30,'+4',208,659],
+[73,'Ta','Tantalum',180.948,6,5,'transition-metal','[Xe] 4f¹⁴5d³6s²',1.50,'+5',200,761],
+[74,'W','Tungsten',183.84,6,6,'transition-metal','[Xe] 4f¹⁴5d⁴6s²',2.36,'+6, +4, +2',193,770],
+[75,'Re','Rhenium',186.207,6,7,'transition-metal','[Xe] 4f¹⁴5d⁵6s²',1.90,'+7, +4, +2',188,760],
+[76,'Os','Osmium',190.23,6,8,'transition-metal','[Xe] 4f¹⁴5d⁶6s²',2.20,'+4, +3',185,840],
+[77,'Ir','Iridium',192.217,6,9,'transition-metal','[Xe] 4f¹⁴5d⁷6s²',2.20,'+4, +3',180,880],
+[78,'Pt','Platinum',195.085,6,10,'transition-metal','[Xe] 4f¹⁴5d⁹6s¹',2.28,'+4, +2',177,870],
+[79,'Au','Gold',196.967,6,11,'transition-metal','[Xe] 4f¹⁴5d¹⁰6s¹',2.54,'+3, +1',174,890],
+[80,'Hg','Mercury',200.592,6,12,'transition-metal','[Xe] 4f¹⁴5d¹⁰6s²',2.00,'+2, +1',171,1007],
+[81,'Tl','Thallium',204.383,6,13,'post-transition','[Xe] 4f¹⁴5d¹⁰6s²6p¹',1.62,'+3, +1',156,589],
+[82,'Pb','Lead',207.2,6,14,'post-transition','[Xe] 4f¹⁴5d¹⁰6s²6p²',2.33,'+4, +2',154,716],
+[83,'Bi','Bismuth',208.980,6,15,'post-transition','[Xe] 4f¹⁴5d¹⁰6s²6p³',2.02,'+5, +3',143,703],
+[84,'Po','Polonium','(209)',6,16,'metalloid','[Xe] 4f¹⁴5d¹⁰6s²6p⁴',2.00,'+4, +2',135,812],
+[85,'At','Astatine','(210)',6,17,'halogen','[Xe] 4f¹⁴5d¹⁰6s²6p⁵',2.20,'+1, −1',127,930],
+[86,'Rn','Radon','(222)',6,18,'noble-gas','[Xe] 4f¹⁴5d¹⁰6s²6p⁶',null,'0',120,1037],
+/* --- Period 7 s-block --- */
+[87,'Fr','Francium','(223)',7,1,'alkali-metal','[Rn] 7s¹',0.70,'+1',null,380],
+[88,'Ra','Radium','(226)',7,2,'alkaline-earth','[Rn] 7s²',0.90,'+2',null,509],
+/* --- Actinides: gridRow=10, gridCol=3..17 --- */
+[89,'Ac','Actinium','(227)',10,3,'actinide','[Rn] 6d¹7s²',1.10,'+3',null,499],
+[90,'Th','Thorium',232.038,10,4,'actinide','[Rn] 6d²7s²',1.30,'+4',null,587],
+[91,'Pa','Protactinium',231.036,10,5,'actinide','[Rn] 5f²6d¹7s²',1.50,'+5, +4',null,568],
+[92,'U','Uranium',238.029,10,6,'actinide','[Rn] 5f³6d¹7s²',1.38,'+6, +5, +4, +3',null,598],
+[93,'Np','Neptunium','(237)',10,7,'actinide','[Rn] 5f⁴6d¹7s²',1.36,'+5, +4',null,605],
+[94,'Pu','Plutonium','(244)',10,8,'actinide','[Rn] 5f⁶7s²',1.28,'+6, +5, +4, +3',null,585],
+[95,'Am','Americium','(243)',10,9,'actinide','[Rn] 5f⁷7s²',1.30,'+6, +5, +4, +3',null,578],
+[96,'Cm','Curium','(247)',10,10,'actinide','[Rn] 5f⁷6d¹7s²',1.30,'+4, +3',null,581],
+[97,'Bk','Berkelium','(247)',10,11,'actinide','[Rn] 5f⁹7s²',1.30,'+4, +3',null,601],
+[98,'Cf','Californium','(251)',10,12,'actinide','[Rn] 5f¹⁰7s²',1.30,'+3',null,608],
+[99,'Es','Einsteinium','(252)',10,13,'actinide','[Rn] 5f¹¹7s²',1.30,'+3',null,619],
+[100,'Fm','Fermium','(257)',10,14,'actinide','[Rn] 5f¹²7s²',1.30,'+3',null,627],
+[101,'Md','Mendelevium','(258)',10,15,'actinide','[Rn] 5f¹³7s²',1.30,'+3, +2',null,635],
+[102,'No','Nobelium','(259)',10,16,'actinide','[Rn] 5f¹⁴7s²',1.30,'+3, +2',null,642],
+[103,'Lr','Lawrencium','(266)',10,17,'actinide','[Rn] 5f¹⁴7s²7p¹',null,'+3',null,null],
+/* --- Period 7 d-block --- */
+[104,'Rf','Rutherfordium','(267)',7,4,'transition-metal','[Rn] 5f¹⁴6d²7s²',null,'+4',null,null],
+[105,'Db','Dubnium','(268)',7,5,'transition-metal','[Rn] 5f¹⁴6d³7s²',null,'+5',null,null],
+[106,'Sg','Seaborgium','(269)',7,6,'transition-metal','[Rn] 5f¹⁴6d⁴7s²',null,'+6',null,null],
+[107,'Bh','Bohrium','(270)',7,7,'transition-metal','[Rn] 5f¹⁴6d⁵7s²',null,'+7',null,null],
+[108,'Hs','Hassium','(277)',7,8,'transition-metal','[Rn] 5f¹⁴6d⁶7s²',null,'+8',null,null],
+[109,'Mt','Meitnerium','(278)',7,9,'transition-metal','[Rn] 5f¹⁴6d⁷7s²',null,'—',null,null],
+[110,'Ds','Darmstadtium','(281)',7,10,'transition-metal','[Rn] 5f¹⁴6d⁸7s²',null,'—',null,null],
+[111,'Rg','Roentgenium','(282)',7,11,'transition-metal','[Rn] 5f¹⁴6d¹⁰7s¹',null,'+1',null,null],
+[112,'Cn','Copernicium','(285)',7,12,'transition-metal','[Rn] 5f¹⁴6d¹⁰7s²',null,'+2',null,null],
+[113,'Nh','Nihonium','(286)',7,13,'post-transition','[Rn] 5f¹⁴6d¹⁰7s²7p¹',null,'+1',null,null],
+[114,'Fl','Flerovium','(289)',7,14,'post-transition','[Rn] 5f¹⁴6d¹⁰7s²7p²',null,'+2',null,null],
+[115,'Mc','Moscovium','(290)',7,15,'post-transition','[Rn] 5f¹⁴6d¹⁰7s²7p³',null,'+1, −1',null,null],
+[116,'Lv','Livermorium','(293)',7,16,'post-transition','[Rn] 5f¹⁴6d¹⁰7s²7p⁴',null,'+2, −2',null,null],
+[117,'Ts','Tennessine','(294)',7,17,'halogen','[Rn] 5f¹⁴6d¹⁰7s²7p⁵',null,'+1, −1',null,null],
+[118,'Og','Oganesson','(294)',7,18,'noble-gas','[Rn] 5f¹⁴6d¹⁰7s²7p⁶',null,'0',null,null],
+];
+
+const ptCatLabels={
+  'hydrogen':'Hydrogen','alkali-metal':'Alkali Metal','alkaline-earth':'Alkaline Earth Metal',
+  'transition-metal':'Transition Metal','post-transition':'Post-Transition Metal',
+  'metalloid':'Metalloid','nonmetal':'Nonmetal','halogen':'Halogen',
+  'noble-gas':'Noble Gas','lanthanide':'Lanthanide (4f)','actinide':'Actinide (5f)'
+};
+const ptCatSwatches={
+  hydrogen:'#fff8e6|#f0d080','alkali-metal':'#ffe6e6|#f08080',
+  'alkaline-earth':'#fff0db|#f0b870','transition-metal':'#fffce6|#d8cc60',
+  'post-transition':'#edfaed|#88cc88','metalloid':'#e4f5f5|#70c0c0',
+  nonmetal:'#e6f0ff|#7090f0','halogen':'#e8faf5|#70c8b8',
+  'noble-gas':'#f5e6ff|#c070f0','lanthanide':'#ffe6f5|#f090d0',
+  actinide:'#ede6ff|#b090f0'
+};
+
+let ptSelectedZ=null;
+let ptFilter='';
+
+function ptBuildGrid(idSuffix){
+  const cells=[];
+  const suf=idSuffix||'';
+  ptElements.forEach(el=>{
+    const [Z,sym,name,mass,row,col,cat]=el;
+    const massStr=typeof mass==='string'?mass:mass;
+    const dimmed=ptFilter&&!ptMatchFilter(el)?'pt-dimmed':'';
+    const sel=(ptSelectedZ===Z)?'pt-selected':'';
+    cells.push(`<div class="pt-cell ${cat} ${dimmed} ${sel}" style="grid-column:${col};grid-row:${row}" data-z="${Z}" onclick="ptSelectEl(${Z},'${suf}')" title="${name} (${Z})">
+<span class="pt-z">${Z}</span><span class="pt-sym">${sym}</span>
+<span class="pt-name">${name}</span><span class="pt-mass">${massStr}</span></div>`);
+  });
+  /* La/Ac placeholder cells in main table */
+  cells.push(`<div class="pt-cell pt-placeholder lanthanide" style="grid-column:3;grid-row:6" onclick="ptSelectEl(57,'${suf}')" title="Lanthanides 57–71"><span class="pt-sym" style="font-size:9px;font-weight:700">57–71</span><span class="pt-name">La–Lu</span></div>`);
+  cells.push(`<div class="pt-cell pt-placeholder actinide" style="grid-column:3;grid-row:7" onclick="ptSelectEl(89,'${suf}')" title="Actinides 89–103"><span class="pt-sym" style="font-size:9px;font-weight:700">89–103</span><span class="pt-name">Ac–Lr</span></div>`);
+  /* Separator row */
+  cells.push(`<div class="pt-gap" style="grid-column:1/-1;grid-row:8"><span class="pt-gap-lbl">Lanthanides</span><span class="pt-gap-line"></span><span class="pt-gap-lbl">Actinides</span></div>`);
+  return cells.join('');
+}
+
+function ptMatchFilter(el){
+  if(!ptFilter) return true;
+  const f=ptFilter.toLowerCase();
+  const [Z,sym,name,,,,cat]=el;
+  return String(Z).startsWith(f)||sym.toLowerCase().startsWith(f)||name.toLowerCase().includes(f)||ptCatLabels[cat].toLowerCase().includes(f);
+}
+
+function ptBuildPage(idSuffix){
+  const suf=idSuffix||'';
+  const legendItems=Object.entries(ptCatLabels).map(([k,v])=>{
+    const [bg,border]=ptCatSwatches[k].split('|');
+    return `<span class="pt-legend-item" onclick="ptFilterCat('${k}','${suf}')" title="Filter: ${v}"><span class="pt-legend-swatch" style="background:${bg};border-color:${border}"></span>${v}</span>`;
+  }).join('');
+  return `<div class="pt-wrap"><div class="pt-grid" id="ptGrid${suf}">${ptBuildGrid(suf)}</div></div>
+<div class="pt-info" id="ptInfo${suf}"><div class="pt-info-hint">👆 Click any element to see details</div></div>
+<div class="pt-legend"><span class="pt-legend-item" onclick="ptClearFilter('${suf}')" title="Show all">↺ All</span>${legendItems}</div>`;
+}
+
+function ptSelectEl(Z,suf){
+  ptSelectedZ=Z;
+  const suf2=suf||'';
+  const grid=document.getElementById('ptGrid'+suf2);
+  if(grid){
+    grid.querySelectorAll('.pt-cell').forEach(c=>{c.classList.remove('pt-selected');if(+c.dataset.z===Z)c.classList.add('pt-selected');});
+  }
+  ptUpdateInfo(suf2);
+}
+
+function ptUpdateInfo(suf){
+  const panel=document.getElementById('ptInfo'+suf);
+  if(!panel)return;
+  if(!ptSelectedZ){panel.innerHTML='<div class="pt-info-hint">👆 Click any element to see details</div>';return;}
+  const el=ptElements.find(e=>e[0]===ptSelectedZ);
+  if(!el)return;
+  const [Z,sym,name,mass,row,col,cat,config,en,ox,radius,ie1]=el;
+  const realPeriod=row<=7?row:(row===9?6:7);
+  const blockLabel=col<=2?'s-block':col<=12?'d-block':col<=18&&row<=7?'p-block':(row===9?'f-block (4f)':'f-block (5f)');
+  const groupLabel=col<=18?`Group ${col} | `:'';
+  const periodLabel=`Period ${realPeriod}`;
+  const seriesNote=row===9?'Lanthanide series':row===10?'Actinide series':'';
+  panel.innerHTML=`<div class="pt-info-card ${cat}"><span class="pt-z">${Z}</span><span class="pt-sym">${sym}</span><span class="pt-name">${name}</span><span class="pt-mass">${mass} u</span></div>
+<div class="pt-info-grid">
+<div class="pt-info-field"><span class="pt-info-lbl">Category</span><span class="pt-info-val">${ptCatLabels[cat]||cat}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">Position</span><span class="pt-info-val">${groupLabel}${periodLabel} | ${blockLabel}${seriesNote?' | '+seriesNote:''}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">Electron Config</span><span class="pt-info-val">${config}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">Oxidation States</span><span class="pt-info-val">${ox}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">Electronegativity</span><span class="pt-info-val">${en!==null?en+' (Pauling)':'N/A'}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">Atomic Radius</span><span class="pt-info-val">${radius!==null?radius+' pm':'N/A'}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">1st Ionization Energy</span><span class="pt-info-val">${ie1!==null?ie1+' kJ/mol':'N/A'}</span></div>
+<div class="pt-info-field"><span class="pt-info-lbl">Atomic Mass</span><span class="pt-info-val">${mass} u</span></div>
+</div>`;
+}
+
+function ptFilterCat(cat,suf){
+  ptFilter=cat;
+  const suf2=suf||'';
+  const grid=document.getElementById('ptGrid'+suf2);
+  if(grid) grid.innerHTML=ptBuildGrid(suf2);
+  grid&&grid.querySelectorAll('.pt-cell').forEach(c=>{if(+c.dataset.z===ptSelectedZ)c.classList.add('pt-selected');});
+}
+function ptClearFilter(suf){
+  ptFilter='';
+  const suf2=suf||'';
+  const grid=document.getElementById('ptGrid'+suf2);
+  if(grid){grid.innerHTML=ptBuildGrid(suf2);if(ptSelectedZ)grid.querySelector(`[data-z="${ptSelectedZ}"]`)?.classList.add('pt-selected');}
+}
+
+function ptDoSearch(q,suf){
+  ptFilter=q.trim();
+  const suf2=suf||'';
+  const grid=document.getElementById('ptGrid'+suf2);
+  if(grid){grid.innerHTML=ptBuildGrid(suf2);if(ptSelectedZ)grid.querySelector(`[data-z="${ptSelectedZ}"]`)?.classList.add('pt-selected');}
+}
+
+function openPT(startZ){
+  const modal=document.getElementById('ptModal');
+  modal.removeAttribute('hidden');
+  const body=document.getElementById('ptDialogBody');
+  if(!body.innerHTML){body.innerHTML=ptBuildPage('modal');}
+  if(startZ) ptSelectEl(startZ,'modal');
+  document.body.style.overflow='hidden';
+  const searchInput=document.getElementById('ptSearch');
+  if(searchInput) searchInput.focus();
+}
+function closePT(){
+  const modal=document.getElementById('ptModal');
+  modal.setAttribute('hidden','');
+  document.body.style.overflow='';
+}
+
+/* ===== SUMMARY (formulas + key terms) ===== */
+function smBuildContent(tab){
+  let html = '<div class="sm-jump"><div class="sm-jump-label">Jump to lesson</div>';
+  summaryData.forEach(L => {
+    html += `<a href="#sm-l${L.n}">${L.n}. ${L.title}</a>`;
+  });
+  html += '</div>';
+  summaryData.forEach(L => {
+    html += `<div class="sm-lesson" id="sm-l${L.n}">`;
+    html += `<div class="sm-lesson-hd"><div class="sm-lesson-num">${L.n}</div><div class="sm-lesson-title">${L.title}</div></div>`;
+    if (tab === 'all' || tab === 'formulas') {
+      if (L.formulas && L.formulas.length) {
+        html += '<div class="sm-subsection">Key Formulas</div>';
+        html += '<div class="sm-grid">';
+        L.formulas.forEach(f => {
+          html += `<div class="sm-formula"><span class="sm-formula-name">${f.name}</span>${f.f}</div>`;
+        });
+        html += '</div>';
+      }
+    }
+    if (tab === 'all' || tab === 'terms') {
+      if (L.terms && L.terms.length) {
+        html += '<div class="sm-subsection">Key Terms</div>';
+        html += '<div class="sm-grid">';
+        L.terms.forEach(t => {
+          const def = t.d || t.f || '';
+          html += `<div class="sm-term"><span class="sm-term-name">${t.t}</span><span class="sm-term-def">${def}</span></div>`;
+        });
+        html += '</div>';
+      }
+    }
+    html += '</div>';
+  });
+  return html;
+}
+
+let smCurrentTab = 'all';
+
+function smRenderMath(el){
+  if (typeof renderMathInElement === 'function') {
+    try {
+      renderMathInElement(el, {
+        delimiters:[
+          {left:'$$',right:'$$',display:true},
+          {left:'$',right:'$',display:false},
+          {left:'\\(',right:'\\)',display:false},
+          {left:'\\[',right:'\\]',display:true}
+        ],
+        throwOnError:false,
+        trust:true,
+        strict:false
+      });
+    } catch(e){ console.warn('KaTeX render failed', e); }
+  } else {
+    setTimeout(() => smRenderMath(el), 200);
+  }
+}
+
+function smRender(){
+  const body = document.getElementById('smBody');
+  body.innerHTML = `
+    <div class="sm-tabs">
+      <button class="sm-tab ${smCurrentTab==='all'?'active':''}" data-tab="all">📚 All</button>
+      <button class="sm-tab ${smCurrentTab==='formulas'?'active':''}" data-tab="formulas">📐 Formulas</button>
+      <button class="sm-tab ${smCurrentTab==='terms'?'active':''}" data-tab="terms">📖 Key Terms</button>
+    </div>
+    <div id="smContent">${smBuildContent(smCurrentTab)}</div>
+  `;
+  body.querySelectorAll('.sm-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      smCurrentTab = btn.dataset.tab;
+      smRender();
+    });
+  });
+  smRenderMath(body);
+}
+
+function openSummary(){
+  const modal = document.getElementById('smModal');
+  modal.removeAttribute('hidden');
+  smRender();
+  document.body.style.overflow = 'hidden';
+}
+function closeSummary(){
+  document.getElementById('smModal').setAttribute('hidden','');
+  document.body.style.overflow = '';
+}
+
+/* Event wiring for modal */
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('ptClose').addEventListener('click',closePT);
+  document.getElementById('ptModalBg').addEventListener('click',closePT);
+  document.getElementById('ptSearch').addEventListener('input',e=>ptDoSearch(e.target.value,'modal'));
+  document.getElementById('cqClose').addEventListener('click',cqClose);
+  document.getElementById('cqModalBg').addEventListener('click',cqClose);
+  document.getElementById('smClose').addEventListener('click',closeSummary);
+  document.getElementById('smModalBg').addEventListener('click',closeSummary);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      if(!document.getElementById('ptModal').hidden)closePT();
+      if(!document.getElementById('cqModal').hidden)cqClose();
+      if(!document.getElementById('smModal').hidden)closeSummary();
+    }
+  });
+});
+
+const sidebar = document.getElementById('sidebar');
+const main = document.getElementById('main');
+let currentTopic = 0;
+let quizStates = {};
+
+let currentSeed = Math.floor(Math.random() * 1e9);
+let currentLimit = 10;
+
+function mulberry32(seed) {
+  let s = seed >>> 0;
+  return function() {
+    s = (s + 0x6D2B79F5) | 0;
+    let t = s;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function shuffledOrder(n, seed) {
+  const rng = mulberry32(seed);
+  const a = Array.from({length: n}, (_, i) => i);
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function shuffledFromIndices(indices, seed) {
+  const rng = mulberry32(seed);
+  const a = [...indices];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function topicSeed(ti) {
+  return (currentSeed + ti * 2654435761) >>> 0;
+}
+
+/* ======================= COMPREHENSIVE 120-ITEM QUIZ =======================
+   Builds a 120-question exam by sampling questions evenly across all topics.
+   Same seed → same exact quiz (question selection, order, and option order).
+============================================================================= */
+const CQ_TOTAL = SUBJECT_CONFIG.comprehensiveQuizSize;
+let cqState = null;
+
+function cqAllocate(numTopics, total) {
+  const base = Math.floor(total / numTopics);
+  let extra = total - base * numTopics;
+  const counts = Array(numTopics).fill(base);
+  for (let i = 0; i < extra; i++) counts[i] += 1;
+  return counts;
+}
+
+function cqShuffleInPlace(arr, rng) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function cqBuildExam(seed) {
+  const rng = mulberry32(seed >>> 0);
+  const numTopics = topics.length;
+  // Shuffle which topics get the extra question(s)
+  const topicOrder = cqShuffleInPlace(Array.from({length: numTopics}, (_, i) => i), mulberry32((seed ^ 0x9E3779B9) >>> 0));
+  const baseCounts = cqAllocate(numTopics, CQ_TOTAL);
+  const counts = Array(numTopics).fill(0);
+  topicOrder.forEach((ti, idx) => counts[ti] = baseCounts[idx]);
+
+  const items = [];
+  for (let ti = 0; ti < numTopics; ti++) {
+    const t = topics[ti];
+    const want = Math.min(counts[ti], t.quiz.length);
+    const pool = Array.from({length: t.quiz.length}, (_, i) => i);
+    cqShuffleInPlace(pool, mulberry32((seed + ti * 2654435761) >>> 0));
+    for (let k = 0; k < want; k++) {
+      const q = t.quiz[pool[k]];
+      // Shuffle option order; remember which new index holds the correct answer
+      const optIdx = Array.from({length: q.opts.length}, (_, i) => i);
+      cqShuffleInPlace(optIdx, mulberry32((seed + ti * 16777619 + pool[k] * 2246822519) >>> 0));
+      const newOpts = optIdx.map(i => q.opts[i]);
+      const newAns = optIdx.indexOf(q.ans);
+      items.push({ti, qIdx: pool[k], q: q.q, opts: newOpts, ans: newAns, exp: q.exp, topicTitle: t.title});
+    }
+  }
+  // Final shuffle of the whole 120-item order
+  cqShuffleInPlace(items, mulberry32((seed ^ 0xDEADBEEF) >>> 0));
+  return items;
+}
+
+function cqOpen() {
+  const modal = document.getElementById('cqModal');
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  cqRenderStart();
+}
+
+function cqClose() {
+  document.getElementById('cqModal').hidden = true;
+  document.body.style.overflow = '';
+}
+
+function cqRenderStart(presetSeed) {
+  const seed = (presetSeed != null) ? presetSeed : (currentSeed || Math.floor(Math.random() * 1e9));
+  const counts = cqAllocate(topics.length, CQ_TOTAL);
+  const summary = topics.map((t, i) => `${t.title}: ${counts[i]}`).join(' &middot; ');
+  document.getElementById('cqBody').innerHTML = `
+    <div class="cq-start">
+      <h4>${CQ_TOTAL}-Item Comprehensive Quiz</h4>
+      <p>Questions are sampled evenly from all ${topics.length} lessons. The same seed always produces the same quiz — both the questions chosen and the answer-option order. Change the seed (or hit 🎲) for a fresh exam.</p>
+      <div class="cq-start-row">
+        <label for="cqSeedInput">Seed</label>
+        <input id="cqSeedInput" class="cq-seed-input" type="number" value="${seed}" />
+        <button id="cqSeedRoll" class="cq-roll-btn" title="Random seed">🎲</button>
+        <button id="cqGo" class="cq-go-btn">Start Quiz →</button>
+      </div>
+      <div class="cq-topics-summary"><strong>Distribution (${CQ_TOTAL} total):</strong> ${summary}</div>
+    </div>
+  `;
+  document.getElementById('cqSeedRoll').onclick = () => {
+    document.getElementById('cqSeedInput').value = Math.floor(Math.random() * 1e9);
+  };
+  document.getElementById('cqGo').onclick = () => {
+    const s = parseInt(document.getElementById('cqSeedInput').value, 10);
+    if (!Number.isFinite(s)) return;
+    cqStart(s);
+  };
+}
+
+function cqStart(seed) {
+  cqState = {
+    seed: seed >>> 0,
+    items: cqBuildExam(seed),
+    qi: 0,
+    answered: Array(CQ_TOTAL).fill(null), // stores chosen option index or null
+    score: 0
+  };
+  cqRenderQuestion();
+}
+
+function cqRenderQuestion() {
+  const st = cqState;
+  const it = st.items[st.qi];
+  const chosen = st.answered[st.qi];
+  const isAnswered = chosen !== null;
+  const letters = ['A','B','C','D','E','F'];
+  const pct = ((st.qi) / CQ_TOTAL * 100).toFixed(1);
+  let optsHtml = it.opts.map((opt, i) => {
+    let cls = 'cq-opt';
+    if (isAnswered) {
+      if (i === it.ans) cls += ' correct';
+      else if (i === chosen) cls += ' wrong';
+    }
+    return `<button class="${cls}" data-opt="${i}" ${isAnswered ? 'disabled' : ''}>
+      <span class="cq-opt-letter">${letters[i]}.</span>${opt}
+    </button>`;
+  }).join('');
+
+  let feedbackHtml = '';
+  if (isAnswered) {
+    const correct = chosen === it.ans;
+    feedbackHtml = `<div class="cq-feedback ${correct ? 'correct' : 'wrong'}">
+      <span class="cq-feedback-prefix">${correct ? '✓ Correct.' : '✗ Not quite.'}</span>${it.exp}
+    </div>`;
+  }
+
+  document.getElementById('cqBody').innerHTML = `
+    <div class="cq-runner">
+      <div class="cq-progress-row">
+        <div class="cq-progress-text">Question ${st.qi + 1} of ${CQ_TOTAL}</div>
+        <div class="cq-progress-bar"><div class="cq-progress-fill" style="width:${pct}%"></div></div>
+        <div class="cq-score-text">Score: ${st.score}</div>
+      </div>
+      <div class="cq-topic-tag">Lesson ${it.ti + 1} · ${it.topicTitle}</div>
+      <div class="cq-question">${it.q}</div>
+      <div class="cq-opts">${optsHtml}</div>
+      ${feedbackHtml}
+      <div class="cq-nav-row">
+        <button class="cq-nav-btn" id="cqPrev" ${st.qi === 0 ? 'disabled' : ''}>← Previous</button>
+        <button class="cq-nav-btn primary" id="cqNext" ${!isAnswered ? 'disabled' : ''}>
+          ${st.qi === CQ_TOTAL - 1 ? 'Finish ✓' : 'Next →'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll('#cqBody .cq-opt').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (cqState.answered[cqState.qi] !== null) return;
+      const opt = parseInt(this.dataset.opt);
+      cqState.answered[cqState.qi] = opt;
+      if (opt === cqState.items[cqState.qi].ans) cqState.score++;
+      cqRenderQuestion();
+    });
+  });
+  document.getElementById('cqPrev').onclick = () => {
+    if (cqState.qi > 0) { cqState.qi--; cqRenderQuestion(); }
+  };
+  document.getElementById('cqNext').onclick = () => {
+    if (cqState.qi < CQ_TOTAL - 1) { cqState.qi++; cqRenderQuestion(); }
+    else cqRenderResults();
+  };
+}
+
+function cqRenderResults() {
+  const st = cqState;
+  // Per-topic breakdown
+  const byTopic = {};
+  st.items.forEach((it, idx) => {
+    if (!byTopic[it.ti]) byTopic[it.ti] = {title: it.topicTitle, total: 0, correct: 0};
+    byTopic[it.ti].total++;
+    if (st.answered[idx] === it.ans) byTopic[it.ti].correct++;
+  });
+  const breakdown = Object.entries(byTopic)
+    .sort((a, b) => +a[0] - +b[0])
+    .map(([ti, b]) => {
+      const pct = b.total ? Math.round(b.correct / b.total * 100) : 0;
+      const cls = pct === 100 ? 'perfect' : (pct < 60 ? 'poor' : '');
+      return `<div class="cq-bd-row">
+        <span class="cq-bd-name">${+ti + 1}. ${b.title}</span>
+        <span class="cq-bd-score ${cls}">${b.correct}/${b.total} (${pct}%)</span>
+      </div>`;
+    }).join('');
+  const finalPct = ((st.score / CQ_TOTAL) * 100).toFixed(1);
+  const grade = st.score >= 108 ? 'A' : st.score >= 96 ? 'B' : st.score >= 84 ? 'C' : st.score >= 72 ? 'D' : 'F';
+
+  document.getElementById('cqBody').innerHTML = `
+    <div class="cq-results">
+      <h3>Quiz Complete</h3>
+      <p style="color:var(--gc-text-soft);font-size:13px;margin:0">Seed: <code style="background:var(--gc-bg-alt);padding:2px 6px;border-radius:3px">${st.seed}</code></p>
+      <div class="cq-final-score">${st.score} <span style="color:var(--gc-text-muted);font-weight:600">/ ${CQ_TOTAL}</span></div>
+      <div class="cq-pct">${finalPct}% &middot; Grade ${grade}</div>
+      <h4 style="margin-top:18px;font-size:14px;color:var(--gc-text)">Performance by topic</h4>
+      <div class="cq-breakdown">${breakdown}</div>
+      <div class="cq-results-actions">
+        <button class="cq-go-btn" id="cqRetake">↻ Retake (same seed)</button>
+        <button class="cq-nav-btn" id="cqNewSeed">🎲 New seed</button>
+        <button class="cq-nav-btn" id="cqReview">📖 Review answers</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('cqRetake').onclick = () => cqStart(st.seed);
+  document.getElementById('cqNewSeed').onclick = () => cqRenderStart(Math.floor(Math.random() * 1e9));
+  document.getElementById('cqReview').onclick = () => { cqState.qi = 0; cqRenderQuestion(); };
+}
+
+function isCalcQuestion(q) {
+  const qtext = q.q;
+  // Questions whose answer options are all (or mostly) numeric values → calculation
+  const numericOpts = q.opts.filter(o => /^[-+]?[\d(]/.test(o.trim())).length;
+  if (numericOpts >= 3) return true;
+  // Keyword-based detection
+  return /\b(calculat|how\s+many\s+(mol|gram|litre|liter|atom|particle|electron|coulomb)|how\s+much\s+(heat|energy|mass|water|mol|charge|time)|what\s+is\s+the\s+(ph|poh|molarity|molality|concentration|pressure|enthalpy|entropy|free\s*energy|rate\s+constant|half.?life|energy|heat|mass|volume|osmotic|boiling|freezing|vapor|cell\s+potential|charge|current|molar\s+mass|delta|kc|kp|ka|kb|ksp|normality)|find\s+the\s+(ph|poh|mass|mol|volume|concentration|pressure|enthalpy|entropy|delta|cell|rate|half|kc|kp|ka|kb|ksp|molar)|determine\s+the\s+(ph|mass|mol|volume|concentration|pressure|enthalpy|rate|half)|mass\s+of\s+\w+.*\s+(needed|required|deposit|formed|produced)|volume\s+of\s+\w+.*\s+(needed|required)|time\s+to\s+(deposit|produce|reach))\b/i.test(qtext);
+}
+
+let currentNoCalc = false;
+
+function makeQuizState(ti, noCalc) {
+  if (noCalc === undefined) noCalc = currentNoCalc;
+  const t = topics[ti];
+  const allIdx = Array.from({length: t.quiz.length}, (_, i) => i);
+  const eligible = noCalc ? allIdx.filter(i => !isCalcQuestion(t.quiz[i])) : allIdx;
+  const pool = eligible.length > 0 ? eligible : allIdx; // fallback: never empty
+  const order = shuffledFromIndices(pool, topicSeed(ti));
+  const lim = Math.min(currentLimit, order.length);
+  return { qi: 0, answered: Array(lim).fill(false), correct: 0, score: 0, order, limit: lim, noCalc };
+}
+
+function initQuizState(ti) {
+  if (!quizStates[ti]) quizStates[ti] = makeQuizState(ti);
+}
+
+function reseedAllQuizzes(newSeed) {
+  currentSeed = newSeed >>> 0;
+  for (const ti of Object.keys(quizStates)) quizStates[ti] = makeQuizState(+ti, quizStates[ti].noCalc);
+}
+
+function relimitAllQuizzes(newLimit) {
+  currentLimit = newLimit;
+  for (const ti of Object.keys(quizStates)) quizStates[ti] = makeQuizState(+ti, quizStates[ti].noCalc);
+}
+
+function isTopicComplete(ti) {
+  const qs = quizStates[ti];
+  if (!qs) return false;
+  return qs.answered.every(a => a);
+}
+
+function renderMain() {
+  const t = topics[currentTopic];
+  initQuizState(currentTopic);
+  const qs = quizStates[currentTopic];
+  const progress = (qs.score / qs.limit * 100).toFixed(0);
+  const course = t.course || SUBJECT_CONFIG.defaultCourse;
+  let html = `
+    <div class="topic-header">
+      <div class="topic-meta">
+        <div class="topic-badge">${String(currentTopic+1).padStart(2,'0')}</div>
+        <div class="topic-counter">${course} · Lesson ${currentTopic+1} of ${topics.length}</div>
+      </div>
+      <h2 class="topic-title">${t.title}</h2>
+      <p class="topic-sub">${t.sub}</p>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <div class="progress-label">${qs.score}/${qs.limit} correct</div>
+      </div>
+    </div>
+    ${t.content}
+    <div class="section">
+    <div class="quiz-section">
+    ${renderQuiz(currentTopic)}
+    </div>
+    </div>
+  `;
+  main.innerHTML = html;
+  attachQuizEvents(currentTopic);
+  const ptInline = document.getElementById('pt-inline');
+  if(ptInline){ptInline.innerHTML=ptBuildPage('inline');ptFilter='';ptSelectedZ=null;}
+  if (typeof smRenderMath === 'function') smRenderMath(main);
+}
+
+function renderQuiz(ti) {
+  const t = topics[ti];
+  const qs = quizStates[ti];
+  const q = t.quiz[qs.order[qs.qi]];
+  const answered = qs.answered[qs.qi];
+  const letters = ['A','B','C','D','E','F'];
+  let html = `<div id="quiz-card">`;
+  html += `
+    <div class="quiz-header">
+      <div class="quiz-label">Quick Quiz</div>
+      <div class="quiz-score-meta">
+        <div class="quiz-score" title="Correct answers so far">✓ ${qs.score} / ${qs.limit} correct</div>
+        <div class="quiz-counter">Question ${qs.qi + 1} of ${qs.limit}</div>
+        <div class="quiz-seed" title="Same seed = same question order. Change to reshuffle all quizzes.">
+          <label for="seed-input-${ti}">Seed</label>
+          <input id="seed-input-${ti}" type="number" value="${currentSeed}" data-role="seed-input">
+          <button type="button" data-role="seed-roll" title="New random seed">🎲</button>
+        </div>
+        <div class="quiz-seed" title="Number of questions per quiz run (max: ${t.quiz.length})">
+          <label for="limit-input-${ti}">Questions</label>
+          <input id="limit-input-${ti}" type="number" min="1" max="${t.quiz.length}" value="${qs.limit}" data-role="limit-input" data-max="${t.quiz.length}">
+        </div>
+        <button type="button" class="quiz-nocalc-btn${qs.noCalc ? ' active' : ''}" data-role="nocalc-toggle" title="${qs.noCalc ? 'Calculation questions hidden — click to show all' : 'Hide calculation questions'}">
+          ${qs.noCalc ? '🧮 Calc: Off' : '🧮 Calc: On'}
+        </button>
+      </div>
+    </div>
+  `;
+  html += `<div class="quiz-question">${q.q}</div>`;
+  q.opts.forEach((opt, i) => {
+    let cls = 'quiz-btn';
+    if (answered) {
+      if (i === q.ans) cls += ' correct';
+      else if (qs.chosen === i && i !== q.ans) cls += ' wrong';
+    }
+    html += `<button class="${cls}" data-letter="${letters[i]}" data-opt="${i}" data-ti="${ti}" ${answered ? 'disabled' : ''}>${opt}</button>`;
+  });
+  if (answered) {
+    const correct = qs.chosen === q.ans;
+    html += `<div class="quiz-feedback ${correct ? 'correct' : 'wrong'}"><span class="feedback-prefix ${correct ? 'correct' : 'wrong'}">${correct ? 'Correct.' : 'Not quite.'}</span>${q.exp}</div>`;
+    if (qs.qi < qs.limit - 1) {
+      html += `<button class="next-q" id="next-q-btn">Next question →</button>`;
+    } else {
+      html += `<div class="quiz-complete">Quiz complete — Score: ${qs.score} / ${qs.limit}</div>`;
+      html += `<button class="next-q" id="retry-btn">↻ Retry quiz</button>`;
+    }
+  }
+  html += `</div>`;
+  return html;
+}
+
+function attachQuizEvents(ti) {
+  // Helper: replace the quiz card and re-render KaTeX on the new node
+  const replaceCard = () => {
+    const card = document.getElementById('quiz-card');
+    card.outerHTML = renderQuiz(ti);
+    attachQuizEvents(ti);
+    const newCard = document.getElementById('quiz-card');
+    if (newCard && typeof smRenderMath === 'function') smRenderMath(newCard);
+  };
+  document.querySelectorAll('.quiz-btn[data-opt]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const opt = parseInt(this.dataset.opt);
+      const qs = quizStates[ti];
+      const q = topics[ti].quiz[qs.order[qs.qi]];
+      qs.answered[qs.qi] = true;
+      qs.chosen = opt;
+      if (opt === q.ans) qs.score++;
+      replaceCard();
+      const newProgress = (qs.score / qs.limit * 100).toFixed(0);
+      document.querySelector('.progress-fill').style.width = newProgress + '%';
+      document.querySelector('.progress-label').textContent = `${qs.score}/${qs.limit} correct`;
+      renderNav();
+    });
+  });
+  const nextBtn = document.getElementById('next-q-btn');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      quizStates[ti].qi++;
+      replaceCard();
+    });
+  }
+  const retryBtn = document.getElementById('retry-btn');
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      quizStates[ti] = makeQuizState(ti);
+      replaceCard();
+      document.querySelector('.progress-fill').style.width = '0%';
+      document.querySelector('.progress-label').textContent = `0/${quizStates[ti].limit} correct`;
+      renderNav();
+    });
+  }
+  const seedInput = document.querySelector('[data-role="seed-input"]');
+  if (seedInput) {
+    const applySeed = (raw) => {
+      const n = parseInt(raw, 10);
+      if (!Number.isFinite(n)) return;
+      reseedAllQuizzes(n);
+      renderMain();
+      renderNav();
+      const fresh = document.querySelector('[data-role="seed-input"]');
+      if (fresh) fresh.focus();
+    };
+    seedInput.addEventListener('change', e => applySeed(e.target.value));
+    seedInput.addEventListener('keydown', e => { if (e.key === 'Enter') applySeed(e.target.value); });
+  }
+  const seedRoll = document.querySelector('[data-role="seed-roll"]');
+  if (seedRoll) {
+    seedRoll.addEventListener('click', () => {
+      reseedAllQuizzes(Math.floor(Math.random() * 1e9));
+      renderMain();
+      renderNav();
+    });
+  }
+  const limitInput = document.querySelector('[data-role="limit-input"]');
+  if (limitInput) {
+    const applyLimit = (raw) => {
+      const max = parseInt(limitInput.dataset.max, 10);
+      let n = parseInt(raw, 10);
+      if (!Number.isFinite(n) || n < 1) n = 1;
+      if (n > max) n = max;
+      relimitAllQuizzes(n);
+      renderMain();
+      renderNav();
+    };
+    limitInput.addEventListener('change', e => applyLimit(e.target.value));
+    limitInput.addEventListener('keydown', e => { if (e.key === 'Enter') applyLimit(e.target.value); });
+  }
+  const noCalcBtn = document.querySelector('[data-role="nocalc-toggle"]');
+  if (noCalcBtn) {
+    noCalcBtn.addEventListener('click', () => {
+      const newNoCalc = !quizStates[ti].noCalc;
+      currentNoCalc = newNoCalc;
+      quizStates[ti] = makeQuizState(ti, newNoCalc);
+      renderMain();
+      renderNav();
+    });
+  }
+}
+
+// ── Mobile drawer ─────────────────────────────────────────────────────────
+const mobileBar      = document.getElementById('mobileBar');
+const menuBtn        = document.getElementById('menuBtn');
+const drawerBackdrop = document.getElementById('drawerBackdrop');
+const drawerCloseRow = document.getElementById('drawerCloseRow');
+const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+const mobileTopicName = document.getElementById('mobileTopicName');
+
+function isMobile() { return window.innerWidth <= 640; }
+
+function showMobileUI(on) {
+  mobileBar.style.display      = on ? 'flex'  : 'none';
+  drawerCloseRow.style.display = on ? 'flex'  : 'none';
+  if (!on) { closeMobileDrawer(); }
+}
+
+function openMobileDrawer() {
+  sidebar.classList.add('drawer-open');
+  drawerBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileDrawer() {
+  sidebar.classList.remove('drawer-open');
+  drawerBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateMobileTopicName() {
+  if (mobileTopicName) mobileTopicName.textContent = topics[currentTopic].title;
+}
+
+menuBtn.addEventListener('click', openMobileDrawer);
+drawerBackdrop.addEventListener('click', closeMobileDrawer);
+drawerCloseBtn.addEventListener('click', closeMobileDrawer);
+
+// Close drawer on topic select (mobile)
+const origRenderNav = renderNav;
+const origRenderMain = renderMain;
+
+// Patch nav-item onclick to close drawer + update top-bar label on mobile
+function renderNav() {
+  const frag = document.createDocumentFragment();
+  const header = document.createElement('div');
+  header.className = 'sidebar-header';
+  const subtitle = SUBJECT_CONFIG.subtitleTemplate.replace('{N}', topics.length);
+  header.innerHTML = `
+    <a href="./index.html" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--gc-text-muted);text-decoration:none;margin-bottom:6px">← All subjects</a>
+    <div class="sidebar-brand">${SUBJECT_CONFIG.brand}</div>
+    <div class="sidebar-subtitle">${subtitle}</div>
+  `;
+  frag.appendChild(header);
+  if (SUBJECT_CONFIG.showPeriodicTable) {
+    const ptBtn = document.createElement('button');
+    ptBtn.className = 'pt-sidebar-btn';
+    ptBtn.innerHTML = '📊 Periodic Table';
+    ptBtn.onclick = openPT;
+    frag.appendChild(ptBtn);
+  }
+  if (SUBJECT_CONFIG.showComprehensiveQuiz) {
+    const cqBtn = document.createElement('button');
+    cqBtn.className = 'cq-sidebar-btn';
+    cqBtn.innerHTML = SUBJECT_CONFIG.comprehensiveQuizLabel;
+    cqBtn.onclick = cqOpen;
+    frag.appendChild(cqBtn);
+  }
+  if (SUBJECT_CONFIG.showSummary && typeof summaryData !== 'undefined') {
+    const smBtn = document.createElement('button');
+    smBtn.className = 'sm-sidebar-btn';
+    smBtn.innerHTML = SUBJECT_CONFIG.summaryLabel;
+    smBtn.onclick = openSummary;
+    frag.appendChild(smBtn);
+  }
+
+  let lastCourse = null;
+  topics.forEach((t, i) => {
+    initQuizState(i);
+    const course = t.course || SUBJECT_CONFIG.defaultCourse;
+    if (course !== lastCourse) {
+      const title = document.createElement('div');
+      title.className = 'sidebar-title';
+      title.textContent = course;
+      frag.appendChild(title);
+      lastCourse = course;
+    }
+    const btn = document.createElement('button');
+    btn.className = 'nav-item' + (i === currentTopic ? ' active' : '');
+    const completed = isTopicComplete(i);
+    btn.innerHTML = `
+      <span class="nav-num">${i+1}</span>
+      <span class="nav-text">${t.title}</span>
+      <span class="nav-check${completed ? ' visible' : ''}">●</span>
+    `;
+    btn.onclick = () => {
+      currentTopic = i;
+      if (isMobile()) closeMobileDrawer();
+      renderNav();
+      renderMain();
+      updateMobileTopicName();
+      main.scrollTop = 0;
+    };
+    frag.appendChild(btn);
+  });
+
+  // Preserve the drawer-close row inside sidebar (mobile only)
+  sidebar.innerHTML = '';
+  if (drawerCloseRow) sidebar.appendChild(drawerCloseRow);
+  sidebar.appendChild(frag);
+}
+
+// Responsive: show/hide mobile UI on resize
+function onResize() {
+  showMobileUI(isMobile());
+}
+window.addEventListener('resize', onResize);
+
+renderNav();
+renderMain();
+updateMobileTopicName();
+showMobileUI(isMobile());
+</script>
+</body>
+</html>
