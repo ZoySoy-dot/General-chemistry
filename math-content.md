@@ -27,7 +27,7 @@
 <div class="section">
 <div class="section-label">Fundamental algebraic properties</div>
 <div class="card">
-<p class="body">Algebra extends arithmetic by using <strong>variables</strong> (letters) to represent unknown or general numbers. The same field axioms that govern numbers govern algebraic expressions.</p>
+<p class="body">Algebra is arithmetic with unknowns. Instead of working with specific numbers, we use <strong>variables</strong> (letters) that stand for any number. Every legal algebraic step is just one of five basic properties applied repeatedly.</p>
 <div class="table-wrap">
 <table>
 <tr><th>Property</th><th>Addition</th><th>Multiplication</th></tr>
@@ -38,58 +38,175 @@
 <tr><td>Distributive</td><td colspan="2" style="text-align:center">$a(b+c) = ab + ac$</td></tr>
 </table>
 </div>
-<div class="tip"><strong>Why this matters:</strong> Every algebraic manipulation — factoring, combining like terms, simplifying — is a chain of these axioms applied in sequence.</div>
+<div class="tip"><strong>Why this matters:</strong> Every algebraic manipulation — factoring, combining like terms, simplifying — is a chain of these five properties applied in sequence. Recognizing which property justifies each step prevents errors.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Exponent rules</div>
+<div class="section-label">Exponent rules — multiplication and division</div>
 <div class="card">
-<div class="formula-box">$a^m \cdot a^n = a^{m+n}$ &nbsp;&nbsp; $\dfrac{a^m}{a^n} = a^{m-n}$ &nbsp;&nbsp; $(a^m)^n = a^{mn}$</div>
-<div class="formula-box">$(ab)^n = a^n b^n$ &nbsp;&nbsp; $\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}$ &nbsp;&nbsp; $a^0 = 1\ (a\ne 0)$</div>
-<div class="formula-box">$a^{-n} = \dfrac{1}{a^n}$ &nbsp;&nbsp; $a^{1/n} = \sqrt[n]{a}$ &nbsp;&nbsp; $a^{m/n} = \sqrt[n]{a^m}$</div>
+<p class="body">When you multiply or divide powers of the <em>same base</em>, you never multiply the exponents — you add or subtract them. Think of $a^m$ as "$m$ copies of $a$ multiplied together."</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Product rule</strong>
+    <span>$a^m \cdot a^n = a^{m+n}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Same base → add exponents</span>
+  </div>
+  <div class="concept-card">
+    <strong>Quotient rule</strong>
+    <span>$\dfrac{a^m}{a^n} = a^{m-n}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Same base → subtract exponents</span>
+  </div>
+  <div class="concept-card">
+    <strong>Zero exponent</strong>
+    <span>$a^0 = 1\ (a\ne 0)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Anything (except 0) to the 0th power is 1</span>
+  </div>
+  <div class="concept-card">
+    <strong>Product to a power</strong>
+    <span>$(ab)^n = a^n b^n$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Distribute the exponent over multiplication</span>
+  </div>
+  <div class="concept-card">
+    <strong>Quotient to a power</strong>
+    <span>$\left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Distribute the exponent over division</span>
+  </div>
+</div>
+<div class="warn"><strong>Common mistake:</strong> $a^m \cdot a^n \ne a^{mn}$. You add exponents when multiplying same bases, not multiply them. The rule $a^{mn}$ only applies to $(a^m)^n$ — a power raised to a power.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Exponent rules — powers of powers and fractional exponents</div>
+<div class="card">
+<p class="body">When you raise a power to another power, you <em>multiply</em> the exponents. Negative exponents mean "reciprocal"; fractional exponents mean "root."</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Power of a power</strong>
+    <span>$(a^m)^n = a^{mn}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Power raised to a power → multiply exponents</span>
+  </div>
+  <div class="concept-card">
+    <strong>Negative exponent</strong>
+    <span>$a^{-n} = \dfrac{1}{a^n}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Flip to the other side of the fraction</span>
+  </div>
+  <div class="concept-card">
+    <strong>$n$th root</strong>
+    <span>$a^{1/n} = \sqrt[n]{a}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Fractional exponent with 1 in numerator = root</span>
+  </div>
+  <div class="concept-card">
+    <strong>Rational exponent</strong>
+    <span>$a^{m/n} = \sqrt[n]{a^m}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Denominator = root index, numerator = power</span>
+  </div>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Evaluate $27^{2/3}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>The denominator 3 means take the cube root: $\sqrt[3]{27} = 3$.</li>
+<li>The numerator 2 means square the result: $3^2 = 9$.</li>
+<li>Result: $27^{2/3} = 9$.</li>
+</ol>
+</div>
+<div class="warn"><strong>Common mistake:</strong> $\left(\dfrac{2}{3}\right)^{-2} \ne -\dfrac{4}{9}$. A negative exponent does NOT make the result negative — it flips the fraction: $\left(\dfrac{2}{3}\right)^{-2} = \left(\dfrac{3}{2}\right)^2 = \dfrac{9}{4}$.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Special products</div>
 <div class="card">
-<p class="body">Memorize these. They appear constantly in factoring, completing the square, and calculus.</p>
-<div class="formula-box">$(a+b)^2 = a^2 + 2ab + b^2$</div>
-<div class="formula-box">$(a-b)^2 = a^2 - 2ab + b^2$</div>
-<div class="formula-box">$(a+b)(a-b) = a^2 - b^2 \quad \text{(difference of squares)}$</div>
-<div class="formula-box">$(a+b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$</div>
-<div class="formula-box">$a^3 + b^3 = (a+b)(a^2 - ab + b^2)$</div>
-<div class="formula-box">$a^3 - b^3 = (a-b)(a^2 + ab + b^2)$</div>
+<p class="body">Certain product patterns appear so often that recognizing them by structure saves enormous time. They come up in factoring, completing the square, and calculus problems.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Perfect square (sum)</strong>
+    <span>$(a+b)^2 = a^2 + 2ab + b^2$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Middle term is twice the product of the roots</span>
+  </div>
+  <div class="concept-card">
+    <strong>Perfect square (diff)</strong>
+    <span>$(a-b)^2 = a^2 - 2ab + b^2$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Same structure, middle term is negative</span>
+  </div>
+  <div class="concept-card">
+    <strong>Difference of squares</strong>
+    <span>$(a+b)(a-b) = a^2 - b^2$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Two squares with a minus sign between them</span>
+  </div>
+  <div class="concept-card">
+    <strong>Sum of cubes</strong>
+    <span>$a^3+b^3 = (a+b)(a^2-ab+b^2)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">SOAP: Same, Opposite, Always Positive</span>
+  </div>
+  <div class="concept-card">
+    <strong>Difference of cubes</strong>
+    <span>$a^3-b^3 = (a-b)(a^2+ab+b^2)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">SOAP: Same, Opposite, Always Positive</span>
+  </div>
+</div>
+<div class="tip"><strong>SOAP memory aid for cubes:</strong> The binomial factor has the <strong>S</strong>ame sign as the original; the middle term of the trinomial has the <strong>O</strong>pposite sign; the last term is <strong>A</strong>lways <strong>P</strong>ositive.</div>
+<div class="warn"><strong>Common mistake:</strong> $(a+b)^2 \ne a^2 + b^2$. You must include the middle term $2ab$. Expand $(a+b)(a+b)$ with FOIL to see why.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Factoring polynomials</div>
+<div class="section-label">Factoring strategy</div>
 <div class="card">
-<p class="body">Factoring rewrites a polynomial as a product of simpler polynomials. The strategy depends on the polynomial's structure.</p>
+<p class="body">Factoring is the reverse of expanding — rewriting a sum as a product. The method you choose depends on the number of terms and the structure of the polynomial.</p>
+<div class="tip"><strong>How to choose a factoring method:</strong>
 <ol class="list-styled" style="list-style-type:decimal">
-<li><strong>GCF first.</strong> Pull out the greatest common factor: $6x^3 - 9x^2 = 3x^2(2x-3)$.</li>
-<li><strong>Two terms</strong> — look for difference of squares or sum/difference of cubes.</li>
-<li><strong>Three terms (trinomial)</strong> — for $x^2 + bx + c$, find two numbers that multiply to $c$ and add to $b$. For $ax^2+bx+c$ with $a\ne 1$, use the <em>AC method</em>: multiply $a\cdot c$, find two numbers that multiply to $ac$ and add to $b$, split the middle term, then factor by grouping.</li>
-<li><strong>Four terms</strong> — try grouping in pairs.</li>
+<li><strong>Always first:</strong> pull out the GCF (e.g., $6x^3-9x^2 = 3x^2(2x-3)$).</li>
+<li><strong>2 terms:</strong> look for difference of squares $a^2-b^2$ or sum/difference of cubes $a^3\pm b^3$.</li>
+<li><strong>3 terms, leading coeff = 1:</strong> find two numbers that multiply to $c$ and add to $b$ in $x^2+bx+c$.</li>
+<li><strong>3 terms, leading coeff $\ne 1$:</strong> use the AC method (see example below).</li>
+<li><strong>4 terms:</strong> try grouping in pairs.</li>
+<li><strong>Always check:</strong> can any factor be factored further?</li>
 </ol>
-<div class="example-box"><strong>Example — AC method</strong>Factor $6x^2 + 11x - 10$. $ac = -60$. Two numbers: $15$ and $-4$ (product $-60$, sum $11$). Split: $6x^2 + 15x - 4x - 10 = 3x(2x+5) - 2(2x+5) = (3x-2)(2x+5)$.</div>
-<div class="example-box"><strong>Example — sum of cubes</strong>Factor $8x^3 + 27$. Recognize $(2x)^3 + 3^3$. Apply $a^3+b^3 = (a+b)(a^2-ab+b^2)$: $(2x+3)(4x^2 - 6x + 9)$.</div>
+</div>
+<div class="example-box">
+<strong>Example — AC method:</strong> Factor $6x^2 + 11x - 10$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Identify $a=6, b=11, c=-10$. Compute $ac = 6 \cdot (-10) = -60$.</li>
+<li>Find two numbers that multiply to $-60$ and add to $11$: that's $15$ and $-4$.</li>
+<li>Split the middle term: $6x^2 + 15x - 4x - 10$.</li>
+<li>Group: $3x(2x+5) - 2(2x+5)$.</li>
+<li>Factor out the common binomial: $(3x-2)(2x+5)$.</li>
+</ol>
+<div class="tip"><strong>Check:</strong> $(3x-2)(2x+5) = 6x^2+15x-4x-10 = 6x^2+11x-10$ ✓</div>
+</div>
+<div class="example-box">
+<strong>Example — sum of cubes:</strong> Factor $8x^3 + 27$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Recognize the form: $8x^3 = (2x)^3$ and $27 = 3^3$, so $a=2x$, $b=3$.</li>
+<li>Apply $a^3+b^3 = (a+b)(a^2-ab+b^2)$.</li>
+<li>Result: $(2x+3)(4x^2 - 6x + 9)$. Note the minus sign in the middle term (SOAP: Opposite).</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Simplifying rational expressions</div>
+<div class="section-label">Rational expressions</div>
 <div class="card">
-<p class="body">A <strong>rational expression</strong> is a ratio of two polynomials, $\dfrac{P(x)}{Q(x)}$. Simplifying means factoring both numerator and denominator and canceling common factors — but only after noting domain restrictions.</p>
-<div class="example-box"><strong>Example</strong>Simplify $\dfrac{x^2 - 9}{x^2 - x - 6}$. Factor: $\dfrac{(x-3)(x+3)}{(x-3)(x+2)} = \dfrac{x+3}{x+2}$, with $x \ne 3,\ -2$. <em>The restriction $x\ne 3$ must be stated</em> even though the factor cancels.</div>
+<p class="body">A <strong>rational expression</strong> is a fraction where both numerator and denominator are polynomials: $\dfrac{P(x)}{Q(x)}$. It behaves like an ordinary fraction, but you must identify which $x$ values make the denominator zero, since those are excluded from the domain.</p>
+<div class="example-box">
+<strong>Example — simplifying:</strong> Simplify $\dfrac{x^2 - 9}{x^2 - x - 6}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Factor the numerator (difference of squares): $x^2-9 = (x-3)(x+3)$.</li>
+<li>Factor the denominator: $x^2-x-6 = (x-3)(x+2)$.</li>
+<li>Cancel the common factor $(x-3)$: result is $\dfrac{x+3}{x+2}$.</li>
+<li>State restrictions: $x \ne 3$ and $x \ne -2$.</li>
+</ol>
+<div class="warn"><strong>Common mistake:</strong> Forgetting to state $x \ne 3$ after canceling. The original expression was undefined there — that restriction does not disappear when the factor cancels.</div>
+</div>
 <div class="divider"></div>
-<strong style="font-size:13px">Operations:</strong>
+<strong style="font-size:13px">Operations with rational expressions:</strong>
 <ul class="list-styled">
-<li><strong>Multiply:</strong> $\dfrac{a}{b}\cdot\dfrac{c}{d} = \dfrac{ac}{bd}$ — factor first, cancel, then multiply.</li>
-<li><strong>Divide:</strong> multiply by the reciprocal: $\dfrac{a}{b}\div\dfrac{c}{d} = \dfrac{a}{b}\cdot\dfrac{d}{c}$.</li>
-<li><strong>Add/subtract:</strong> need a common denominator (LCD). For $\dfrac{1}{x} + \dfrac{1}{x+1}$, LCD $= x(x+1)$, giving $\dfrac{(x+1)+x}{x(x+1)} = \dfrac{2x+1}{x(x+1)}$.</li>
+<li><strong>Multiply:</strong> Factor everything first, cancel common factors across numerators and denominators, then multiply: $\dfrac{a}{b}\cdot\dfrac{c}{d} = \dfrac{ac}{bd}$.</li>
+<li><strong>Divide:</strong> Multiply by the reciprocal of the divisor: $\dfrac{a}{b}\div\dfrac{c}{d} = \dfrac{a}{b}\cdot\dfrac{d}{c}$.</li>
+<li><strong>Add/subtract:</strong> Find the LCD, rewrite each fraction with it, then combine numerators. Example: $\dfrac{1}{x} + \dfrac{1}{x+1}$, LCD $= x(x+1)$, gives $\dfrac{2x+1}{x(x+1)}$.</li>
 </ul>
 </div>
 </div>
@@ -97,18 +214,28 @@
 <div class="section">
 <div class="section-label">Partial fraction decomposition</div>
 <div class="card">
-<p class="body">Partial fractions <em>reverses</em> the process of adding fractions, splitting a complicated rational expression into a sum of simpler ones. Essential for integration in calculus.</p>
-<p class="body"><strong>Prerequisite:</strong> the rational expression must be <em>proper</em> (degree of numerator $<$ degree of denominator). If not, do polynomial long division first.</p>
+<p class="body">Partial fractions <em>reverses</em> the process of adding fractions. Just as you can split $\dfrac{3}{4}$ into $\dfrac{1}{2} + \dfrac{1}{4}$, partial fractions split a complicated rational expression into a sum of simpler ones. This technique is essential for integration in calculus.</p>
+<p class="body"><strong>Prerequisite:</strong> the expression must be <em>proper</em> (numerator degree $<$ denominator degree). If not, do polynomial long division first.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Denominator factor</th><th>Partial-fraction form</th></tr>
+<tr><th>Denominator factor type</th><th>Partial-fraction form</th></tr>
 <tr><td>Distinct linear $(ax+b)$</td><td>$\dfrac{A}{ax+b}$</td></tr>
 <tr><td>Repeated linear $(ax+b)^n$</td><td>$\dfrac{A_1}{ax+b} + \dfrac{A_2}{(ax+b)^2} + \cdots + \dfrac{A_n}{(ax+b)^n}$</td></tr>
 <tr><td>Distinct irreducible quadratic $(ax^2+bx+c)$</td><td>$\dfrac{Ax+B}{ax^2+bx+c}$</td></tr>
-<tr><td>Repeated irreducible quadratic</td><td>One $\dfrac{A_k x + B_k}{(ax^2+bx+c)^k}$ for each power $k$.</td></tr>
+<tr><td>Repeated irreducible quadratic $(ax^2+bx+c)^k$</td><td>One $\dfrac{A_j x+B_j}{(ax^2+bx+c)^j}$ per power $j=1,\ldots,k$</td></tr>
 </table>
 </div>
-<div class="example-box"><strong>Example</strong>Decompose $\dfrac{3x+5}{(x-1)(x+2)}$. Set $\dfrac{3x+5}{(x-1)(x+2)} = \dfrac{A}{x-1}+\dfrac{B}{x+2}$. Multiply through: $3x+5 = A(x+2) + B(x-1)$. Let $x=1$: $8=3A \Rightarrow A=\tfrac{8}{3}$. Let $x=-2$: $-1=-3B \Rightarrow B=\tfrac{1}{3}$. Result: $\dfrac{8/3}{x-1}+\dfrac{1/3}{x+2}$.</div>
+<div class="tip"><strong>Why one fraction per power?</strong> A repeated factor like $(x-1)^2$ needs separate fractions for $(x-1)$ and $(x-1)^2$. Without both, you cannot solve uniquely for the constants.</div>
+<div class="example-box">
+<strong>Example:</strong> Decompose $\dfrac{3x+5}{(x-1)(x+2)}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Set up: $\dfrac{3x+5}{(x-1)(x+2)} = \dfrac{A}{x-1}+\dfrac{B}{x+2}$.</li>
+<li>Multiply both sides by $(x-1)(x+2)$: $3x+5 = A(x+2) + B(x-1)$.</li>
+<li>Let $x=1$ to eliminate $B$: $8 = 3A \Rightarrow A = \tfrac{8}{3}$.</li>
+<li>Let $x=-2$ to eliminate $A$: $-1 = -3B \Rightarrow B = \tfrac{1}{3}$.</li>
+<li>Result: $\dfrac{8/3}{x-1}+\dfrac{1/3}{x+2}$.</li>
+</ol>
+</div>
 </div>
 </div>
 ```
@@ -678,82 +805,190 @@
 <div class="section">
 <div class="section-label">Linear equations</div>
 <div class="card">
-<p class="body">A <strong>linear equation</strong> in one variable has the form $ax + b = 0$ with $a\ne 0$. The unique solution is $x = -b/a$.</p>
-<p class="body"><strong>Strategy:</strong> isolate the variable using inverse operations on both sides, preserving equality.</p>
-<div class="example-box"><strong>Example</strong>Solve $3(x-2) + 5 = 2x + 7$. Distribute: $3x-6+5=2x+7 \Rightarrow 3x-1=2x+7 \Rightarrow x=8$.</div>
+<p class="body">A <strong>linear equation</strong> has the variable raised only to the first power: $ax + b = 0$. It always has exactly one solution. The goal is to get the variable alone on one side by doing the same operation to both sides.</p>
+<div class="example-box">
+<strong>Example:</strong> Solve $3(x-2) + 5 = 2x + 7$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Distribute: $3x - 6 + 5 = 2x + 7 \Rightarrow 3x - 1 = 2x + 7$.</li>
+<li>Subtract $2x$ from both sides: $x - 1 = 7$.</li>
+<li>Add 1 to both sides: $x = 8$.</li>
+</ol>
+<div class="tip"><strong>Check:</strong> $3(8-2)+5 = 23$ and $2(8)+7 = 23$ ✓</div>
+</div>
+<div class="tip"><strong>When to use this:</strong> Whenever you see an equation with no squared terms, fractional terms with variables, or radicals — isolate the variable directly using inverse operations.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Quadratic equations</div>
+<div class="section-label">Quadratic equations — four methods</div>
 <div class="card">
-<p class="body">A <strong>quadratic equation</strong> has the form $ax^2+bx+c=0$ with $a\ne 0$. Four solution methods:</p>
-<ol class="list-styled" style="list-style-type:decimal">
-<li><strong>Factoring</strong> — works when the quadratic factors over the rationals.</li>
-<li><strong>Square root property</strong> — for $x^2 = k$, $x=\pm\sqrt{k}$.</li>
-<li><strong>Completing the square</strong> — universal but slower.</li>
-<li><strong>Quadratic formula</strong> — universal and direct.</li>
-</ol>
-<div class="formula-box">$x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</div>
-<p class="body"><strong>Discriminant</strong> $\Delta = b^2 - 4ac$ tells you the nature of the roots:</p>
+<p class="body">A <strong>quadratic equation</strong> has the form $ax^2+bx+c=0$ with $a\ne 0$. It can have 0, 1, or 2 real solutions. There are four methods — pick based on the structure of the equation.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Method 1: Factoring</strong>
+    <span>Factor, then set each factor = 0</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Use when the quadratic factors easily over rationals</span>
+  </div>
+  <div class="concept-card">
+    <strong>Method 2: Square root</strong>
+    <span>$x^2 = k \Rightarrow x = \pm\sqrt{k}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Use when there is no middle ($bx$) term</span>
+  </div>
+  <div class="concept-card">
+    <strong>Method 3: Complete the square</strong>
+    <span>Rewrite as $(x+p)^2 = q$, then take square root</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Universal; also used to derive the quadratic formula</span>
+  </div>
+  <div class="concept-card">
+    <strong>Method 4: Quadratic formula</strong>
+    <span>$x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Universal; use when other methods are awkward</span>
+  </div>
+</div>
+<p class="body">The <strong>discriminant</strong> $\Delta = b^2 - 4ac$ tells you the nature of the roots before you solve:</p>
 <ul class="list-styled">
 <li>$\Delta > 0$: two distinct real roots.</li>
-<li>$\Delta = 0$: one real (double) root.</li>
-<li>$\Delta < 0$: two complex conjugate roots.</li>
+<li>$\Delta = 0$: one real (repeated) root.</li>
+<li>$\Delta < 0$: no real roots (two complex conjugates).</li>
 </ul>
-<div class="example-box"><strong>Example</strong>Solve $2x^2 - 5x - 3 = 0$. Discriminant $25+24=49$. $x = \dfrac{5\pm 7}{4} = 3$ or $-\tfrac{1}{2}$.</div>
+<div class="example-box">
+<strong>Example (quadratic formula):</strong> Solve $2x^2 - 5x - 3 = 0$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Identify $a=2, b=-5, c=-3$.</li>
+<li>Compute the discriminant: $\Delta = (-5)^2 - 4(2)(-3) = 25 + 24 = 49$.</li>
+<li>Since $\Delta > 0$, there are two real roots.</li>
+<li>Apply the formula: $x = \dfrac{5 \pm \sqrt{49}}{4} = \dfrac{5 \pm 7}{4}$.</li>
+<li>Two solutions: $x = \dfrac{12}{4} = 3$ or $x = \dfrac{-2}{4} = -\tfrac{1}{2}$.</li>
+</ol>
+<div class="tip"><strong>Check:</strong> $2(3)^2-5(3)-3 = 18-15-3=0$ ✓</div>
+</div>
+<div class="example-box">
+<strong>Example (completing the square):</strong> Solve $x^2 + 6x + 5 = 0$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Move the constant: $x^2 + 6x = -5$.</li>
+<li>Add $\left(\tfrac{6}{2}\right)^2 = 9$ to both sides: $x^2 + 6x + 9 = 4$.</li>
+<li>Factor the left side: $(x+3)^2 = 4$.</li>
+<li>Take square roots: $x + 3 = \pm 2$, so $x = -1$ or $x = -5$.</li>
+</ol>
+</div>
+<div class="warn"><strong>Common mistake:</strong> When completing the square and the leading coefficient is not 1, you must divide through by $a$ first before adding the square term.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Rational equations</div>
 <div class="card">
-<p class="body">A <strong>rational equation</strong> contains rational expressions. Standard approach: multiply both sides by the LCD to clear denominators, then solve. <strong>Always check for extraneous solutions</strong> — values that make any original denominator zero must be rejected.</p>
-<div class="example-box"><strong>Example</strong>Solve $\dfrac{1}{x-1} + \dfrac{2}{x+1} = \dfrac{4}{x^2-1}$. LCD $=(x-1)(x+1)$. Multiply: $(x+1) + 2(x-1) = 4 \Rightarrow 3x - 1 = 4 \Rightarrow x = \tfrac{5}{3}$. Check: denominators nonzero. ✓</div>
-<div class="warn"><strong>Watch out:</strong> if multiplying yields $x = 1$ in the above, that would be extraneous because the original denominator $x-1$ vanishes.</div>
+<p class="body">A <strong>rational equation</strong> has variables in the denominator. Clearing denominators by multiplying by the LCD turns it into a polynomial equation — but always check for extraneous solutions afterward.</p>
+<div class="example-box">
+<strong>Example:</strong> Solve $\dfrac{1}{x-1} + \dfrac{2}{x+1} = \dfrac{4}{x^2-1}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Factor: $x^2-1 = (x-1)(x+1)$, so LCD $= (x-1)(x+1)$.</li>
+<li>Multiply every term by the LCD: $(x+1) + 2(x-1) = 4$.</li>
+<li>Simplify: $3x - 1 = 4 \Rightarrow x = \tfrac{5}{3}$.</li>
+<li>Check: $x = \tfrac{5}{3}$ makes no denominator zero. ✓</li>
+</ol>
+<div class="warn"><strong>Watch out:</strong> If the solution had been $x = 1$ or $x = -1$, it would be extraneous — those values make the original denominators zero and must be rejected.</div>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Radical equations</div>
 <div class="card">
-<p class="body">A <strong>radical equation</strong> has the variable under a root. Strategy: isolate the radical, then raise both sides to the matching power. Repeat if more than one radical. <strong>Always verify</strong> — squaring can introduce extraneous roots.</p>
-<div class="example-box"><strong>Example</strong>Solve $\sqrt{2x+3} = x$. Square: $2x+3=x^2 \Rightarrow x^2-2x-3=0 \Rightarrow (x-3)(x+1)=0$. Candidates $x=3,-1$. Check originals: $\sqrt{9}=3$ ✓, $\sqrt{1}=1\ne -1$ ✗. Only $x=3$.</div>
+<p class="body">A <strong>radical equation</strong> has the variable under a root. The strategy is: isolate the radical, then raise both sides to the power that matches the root. Squaring can introduce false solutions, so always check every candidate in the original equation.</p>
+<div class="example-box">
+<strong>Example:</strong> Solve $\sqrt{2x+3} = x$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>The radical is already isolated. Square both sides: $2x+3 = x^2$.</li>
+<li>Rearrange: $x^2 - 2x - 3 = 0 \Rightarrow (x-3)(x+1) = 0$.</li>
+<li>Candidates: $x = 3$ or $x = -1$.</li>
+<li>Check $x=3$: $\sqrt{2(3)+3} = \sqrt{9} = 3$ ✓</li>
+<li>Check $x=-1$: $\sqrt{2(-1)+3} = \sqrt{1} = 1 \ne -1$ ✗ Extraneous!</li>
+<li>Only solution: $x = 3$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Linear inequalities</div>
 <div class="card">
-<p class="body">Inequalities behave like equations with one critical exception: <strong>multiplying or dividing by a negative number reverses the inequality</strong>.</p>
-<div class="example-box"><strong>Example</strong>Solve $-3x + 4 \le 13$. Subtract 4: $-3x \le 9$. Divide by $-3$ and flip: $x \ge -3$.</div>
-<p class="body"><strong>Compound:</strong> $-2 < 3x+1 \le 7 \Rightarrow -3 < 3x \le 6 \Rightarrow -1 < x \le 2$.</p>
+<p class="body">Inequalities are solved almost identically to equations, with one critical difference: <strong>multiplying or dividing by a negative number flips the inequality sign</strong>. This is the single most common error.</p>
+<div class="example-box">
+<strong>Example:</strong> Solve $-3x + 4 \le 13$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Subtract 4: $-3x \le 9$.</li>
+<li>Divide by $-3$ and flip: $x \ge -3$.</li>
+</ol>
+</div>
+<p class="body"><strong>Compound inequalities</strong> are solved by acting on all three parts simultaneously: $-2 < 3x+1 \le 7 \Rightarrow -3 < 3x \le 6 \Rightarrow -1 < x \le 2$.</p>
+<div class="warn"><strong>Common mistake:</strong> Not flipping the sign when dividing by a negative. $-3x \le 9$ gives $x \ge -3$, NOT $x \le -3$.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Non-linear inequalities (sign analysis)</div>
+<div class="section-label">Non-linear inequalities — sign chart method</div>
 <div class="card">
-<p class="body">For polynomial and rational inequalities, the systematic method is the <strong>sign chart</strong> (test-point method).</p>
+<p class="body">For polynomial and rational inequalities, you cannot just solve like an equation. You need to track where the expression is positive or negative using a sign chart.</p>
+<div class="tip"><strong>Five-step sign chart method:</strong></div>
 <ol class="list-styled" style="list-style-type:decimal">
-<li>Move everything to one side. Compare to 0.</li>
-<li>Factor completely. Find <strong>critical numbers</strong>: zeros of numerator and zeros of denominator.</li>
-<li>Plot critical numbers on a number line; they divide it into intervals.</li>
-<li>Test one point from each interval in the factored form. Record the sign.</li>
-<li>Select intervals matching the inequality. For $<$ or $>$, exclude endpoints. For $\le, \ge$, include zeros of the numerator only — never zeros of the denominator.</li>
+<li><strong>Move everything to one side</strong> so you compare to 0.</li>
+<li><strong>Factor completely.</strong> Find critical numbers: zeros of the numerator AND zeros of the denominator.</li>
+<li><strong>Plot critical numbers</strong> on a number line to create intervals.</li>
+<li><strong>Pick one test point per interval</strong> and evaluate. Record the sign.</li>
+<li><strong>Select intervals</strong> where the sign matches the inequality. For strict ($<,>$), exclude critical points. For $\le, \ge$, include numerator zeros but never denominator zeros.</li>
 </ol>
-<div class="example-box"><strong>Example</strong>Solve $\dfrac{x-2}{x+1} \ge 0$. Critical: $x=2$ (num zero, included) and $x=-1$ (denom zero, excluded). Sign chart: $(-\infty,-1)$: $+$; $(-1,2)$: $-$; $(2,\infty)$: $+$. Solution: $(-\infty,-1)\cup [2,\infty)$.</div>
-<div class="example-box"><strong>Example</strong>Solve $x^2 - x - 6 < 0$. Factor: $(x-3)(x+2)<0$. Critical $-2, 3$. Sign on $(-2,3)$ is negative (test $0$: $-6$). Solution: $-2 < x < 3$.</div>
+<div class="example-box">
+<strong>Example:</strong> Solve $\dfrac{x-2}{x+1} \ge 0$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Critical numbers: $x = 2$ (include, numerator) and $x = -1$ (exclude, denominator).</li>
+<li>Intervals: $(-\infty,-1)$, $(-1,2)$, $(2,\infty)$.</li>
+<li>Test $x=-2$: positive. Test $x=0$: negative. Test $x=3$: positive.</li>
+<li>Solution: $(-\infty,-1) \cup [2,\infty)$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Solve $x^2 - x - 6 < 0$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Factor: $(x-3)(x+2) < 0$. Critical: $x = -2$ and $x = 3$.</li>
+<li>Test $x=0$: $(0-3)(0+2) = -6 < 0$ — interval $(-2,3)$ works.</li>
+<li>Solution: $-2 < x < 3$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Absolute-value equations and inequalities</div>
 <div class="card">
+<p class="body">Absolute value measures distance from zero. The solution rules follow directly from this geometric meaning: "less than $k$" means within distance $k$ (bounded interval); "greater than $k$" means outside that distance (two rays).</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>$|x| = k$</strong>
+    <span>$x = k$ or $x = -k$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Two separate equations</span>
+  </div>
+  <div class="concept-card">
+    <strong>$|x| &lt; k$</strong>
+    <span>$-k &lt; x &lt; k$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Within distance $k$ (AND)</span>
+  </div>
+  <div class="concept-card">
+    <strong>$|x| &gt; k$</strong>
+    <span>$x &lt; -k$ or $x &gt; k$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Outside distance $k$ (OR)</span>
+  </div>
+</div>
 <div class="formula-box">$|x| = k\ (k\ge 0) \iff x = \pm k$</div>
-<div class="formula-box">$|x| < k \iff -k < x < k$</div>
-<div class="formula-box">$|x| > k \iff x < -k\ \text{or}\ x > k$</div>
-<div class="example-box"><strong>Example</strong>$|2x-1| \le 5 \Rightarrow -5\le 2x-1\le 5 \Rightarrow -2 \le x \le 3$.</div>
+<div class="example-box">
+<strong>Example:</strong> Solve $|2x-1| \le 5$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Apply the less-than-or-equal rule: $-5 \le 2x-1 \le 5$.</li>
+<li>Add 1 throughout: $-4 \le 2x \le 6$.</li>
+<li>Divide by 2: $-2 \le x \le 3$.</li>
+</ol>
+</div>
+<div class="warn"><strong>Common mistake:</strong> For $|x| > k$, students write a single interval $-k < x < k$ — that is the less-than rule. Greater-than goes outward in both directions: $x < -k$ OR $x > k$.</div>
 </div>
 </div>
 ```
@@ -1323,60 +1558,88 @@
 <div class="section">
 <div class="section-label">What is a function?</div>
 <div class="card">
-<p class="body">A <strong>function</strong> $f: A \to B$ assigns to each input $x \in A$ exactly one output $f(x) \in B$. The set $A$ is the <strong>domain</strong>; the set of actual outputs is the <strong>range</strong>.</p>
-<div class="tip"><strong>Vertical line test:</strong> a graph represents a function iff every vertical line crosses it at most once.</div>
-<div class="example-box"><strong>Example</strong>If $f(x) = 3x^2 - 2$, then $f(-1) = 3(1)-2 = 1$ and $f(a+1) = 3(a+1)^2 - 2 = 3a^2 + 6a + 1$.</div>
+<p class="body">A <strong>function</strong> is like a machine: you put one input in, and exactly one output comes out. Every input maps to exactly one output — that "exactly one" rule is what makes it a function.</p>
+<p class="body">Formally, $f: A \to B$ assigns each $x$ in the domain $A$ exactly one value $f(x)$ in $B$. The set of actual outputs produced is the <strong>range</strong>.</p>
+<div class="tip"><strong>Vertical line test:</strong> A graph represents a function if and only if every vertical line crosses it at most once. If a vertical line hits the graph twice, the graph fails — two outputs for one input.</div>
+<div class="example-box">
+<strong>Example:</strong> If $f(x) = 3x^2 - 2$, evaluate $f(-1)$ and $f(a+1)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>$f(-1) = 3(-1)^2 - 2 = 3(1) - 2 = 1$.</li>
+<li>$f(a+1) = 3(a+1)^2 - 2 = 3(a^2+2a+1) - 2 = 3a^2 + 6a + 1$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Finding domain</div>
+<div class="section-label">Domain and range</div>
 <div class="card">
-<p class="body">Domain = all real $x$ for which $f(x)$ is a real number. Two main restrictions:</p>
+<p class="body">The <strong>domain</strong> is all real $x$ for which the function produces a real output. You only need to worry about two situations: division by zero (undefined) and even roots of negatives (not real).</p>
 <ul class="list-styled">
-<li><strong>Denominator $\ne 0$.</strong> For $f(x)=\tfrac{1}{x-3}$: domain $\{x: x\ne 3\}$.</li>
-<li><strong>Even-index radicand $\ge 0$.</strong> For $f(x)=\sqrt{4-x}$: $4-x\ge 0 \Rightarrow x\le 4$.</li>
+<li><strong>Denominator $\ne 0$:</strong> for $f(x) = \tfrac{1}{x-3}$, exclude $x = 3$.</li>
+<li><strong>Even-index radicand $\ge 0$:</strong> for $f(x) = \sqrt{4-x}$, require $4-x \ge 0 \Rightarrow x \le 4$.</li>
 </ul>
-<div class="example-box"><strong>Example</strong>Domain of $f(x)=\dfrac{\sqrt{x+2}}{x-1}$: $x+2\ge 0$ AND $x\ne 1 \Rightarrow [-2,1)\cup(1,\infty)$.</div>
+<div class="example-box">
+<strong>Example:</strong> Find the domain of $f(x) = \dfrac{\sqrt{x+2}}{x-1}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Square root requires $x+2 \ge 0 \Rightarrow x \ge -2$.</li>
+<li>Denominator requires $x - 1 \ne 0 \Rightarrow x \ne 1$.</li>
+<li>Combine: $x \ge -2$ and $x \ne 1$. Domain: $[-2,1) \cup (1,\infty)$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Polynomial functions</div>
 <div class="card">
-<p class="body">A <strong>polynomial</strong> $P(x) = a_n x^n + \cdots + a_1 x + a_0$ ($a_n \ne 0$) has degree $n$. Domain is all reals.</p>
+<p class="body">A <strong>polynomial</strong> has the form $P(x) = a_n x^n + \cdots + a_1 x + a_0$ and its domain is always all real numbers. The leading term $a_n x^n$ determines the end behavior — what the graph does as $x \to \pm\infty$.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Degree</th><th>Name</th><th>End behavior (leading $a_n x^n$)</th></tr>
-<tr><td>0</td><td>Constant</td><td>Horizontal line</td></tr>
-<tr><td>1</td><td>Linear</td><td>Slope $a_1$; rises/falls</td></tr>
-<tr><td>2</td><td>Quadratic</td><td>Parabola; opens up if $a_2>0$</td></tr>
-<tr><td>3</td><td>Cubic</td><td>S-shape; $\pm\infty$ at the ends</td></tr>
-<tr><td>$n$ even, $a_n>0$</td><td>—</td><td>Both ends $\to +\infty$</td></tr>
-<tr><td>$n$ odd, $a_n>0$</td><td>—</td><td>Left $\to -\infty$, right $\to +\infty$</td></tr>
+<tr><th>Degree</th><th>Shape</th><th>End behavior (if $a_n > 0$)</th></tr>
+<tr><td>Even</td><td>Both ends up or both ends down</td><td>Both ends $\to +\infty$</td></tr>
+<tr><td>Odd</td><td>One end up, one end down</td><td>Left $\to -\infty$, right $\to +\infty$</td></tr>
 </table>
 </div>
-<p class="body"><strong>Zeros</strong> (roots) — where $P(x)=0$. A polynomial of degree $n$ has at most $n$ real zeros. <strong>Multiplicity:</strong> if $(x-r)^k$ divides $P$, root $r$ has multiplicity $k$. Even multiplicity → graph touches axis; odd → graph crosses.</p>
+<p class="body"><strong>Zeros (roots):</strong> where $P(x) = 0$. A degree-$n$ polynomial has at most $n$ real zeros. The <strong>multiplicity</strong> of a root $r$ (the power of the factor $(x-r)$) tells you: even multiplicity = graph <em>touches</em> the axis and bounces back; odd multiplicity = graph <em>crosses</em> the axis.</p>
+<div class="tip"><strong>When to use:</strong> Polynomial functions are used to model smooth curves. End behavior tells you the "story" of the graph without plotting — if $n$ is odd and $a_n > 0$, the graph goes from bottom-left to top-right.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Rational functions</div>
+<div class="section-label">Rational functions and asymptotes</div>
 <div class="card">
-<p class="body">A <strong>rational function</strong> is $f(x) = \dfrac{P(x)}{Q(x)}$. Domain excludes zeros of $Q$.</p>
-<strong style="font-size:13px">Asymptotes:</strong>
-<ul class="list-styled">
-<li><strong>Vertical asymptote</strong> at each $x$ where $Q(x)=0$ but $P(x)\ne 0$. (If both vanish, you may have a hole instead — check for common factors.)</li>
-<li><strong>Horizontal asymptote</strong>:
-  <ul>
-    <li>If $\deg P < \deg Q$: $y=0$.</li>
-    <li>If $\deg P = \deg Q$: $y=\tfrac{a_n}{b_n}$ (ratio of leading coefficients).</li>
-    <li>If $\deg P > \deg Q$: no horizontal asymptote.</li>
-  </ul>
-</li>
-<li><strong>Slant (oblique) asymptote</strong>: when $\deg P = \deg Q + 1$. Found by polynomial long division.</li>
-</ul>
-<div class="example-box"><strong>Example</strong>$f(x)=\dfrac{2x^2+1}{x^2-4}$. Vertical asymptotes at $x=\pm 2$. Horizontal: $y = 2/1 = 2$. Domain: $\{x: x\ne \pm 2\}$.</div>
+<p class="body">A <strong>rational function</strong> $f(x) = \dfrac{P(x)}{Q(x)}$ has a domain that excludes zeros of $Q$. The interesting features are its asymptotes — lines the graph approaches but never crosses (or only crosses finitely many times).</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Vertical asymptote</strong>
+    <span>At $x = a$ where $Q(a)=0$ but $P(a)\ne 0$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">If both vanish, factor and cancel — it's a hole, not an asymptote</span>
+  </div>
+  <div class="concept-card">
+    <strong>Horizontal: $\deg P &lt; \deg Q$</strong>
+    <span>$y = 0$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Numerator grows slower — function dies out</span>
+  </div>
+  <div class="concept-card">
+    <strong>Horizontal: $\deg P = \deg Q$</strong>
+    <span>$y = \dfrac{\text{leading coeff of }P}{\text{leading coeff of }Q}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Same degree — ratio of leading coefficients</span>
+  </div>
+  <div class="concept-card">
+    <strong>Slant asymptote: $\deg P = \deg Q + 1$</strong>
+    <span>Do polynomial long division; the quotient is the slant line</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">No horizontal asymptote in this case</span>
+  </div>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Analyze $f(x) = \dfrac{2x^2+1}{x^2-4}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Domain: $x^2-4 = 0 \Rightarrow x = \pm 2$. Exclude $x = \pm 2$.</li>
+<li>Vertical asymptotes: $x = 2$ and $x = -2$ (denominator zeros, numerator nonzero there).</li>
+<li>Horizontal asymptote: $\deg P = \deg Q = 2$, so $y = \dfrac{2}{1} = 2$.</li>
+</ol>
+</div>
 <div class="desmos-graph" data-fns="y=(2x^2+1)/(x^2-4)|x=2|x=-2|y=2" data-xmin="-6" data-xmax="6" data-ymin="-8" data-ymax="8"></div>
 <div class="desmos-caption">Drag, zoom, and hover. Dashed lines show the asymptotes at $x=\pm 2$ and $y=2$.</div>
 </div>
@@ -1385,18 +1648,22 @@
 <div class="section">
 <div class="section-label">Transformations of graphs</div>
 <div class="card">
+<p class="body">Every graph transformation is a change to the formula that moves, flips, or stretches the picture. The key is to know whether the change is <em>inside</em> (affects $x$, moves horizontally) or <em>outside</em> (affects $y$, moves vertically).</p>
 <div class="table-wrap">
 <table>
-<tr><th>Transformation</th><th>Effect</th></tr>
-<tr><td>$f(x)+c$</td><td>Vertical shift up $c$</td></tr>
-<tr><td>$f(x-c)$</td><td>Horizontal shift right $c$</td></tr>
-<tr><td>$-f(x)$</td><td>Reflect across $x$-axis</td></tr>
-<tr><td>$f(-x)$</td><td>Reflect across $y$-axis</td></tr>
-<tr><td>$cf(x),\ c>1$</td><td>Vertical stretch by factor $c$</td></tr>
-<tr><td>$f(cx),\ c>1$</td><td>Horizontal compression by $c$</td></tr>
+<tr><th>Formula change</th><th>Effect on graph</th><th>Memory hint</th></tr>
+<tr><td>$f(x) + c$</td><td>Shift UP by $c$</td><td>Adding outside adds to height</td></tr>
+<tr><td>$f(x) - c$</td><td>Shift DOWN by $c$</td><td>Subtracting outside lowers the graph</td></tr>
+<tr><td>$f(x - c)$</td><td>Shift RIGHT by $c$</td><td>Counterintuitive: minus inside goes right</td></tr>
+<tr><td>$f(x + c)$</td><td>Shift LEFT by $c$</td><td>Plus inside goes left</td></tr>
+<tr><td>$-f(x)$</td><td>Reflect across $x$-axis</td><td>Flip vertically</td></tr>
+<tr><td>$f(-x)$</td><td>Reflect across $y$-axis</td><td>Flip horizontally</td></tr>
+<tr><td>$c \cdot f(x),\ c > 1$</td><td>Vertical stretch</td><td>Multiply outside = scale height</td></tr>
+<tr><td>$f(cx),\ c > 1$</td><td>Horizontal compression</td><td>Multiply inside = compress width</td></tr>
 </table>
 </div>
-<div class="tip"><strong>Even/odd:</strong> $f$ is <em>even</em> if $f(-x)=f(x)$ (symmetric across $y$-axis: $x^2,\cos x$). Odd if $f(-x)=-f(x)$ (symmetric about origin: $x^3,\sin x$).</div>
+<div class="tip"><strong>Even vs. odd functions:</strong> $f$ is <em>even</em> if $f(-x)=f(x)$ — symmetric about the $y$-axis (e.g., $x^2, \cos x$). $f$ is <em>odd</em> if $f(-x)=-f(x)$ — symmetric about the origin (e.g., $x^3, \sin x$).</div>
+<div class="warn"><strong>Common mistake:</strong> Horizontal shifts are counterintuitive. $f(x-3)$ shifts the graph RIGHT by 3, not left. Think of it as "$x$ needs to be 3 units larger before the original behavior kicks in."</div>
 <div class="desmos-graph" data-fns="y=x^2|y=(x-2)^2|y=(x-2)^2+3|y=-(x-2)^2+3" data-xmin="-6" data-xmax="8" data-ymin="-6" data-ymax="10"></div>
 <div class="desmos-caption">Four transformations of $y=x^2$: shift right 2, then up 3, then reflect vertically.</div>
 </div>
@@ -1405,25 +1672,41 @@
 <div class="section">
 <div class="section-label">Composite functions</div>
 <div class="card">
-<div class="formula-box">$(f\circ g)(x) = f(g(x))$</div>
-<p class="body">Apply $g$ first, then $f$. The domain of $f\circ g$ is all $x$ in the domain of $g$ such that $g(x)$ lies in the domain of $f$.</p>
-<div class="example-box"><strong>Example</strong>$f(x)=\sqrt{x},\ g(x)=x-1$. Then $(f\circ g)(x)=\sqrt{x-1}$ with domain $x\ge 1$, while $(g\circ f)(x)=\sqrt{x}-1$ with domain $x\ge 0$.</div>
+<p class="body">Composing two functions means feeding the output of one into the input of another — a two-step machine. Read the composition symbol $\circ$ right to left: in $f \circ g$, apply $g$ first, then $f$.</p>
+<div class="formula-box">$(f\circ g)(x) = f(g(x))$ — read right to left: $g$ acts first, then $f$.</div>
+<div class="example-box">
+<strong>Example:</strong> With $f(x)=\sqrt{x}$ and $g(x)=x-1$:
+<ol class="list-styled" style="list-style-type:decimal">
+<li>$(f\circ g)(x) = f(x-1) = \sqrt{x-1}$. Requires $x-1 \ge 0$, so domain: $x \ge 1$.</li>
+<li>$(g\circ f)(x) = g(\sqrt{x}) = \sqrt{x}-1$. Requires $x \ge 0$, so domain: $x \ge 0$.</li>
+</ol>
+<div class="warn"><strong>Order matters:</strong> $f \circ g \ne g \circ f$ in general. These two give different formulas and different domains.</div>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Inverse functions</div>
 <div class="card">
-<p class="body">$f^{-1}$ is the inverse of $f$ if $f(f^{-1}(x))=x$ and $f^{-1}(f(x))=x$. A function has an inverse iff it is <strong>one-to-one</strong> (horizontal line test).</p>
-<strong style="font-size:13px">To find $f^{-1}$:</strong>
+<p class="body">The <strong>inverse function</strong> $f^{-1}$ "undoes" what $f$ does — it runs the machine backward. A function has an inverse only if it is <strong>one-to-one</strong> (no two inputs give the same output). Check with the <em>horizontal line test</em>: if any horizontal line hits the graph twice, the function is not one-to-one.</p>
+<div class="tip"><strong>How to find $f^{-1}$ algebraically:</strong>
 <ol class="list-styled" style="list-style-type:decimal">
-<li>Replace $f(x)$ with $y$.</li>
+<li>Write $y = f(x)$.</li>
 <li>Swap $x$ and $y$.</li>
 <li>Solve for $y$.</li>
 <li>Rename $y$ as $f^{-1}(x)$.</li>
 </ol>
-<div class="example-box"><strong>Example</strong>$f(x)=2x-5$. Swap and solve: $x=2y-5 \Rightarrow y=\tfrac{x+5}{2}$. So $f^{-1}(x)=\tfrac{x+5}{2}$.</div>
-<div class="tip">The graph of $f^{-1}$ is the reflection of $f$ across the line $y=x$. Domain of $f$ = range of $f^{-1}$, and vice versa.</div>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Find $f^{-1}$ for $f(x) = 2x - 5$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Write $y = 2x - 5$.</li>
+<li>Swap: $x = 2y - 5$.</li>
+<li>Solve for $y$: $y = \dfrac{x+5}{2}$.</li>
+<li>$f^{-1}(x) = \dfrac{x+5}{2}$.</li>
+</ol>
+<div class="tip"><strong>Check:</strong> $f(f^{-1}(x)) = 2\cdot\dfrac{x+5}{2} - 5 = x$ ✓. Graphically, $f^{-1}$ is the reflection of $f$ across $y = x$.</div>
+</div>
 </div>
 </div>
 ```
@@ -1993,79 +2276,159 @@
 <div class="section">
 <div class="section-label">Exponential functions</div>
 <div class="card">
-<p class="body">An <strong>exponential function</strong> has the form $f(x)=a\cdot b^x$ with base $b>0,\ b\ne 1$. The natural exponential uses $b=e\approx 2.71828$.</p>
-<ul class="list-styled">
-<li>Domain: all reals. Range: $(0,\infty)$ when $a>0$.</li>
-<li>If $b>1$: increasing (growth). If $0<b<1$: decreasing (decay).</li>
-<li>Horizontal asymptote $y=0$.</li>
-<li>Passes through $(0,a)$.</li>
-</ul>
-<div class="formula-box">Compound interest: $A = P\left(1 + \dfrac{r}{n}\right)^{nt}$; continuous: $A = Pe^{rt}$.</div>
+<p class="body">Exponential functions model things that grow or shrink by a constant <em>percentage</em> each step — compound interest, population growth, radioactive decay. The base $b$ is the growth factor per unit time.</p>
+<p class="body">An <strong>exponential function</strong> has the form $f(x) = a \cdot b^x$ with $b > 0$, $b \ne 1$. The most important base is $e \approx 2.71828$ (the natural exponential).</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Growth ($b > 1$)</strong>
+    <span>Graph rises left to right</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">e.g., $2^x$, $e^x$, $3^x$</span>
+  </div>
+  <div class="concept-card">
+    <strong>Decay ($0 &lt; b &lt; 1$)</strong>
+    <span>Graph falls left to right</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">e.g., $(0.5)^x$, $e^{-x}$</span>
+  </div>
+  <div class="concept-card">
+    <strong>Key features</strong>
+    <span>Domain: all reals. Range: $(0,\infty)$. Passes through $(0,a)$. Horizontal asymptote $y=0$.</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Never crosses the $x$-axis</span>
+  </div>
+</div>
+<div class="formula-box">Compound interest: $A = P\!\left(1 + \dfrac{r}{n}\right)^{nt}$ &nbsp;&nbsp; Continuous: $A = Pe^{rt}$</div>
+<p class="body">Use compound interest when $n$ is specified (monthly, daily, etc.); use continuous when the problem says "continuously compounded."</p>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Logarithms — the inverse</div>
+<div class="section-label">Logarithms — the inverse of exponentials</div>
 <div class="card">
+<p class="body">A logarithm answers the question: "What power do I raise $b$ to in order to get $x$?" Just as subtraction undoes addition, logarithms undo exponentials.</p>
 <div class="formula-box">$y = \log_b x \iff b^y = x \qquad (b>0,\ b\ne 1,\ x>0)$</div>
-<p class="body"><strong>Common log:</strong> $\log x = \log_{10} x$. &nbsp; <strong>Natural log:</strong> $\ln x = \log_e x$.</p>
-<p class="body">Domain: $(0,\infty)$. Range: all reals. Vertical asymptote $x=0$. Passes through $(1,0)$.</p>
+<p class="body"><strong>Common log:</strong> $\log x = \log_{10} x$ (the default on most calculators). <strong>Natural log:</strong> $\ln x = \log_e x$ (the one used in calculus).</p>
+<div class="example-box">
+<strong>Evaluating logarithms:</strong> Rewrite as an exponential and ask "what power?"
+<ul class="list-styled">
+<li>$\log_3 81 = 4$ because $3^4 = 81$.</li>
+<li>$\log_{1/2} 8 = -3$ because $(1/2)^{-3} = 2^3 = 8$.</li>
+<li>$\log_5 1 = 0$ because $5^0 = 1$.</li>
+<li>$\ln e^{2x} = 2x$ (inverse property).</li>
+</ul>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Logarithm properties</div>
 <div class="card">
-<div class="formula-box">$\log_b(xy) = \log_b x + \log_b y$</div>
-<div class="formula-box">$\log_b\!\left(\dfrac{x}{y}\right) = \log_b x - \log_b y$</div>
-<div class="formula-box">$\log_b(x^p) = p\log_b x$</div>
-<div class="formula-box">$\log_b b = 1,\quad \log_b 1 = 0,\quad b^{\log_b x} = x,\quad \log_b(b^x) = x$</div>
-<div class="formula-box">Change of base: $\log_b x = \dfrac{\ln x}{\ln b} = \dfrac{\log x}{\log b}$</div>
-<div class="example-box"><strong>Example</strong>Expand $\log_2\!\left(\dfrac{x^3 \sqrt{y}}{z}\right) = 3\log_2 x + \tfrac{1}{2}\log_2 y - \log_2 z$.</div>
+<p class="body">The log properties mirror the exponent rules — because logarithms ARE exponents. Each rule has an "in English" translation that makes it memorable.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Product rule</strong>
+    <span>$\log_b(xy) = \log_b x + \log_b y$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Log of a product = sum of logs</span>
+  </div>
+  <div class="concept-card">
+    <strong>Quotient rule</strong>
+    <span>$\log_b\!\left(\dfrac{x}{y}\right) = \log_b x - \log_b y$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Log of a quotient = difference of logs</span>
+  </div>
+  <div class="concept-card">
+    <strong>Power rule</strong>
+    <span>$\log_b(x^p) = p\log_b x$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Exponent comes down in front as a multiplier</span>
+  </div>
+  <div class="concept-card">
+    <strong>Inverse properties</strong>
+    <span>$b^{\log_b x} = x$ and $\log_b(b^x) = x$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Exponential and log cancel each other</span>
+  </div>
+  <div class="concept-card">
+    <strong>Change of base</strong>
+    <span>$\log_b x = \dfrac{\ln x}{\ln b}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Convert any log to natural log for a calculator</span>
+  </div>
 </div>
+<div class="warn"><strong>Common mistake:</strong> $\log_b(x + y) \ne \log_b x + \log_b y$. There is NO rule for the log of a sum. Only the log of a <em>product</em> splits into a sum.</div>
+<div class="example-box">
+<strong>Example — expanding:</strong> $\log_2\!\left(\dfrac{x^3 \sqrt{y}}{z}\right)$
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Quotient rule: $= \log_2(x^3 \sqrt{y}) - \log_2 z$.</li>
+<li>Product rule on first term: $= \log_2 x^3 + \log_2 y^{1/2} - \log_2 z$.</li>
+<li>Power rule: $= 3\log_2 x + \tfrac{1}{2}\log_2 y - \log_2 z$.</li>
+</ol>
 </div>
-
-<div class="section">
-<div class="section-label">Evaluating logarithms</div>
-<div class="card">
-<p class="body">Convert to exponential form mentally: $\log_b x = ?$ means "$b^? = x$."</p>
-<div class="example-box"><strong>Examples</strong>
-$\log_3 81 = 4$ (since $3^4=81$). &nbsp;
-$\log_{1/2} 8 = -3$ (since $(1/2)^{-3}=8$). &nbsp;
-$\log_5 1 = 0$. &nbsp;
-$\ln e^{2x} = 2x$.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Solving exponential equations</div>
 <div class="card">
-<strong style="font-size:13px">Strategy 1 — same base:</strong> if $b^{f(x)} = b^{g(x)}$ then $f(x)=g(x)$.
-<div class="example-box"><strong>Example</strong>$2^{x+1} = 32 \Rightarrow 2^{x+1}=2^5 \Rightarrow x=4$.</div>
-<strong style="font-size:13px">Strategy 2 — take logs:</strong> if bases can't be matched, apply $\ln$ to both sides and use the power rule.
-<div class="example-box"><strong>Example</strong>$5^x = 17 \Rightarrow x\ln 5 = \ln 17 \Rightarrow x = \dfrac{\ln 17}{\ln 5} \approx 1.760$.</div>
-<div class="example-box"><strong>Example (quadratic in disguise)</strong>$e^{2x} - 5e^x + 6 = 0$. Let $u=e^x$: $u^2-5u+6=0 \Rightarrow u=2,3 \Rightarrow x=\ln 2,\ \ln 3$.</div>
+<p class="body">The strategy depends on whether you can rewrite both sides with the same base. If yes, equate exponents. If not, take the natural log of both sides.</p>
+<div class="tip"><strong>Solving strategy selector:</strong>
+<ul class="list-styled">
+<li><strong>Same-base method:</strong> rewrite both sides as $b^{(\cdots)} = b^{(\cdots)}$, then equate exponents directly.</li>
+<li><strong>Take-log method:</strong> when bases can't match, apply $\ln$ to both sides and use the power rule to bring the exponent down.</li>
+<li><strong>Substitution method:</strong> if the equation is quadratic in $b^x$, let $u = b^x$ and solve for $u$ first.</li>
+</ul>
+</div>
+<div class="example-box">
+<strong>Same-base:</strong> Solve $2^{x+1} = 32$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Rewrite: $32 = 2^5$, so $2^{x+1} = 2^5$.</li>
+<li>Equate exponents: $x+1 = 5 \Rightarrow x = 4$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Take-log:</strong> Solve $5^x = 17$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Take $\ln$ of both sides: $\ln(5^x) = \ln 17$.</li>
+<li>Power rule: $x \ln 5 = \ln 17$.</li>
+<li>Solve: $x = \dfrac{\ln 17}{\ln 5} \approx 1.760$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Quadratic in disguise:</strong> Solve $e^{2x} - 5e^x + 6 = 0$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Note $e^{2x} = (e^x)^2$. Let $u = e^x$: $u^2 - 5u + 6 = 0$.</li>
+<li>Factor: $(u-2)(u-3) = 0 \Rightarrow u = 2$ or $u = 3$.</li>
+<li>Back-sub: $e^x = 2 \Rightarrow x = \ln 2$; $e^x = 3 \Rightarrow x = \ln 3$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Solving logarithmic equations</div>
 <div class="card">
-<strong style="font-size:13px">Strategy 1 — condense to single log, then exponentiate.</strong>
-<div class="example-box"><strong>Example</strong>$\log_2 x + \log_2(x-2) = 3 \Rightarrow \log_2[x(x-2)] = 3 \Rightarrow x(x-2)=8 \Rightarrow x^2-2x-8=0 \Rightarrow x=4$ or $-2$. Reject $-2$ (log of negative undefined). $x=4$.</div>
-<strong style="font-size:13px">Strategy 2 — equate arguments if same log on both sides.</strong>
-<div class="example-box"><strong>Example</strong>$\ln(2x+1)=\ln(x+5) \Rightarrow 2x+1=x+5 \Rightarrow x=4$.</div>
-<div class="warn"><strong>Always check:</strong> arguments must be positive in the original equation.</div>
+<p class="body">The goal is to get the equation into the form "one log = a number" or "same log on both sides," then convert to exponential form. Always verify that final answers keep all log arguments positive.</p>
+<div class="example-box">
+<strong>Method 1 — condense, then exponentiate:</strong> Solve $\log_2 x + \log_2(x-2) = 3$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Product rule: $\log_2[x(x-2)] = 3$.</li>
+<li>Exponentiate: $x(x-2) = 2^3 = 8$.</li>
+<li>Expand: $x^2 - 2x - 8 = 0 \Rightarrow (x-4)(x+2) = 0$. Candidates: $x = 4$ or $x = -2$.</li>
+<li>Check: $x = -2$ makes $\log_2(-2)$ undefined. Reject. Only $x = 4$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Method 2 — equate arguments:</strong> Solve $\ln(2x+1) = \ln(x+5)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Same log on both sides: $2x+1 = x+5 \Rightarrow x = 4$.</li>
+<li>Check: $2(4)+1 = 9 > 0$ ✓ and $4+5 = 9 > 0$ ✓.</li>
+</ol>
+</div>
+<div class="warn"><strong>Always check:</strong> arguments must be positive in the original equation. This is where extraneous solutions hide.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Graphing</div>
+<div class="section-label">Graphing exponential and logarithmic functions</div>
 <div class="card">
-<p class="body"><strong>Exponential</strong> $y=b^x$: through $(0,1)$ and $(1,b)$; HA $y=0$; one-to-one. <strong>Logarithmic</strong> $y=\log_b x$: reflection of the exponential across $y=x$; through $(1,0)$ and $(b,1)$; VA $x=0$.</p>
+<p class="body"><strong>Exponential</strong> $y=b^x$: passes through $(0,1)$ and $(1,b)$; horizontal asymptote $y=0$; always one-to-one. <strong>Logarithmic</strong> $y=\log_b x$: the reflection of the exponential across the line $y=x$; passes through $(1,0)$ and $(b,1)$; vertical asymptote $x=0$.</p>
 <div class="desmos-graph" data-fns="y=e^x|y=\ln(x)|y=x" data-xmin="-4" data-xmax="6" data-ymin="-4" data-ymax="6"></div>
 <div class="desmos-caption">$y=e^x$ and $y=\ln x$ are reflections across $y=x$.</div>
-<div class="tip">Transformations work the same: $\log_b(x-h)+k$ has VA at $x=h$ and point $(h+1,k)$.</div>
+<div class="tip"><strong>Transformations:</strong> $\log_b(x-h)+k$ has vertical asymptote at $x=h$ and passes through $(h+1, k)$. All standard graph shift/stretch rules apply.</div>
 </div>
 </div>
 ```
@@ -2635,118 +2998,161 @@ $\ln e^{2x} = 2x$.</div>
 <div class="section">
 <div class="section-label">Angle measure</div>
 <div class="card">
+<p class="body">Angles can be measured in degrees (familiar from geometry) or radians (required for calculus). Radians measure the arc length on a unit circle — a full circle is $2\pi$ radians = $360°$.</p>
 <div class="formula-box">$180^\circ = \pi$ rad &nbsp;&nbsp; $1^\circ = \dfrac{\pi}{180}$ rad &nbsp;&nbsp; $1$ rad $= \dfrac{180^\circ}{\pi}$</div>
-<p class="body">Arc length: $s = r\theta$ (with $\theta$ in radians). Sector area: $A = \tfrac{1}{2}r^2\theta$.</p>
+<p class="body"><strong>Arc length:</strong> $s = r\theta$ (with $\theta$ in radians). <strong>Sector area:</strong> $A = \tfrac{1}{2}r^2\theta$.</p>
+<div class="tip"><strong>Quick conversion trick:</strong> To go degrees → radians, multiply by $\dfrac{\pi}{180}$. To go radians → degrees, multiply by $\dfrac{180}{\pi}$. Example: $60° \times \dfrac{\pi}{180} = \dfrac{\pi}{3}$.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Six trig functions — right triangle</div>
+<div class="section-label">Six trig functions — SOHCAHTOA</div>
 <div class="card">
-<p class="body">For acute $\theta$ with opposite $O$, adjacent $A$, hypotenuse $H$:</p>
-<div class="formula-box">$\sin\theta = \dfrac{O}{H},\ \cos\theta = \dfrac{A}{H},\ \tan\theta = \dfrac{O}{A}$</div>
-<div class="formula-box">$\csc\theta = \dfrac{1}{\sin\theta},\ \sec\theta = \dfrac{1}{\cos\theta},\ \cot\theta = \dfrac{1}{\tan\theta}$</div>
+<p class="body">For a right triangle with acute angle $\theta$, three sides: <strong>O</strong>pposite, <strong>A</strong>djacent, <strong>H</strong>ypotenuse. The memory aid SOHCAHTOA gives you the three primary trig functions:</p>
+<div class="tip"><strong>SOHCAHTOA:</strong> Sine = Opposite/Hypotenuse, Cosine = Adjacent/Hypotenuse, Tangent = Opposite/Adjacent.</div>
+<div class="formula-box">$\sin\theta = \dfrac{O}{H},\quad \cos\theta = \dfrac{A}{H},\quad \tan\theta = \dfrac{O}{A}$</div>
+<p class="body">The three reciprocal functions are just the flips of sin, cos, and tan:</p>
+<div class="formula-box">$\csc\theta = \dfrac{H}{O} = \dfrac{1}{\sin\theta},\quad \sec\theta = \dfrac{H}{A} = \dfrac{1}{\cos\theta},\quad \cot\theta = \dfrac{A}{O} = \dfrac{1}{\tan\theta}$</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Unit circle</div>
+<div class="section-label">Unit circle and key values</div>
 <div class="card">
-<p class="body">For any angle $\theta$ in standard position, the terminal side hits the unit circle at $(\cos\theta,\sin\theta)$. Key values:</p>
+<p class="body">For any angle $\theta$ in standard position, the terminal side hits the unit circle at the point $(\cos\theta, \sin\theta)$. You only need to memorize Quadrant I values — the values in other quadrants follow from symmetry rules.</p>
 <div class="table-wrap">
 <table>
-<tr><th>$\theta$</th><th>$0$</th><th>$\pi/6$</th><th>$\pi/4$</th><th>$\pi/3$</th><th>$\pi/2$</th></tr>
-<tr><td>$\sin$</td><td>$0$</td><td>$1/2$</td><td>$\sqrt 2/2$</td><td>$\sqrt 3/2$</td><td>$1$</td></tr>
-<tr><td>$\cos$</td><td>$1$</td><td>$\sqrt 3/2$</td><td>$\sqrt 2/2$</td><td>$1/2$</td><td>$0$</td></tr>
-<tr><td>$\tan$</td><td>$0$</td><td>$\sqrt 3/3$</td><td>$1$</td><td>$\sqrt 3$</td><td>undef</td></tr>
+<tr><th>$\theta$ (degrees)</th><th>$0°$</th><th>$30°$ ($\pi/6$)</th><th>$45°$ ($\pi/4$)</th><th>$60°$ ($\pi/3$)</th><th>$90°$ ($\pi/2$)</th></tr>
+<tr><td>$\sin\theta$</td><td>$0$</td><td>$\tfrac{1}{2}$</td><td>$\tfrac{\sqrt{2}}{2}$</td><td>$\tfrac{\sqrt{3}}{2}$</td><td>$1$</td></tr>
+<tr><td>$\cos\theta$</td><td>$1$</td><td>$\tfrac{\sqrt{3}}{2}$</td><td>$\tfrac{\sqrt{2}}{2}$</td><td>$\tfrac{1}{2}$</td><td>$0$</td></tr>
+<tr><td>$\tan\theta$</td><td>$0$</td><td>$\tfrac{\sqrt{3}}{3}$</td><td>$1$</td><td>$\sqrt{3}$</td><td>undef</td></tr>
 </table>
 </div>
-<div class="tip"><strong>ASTC / "All Students Take Calculus":</strong> Quadrant I — all positive; II — sin positive; III — tan positive; IV — cos positive.</div>
+<div class="tip"><strong>Memory trick for sin values:</strong> $\sin(0°, 30°, 45°, 60°, 90°) = \dfrac{\sqrt{0}}{2}, \dfrac{\sqrt{1}}{2}, \dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{3}}{2}, \dfrac{\sqrt{4}}{2}$ — the pattern is $\dfrac{\sqrt{n}}{2}$ for $n = 0,1,2,3,4$. Cosine goes in reverse order.</div>
+<div class="tip"><strong>Quadrant signs — "All Students Take Calculus" (ASTC):</strong> QI: all positive; QII: Sine positive; QIII: Tangent positive; QIV: Cosine positive. Signs in other quadrants are determined by reflection symmetry.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Graphs of trig functions</div>
 <div class="card">
-<ul class="list-styled">
-<li>$y = \sin x$: period $2\pi$, amplitude 1, range $[-1,1]$.</li>
-<li>$y = \cos x$: same shape, phase-shifted by $\pi/2$.</li>
-<li>$y = \tan x$: period $\pi$, VAs at $x=\tfrac{\pi}{2}+k\pi$, range all reals.</li>
-<li>$y = \csc x, \sec x$: VAs where sin/cos = 0; range $(-\infty,-1]\cup [1,\infty)$.</li>
-<li>$y = \cot x$: period $\pi$, VAs at $x=k\pi$.</li>
-</ul>
-<div class="formula-box">General sinusoid: $y = A\sin(B(x - C)) + D$ — amplitude $|A|$, period $2\pi/B$, phase shift $C$, vertical shift $D$.</div>
+<p class="body">All six trig graphs repeat forever — they are periodic. Knowing the period, amplitude, and key features lets you sketch any trig graph quickly.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Function</th><th>Period</th><th>Amplitude / Range</th><th>Key feature</th></tr>
+<tr><td>$\sin x$</td><td>$2\pi$</td><td>1; range $[-1,1]$</td><td>Starts at origin, peaks at $\pi/2$</td></tr>
+<tr><td>$\cos x$</td><td>$2\pi$</td><td>1; range $[-1,1]$</td><td>Starts at 1, same shape as sin shifted $\pi/2$ left</td></tr>
+<tr><td>$\tan x$</td><td>$\pi$</td><td>no amplitude; range all reals</td><td>Vertical asymptotes at $x=\tfrac{\pi}{2}+k\pi$</td></tr>
+<tr><td>$\csc x, \sec x$</td><td>$2\pi$</td><td>range $(-\infty,-1]\cup[1,\infty)$</td><td>VAs where sin/cos = 0</td></tr>
+</table>
+</div>
+<div class="formula-box">General sinusoid: $y = A\sin(B(x - C)) + D$</div>
+<p class="body">Amplitude $= |A|$, period $= \dfrac{2\pi}{B}$, phase shift $= C$ (right), vertical shift $= D$.</p>
 <div class="desmos-graph" data-fns="y=\sin(x)|y=\cos(x)|y=\tan(x)" data-xmin="-6.5" data-xmax="6.5" data-ymin="-3" data-ymax="3"></div>
 <div class="desmos-caption">$\sin x$, $\cos x$ (period $2\pi$), and $\tan x$ (period $\pi$, vertical asymptotes).</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Fundamental identities</div>
+<div class="section-label">Pythagorean identities</div>
 <div class="card">
-<strong style="font-size:13px">Reciprocal &amp; quotient:</strong>
-<div class="formula-box">$\tan\theta=\dfrac{\sin\theta}{\cos\theta},\ \cot\theta=\dfrac{\cos\theta}{\sin\theta}$</div>
-<strong style="font-size:13px">Pythagorean:</strong>
-<div class="formula-box">$\sin^2\theta + \cos^2\theta = 1$</div>
-<div class="formula-box">$1 + \tan^2\theta = \sec^2\theta$</div>
-<div class="formula-box">$1 + \cot^2\theta = \csc^2\theta$</div>
-<strong style="font-size:13px">Even/odd:</strong>
-<div class="formula-box">$\sin(-x)=-\sin x,\ \cos(-x)=\cos x,\ \tan(-x)=-\tan x$</div>
-<strong style="font-size:13px">Sum &amp; difference:</strong>
+<p class="body">The Pythagorean identities come directly from $x^2 + y^2 = 1$ on the unit circle (since $x = \cos\theta$ and $y = \sin\theta$). They are used constantly for simplifying trig expressions and solving trig equations.</p>
+<div class="formula-box">$\sin^2\theta + \cos^2\theta = 1$ (the fundamental one)</div>
+<div class="formula-box">$1 + \tan^2\theta = \sec^2\theta$ (divide the first by $\cos^2\theta$)</div>
+<div class="formula-box">$1 + \cot^2\theta = \csc^2\theta$ (divide the first by $\sin^2\theta$)</div>
+<div class="tip"><strong>When to use:</strong> Pythagorean identities let you replace $\sin^2$ with $1-\cos^2$ (or vice versa), which is essential for integration and identity proofs.</div>
+<div class="formula-box">Reciprocal: $\tan\theta=\dfrac{\sin\theta}{\cos\theta},\quad \cot\theta=\dfrac{\cos\theta}{\sin\theta}$</div>
+<div class="formula-box">Even/odd: $\sin(-x)=-\sin x,\quad \cos(-x)=\cos x,\quad \tan(-x)=-\tan x$</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Sum, difference, and double-angle identities</div>
+<div class="card">
+<p class="body">These identities let you compute trig values at "non-standard" angles and are essential for solving trig equations and calculus problems.</p>
+<strong style="font-size:13px">Sum and difference:</strong>
 <div class="formula-box">$\sin(A\pm B) = \sin A\cos B \pm \cos A\sin B$</div>
 <div class="formula-box">$\cos(A\pm B) = \cos A\cos B \mp \sin A\sin B$</div>
-<div class="formula-box">$\tan(A\pm B) = \dfrac{\tan A \pm \tan B}{1 \mp \tan A \tan B}$</div>
+<div class="tip"><strong>When to use:</strong> Use sum/difference formulas when you need exact values for angles like $75°$ (= $45°+30°$) or $\pi/12$ (= $\pi/3 - \pi/4$).</div>
 <strong style="font-size:13px">Double angle:</strong>
 <div class="formula-box">$\sin 2\theta = 2\sin\theta\cos\theta$</div>
 <div class="formula-box">$\cos 2\theta = \cos^2\theta - \sin^2\theta = 1 - 2\sin^2\theta = 2\cos^2\theta - 1$</div>
-<div class="formula-box">$\tan 2\theta = \dfrac{2\tan\theta}{1-\tan^2\theta}$</div>
-<strong style="font-size:13px">Half angle:</strong>
-<div class="formula-box">$\sin^2\theta = \dfrac{1-\cos 2\theta}{2},\ \cos^2\theta = \dfrac{1+\cos 2\theta}{2}$</div>
+<div class="tip"><strong>When to use:</strong> Double-angle formulas arise when squaring or multiplying trig functions, common in calculus integration by substitution.</div>
+<strong style="font-size:13px">Half-angle (power-reduction):</strong>
+<div class="formula-box">$\sin^2\theta = \dfrac{1-\cos 2\theta}{2},\qquad \cos^2\theta = \dfrac{1+\cos 2\theta}{2}$</div>
+<div class="tip"><strong>When to use:</strong> Power-reduction formulas eliminate squared trig functions — essential when integrating $\sin^2 x$ or $\cos^2 x$.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Inverse trig functions</div>
 <div class="card">
-<p class="body">Inverses exist only on restricted domains where the original is one-to-one.</p>
+<p class="body">Inverse trig functions answer: "which angle has this trig value?" Since trig functions repeat, we restrict to a single period to get one unique answer. Each inverse returns an angle in a specific range.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Function</th><th>Domain</th><th>Range</th></tr>
-<tr><td>$\sin^{-1} x$</td><td>$[-1,1]$</td><td>$[-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$</td></tr>
-<tr><td>$\cos^{-1} x$</td><td>$[-1,1]$</td><td>$[0,\pi]$</td></tr>
-<tr><td>$\tan^{-1} x$</td><td>$(-\infty,\infty)$</td><td>$(-\tfrac{\pi}{2}, \tfrac{\pi}{2})$</td></tr>
+<tr><th>Function</th><th>Domain (input)</th><th>Range (angle output)</th></tr>
+<tr><td>$\sin^{-1} x$ (arcsin)</td><td>$[-1,1]$</td><td>$[-\tfrac{\pi}{2}, \tfrac{\pi}{2}]$ — QIV to QI</td></tr>
+<tr><td>$\cos^{-1} x$ (arccos)</td><td>$[-1,1]$</td><td>$[0,\pi]$ — QI and QII</td></tr>
+<tr><td>$\tan^{-1} x$ (arctan)</td><td>$(-\infty,\infty)$</td><td>$(-\tfrac{\pi}{2}, \tfrac{\pi}{2})$ — open interval</td></tr>
 </table>
 </div>
-<div class="example-box"><strong>Example</strong>$\sin^{-1}(\tfrac{1}{2})=\tfrac{\pi}{6}$ (only one answer in $[-\tfrac{\pi}{2},\tfrac{\pi}{2}]$).</div>
+<div class="example-box">
+<strong>Example:</strong> Evaluate $\sin^{-1}\!\left(\tfrac{1}{2}\right)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Ask: "which angle $\theta$ in $[-\pi/2, \pi/2]$ satisfies $\sin\theta = 1/2$?"</li>
+<li>From the unit circle: $\sin(\pi/6) = 1/2$, and $\pi/6 \in [-\pi/2, \pi/2]$.</li>
+<li>Answer: $\pi/6$.</li>
+</ol>
+</div>
+<div class="warn"><strong>Common mistake:</strong> $\sin^{-1}(\sin(5\pi/6)) \ne 5\pi/6$. The inverse always returns a value in its restricted range. Since $\sin(5\pi/6) = 1/2$, we get $\sin^{-1}(1/2) = \pi/6$.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Solving trig equations</div>
 <div class="card">
-<strong style="font-size:13px">Strategy:</strong> isolate the trig function, use the inverse to find a reference angle, then list ALL solutions in the requested interval using periodicity and quadrant analysis.
-<div class="example-box"><strong>Example</strong>$2\sin x - 1 = 0$ on $[0, 2\pi)$. $\sin x = \tfrac{1}{2}$. Solutions: $x=\tfrac{\pi}{6}, \tfrac{5\pi}{6}$.</div>
-<div class="example-box"><strong>Example (quadratic)</strong>$2\cos^2 x - \cos x - 1 = 0$ on $[0,2\pi)$. Let $u=\cos x$: $(2u+1)(u-1)=0 \Rightarrow u=-\tfrac{1}{2},1$. So $x=\tfrac{2\pi}{3}, \tfrac{4\pi}{3}, 0$.</div>
-<div class="tip">General solution: add the period to your base answer(s). E.g., $\sin x = \tfrac{1}{2}$ has $x = \tfrac{\pi}{6}+2k\pi$ or $x=\tfrac{5\pi}{6}+2k\pi$, $k\in\mathbb Z$.</div>
+<p class="body">Solving a trig equation means finding all angles where it holds. The steps: isolate the trig function, find a reference angle using the inverse, then list all solutions using quadrant analysis and periodicity.</p>
+<div class="example-box">
+<strong>Example:</strong> Solve $2\sin x - 1 = 0$ on $[0, 2\pi)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Isolate: $\sin x = \tfrac{1}{2}$.</li>
+<li>Reference angle: $\sin^{-1}(\tfrac{1}{2}) = \tfrac{\pi}{6}$.</li>
+<li>Sine is positive in QI and QII: $x = \tfrac{\pi}{6}$ and $x = \pi - \tfrac{\pi}{6} = \tfrac{5\pi}{6}$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example (quadratic type):</strong> Solve $2\cos^2 x - \cos x - 1 = 0$ on $[0,2\pi)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Let $u = \cos x$: $2u^2 - u - 1 = (2u+1)(u-1) = 0$.</li>
+<li>$\cos x = -\tfrac{1}{2}$: $x = \tfrac{2\pi}{3}$ (QII) and $x = \tfrac{4\pi}{3}$ (QIII).</li>
+<li>$\cos x = 1$: $x = 0$.</li>
+</ol>
+</div>
+<div class="tip"><strong>General solution:</strong> add the period to each base answer. For $\sin x = \tfrac{1}{2}$: $x = \tfrac{\pi}{6}+2k\pi$ or $x=\tfrac{5\pi}{6}+2k\pi$, $k\in\mathbb Z$.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Oblique triangles — Laws of Sines and Cosines</div>
 <div class="card">
+<p class="body">When a triangle is not a right triangle, you need either the Law of Sines or Law of Cosines depending on what's given.</p>
 <div class="formula-box">Law of Sines: $\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C}$</div>
 <div class="formula-box">Law of Cosines: $c^2 = a^2 + b^2 - 2ab\cos C$</div>
-<div class="table-wrap">
-<table>
-<tr><th>Given</th><th>Use</th></tr>
-<tr><td>SSS (three sides)</td><td>Law of Cosines</td></tr>
-<tr><td>SAS (two sides + included angle)</td><td>Law of Cosines</td></tr>
-<tr><td>ASA / AAS</td><td>Law of Sines</td></tr>
-<tr><td>SSA (ambiguous case)</td><td>Law of Sines — 0, 1, or 2 triangles</td></tr>
-</table>
+<div class="tip"><strong>Which law to use:</strong>
+<ul class="list-styled">
+<li><strong>SSS or SAS</strong> (sides dominate): Law of Cosines.</li>
+<li><strong>ASA, AAS</strong> (angles and one side): Law of Sines.</li>
+<li><strong>SSA</strong> (ambiguous): Law of Sines, but check for 0, 1, or 2 possible triangles.</li>
+</ul>
 </div>
-<div class="example-box"><strong>Example</strong>$a=7, b=10, C=60^\circ$. By Law of Cosines: $c^2 = 49 + 100 - 2(7)(10)\cos 60^\circ = 149 - 70 = 79$, so $c \approx 8.89$.</div>
-<p class="body"><strong>Area:</strong> $K = \tfrac{1}{2}ab\sin C$. Heron's formula: $K = \sqrt{s(s-a)(s-b)(s-c)}$ where $s = \tfrac{a+b+c}{2}$.</p>
+<div class="example-box">
+<strong>Example (SAS):</strong> Find $c$ given $a=7$, $b=10$, $C=60°$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>$c^2 = 49 + 100 - 2(7)(10)\cos 60° = 149 - 70 = 79$.</li>
+<li>$c = \sqrt{79} \approx 8.89$.</li>
+</ol>
+</div>
+<p class="body"><strong>Area:</strong> $K = \tfrac{1}{2}ab\sin C$. When all three sides are known, Heron's formula: $K = \sqrt{s(s-a)(s-b)(s-c)}$ where $s = \tfrac{a+b+c}{2}$.</p>
 </div>
 </div>
 ```
@@ -3314,46 +3720,80 @@ $\ln e^{2x} = 2x$.</div>
 ### content
 ```html
 <div class="section">
-<div class="section-label">Distance, midpoint, slope</div>
+<div class="section-label">Distance, midpoint, and slope</div>
 <div class="card">
+<p class="body">Analytic geometry is about describing geometric shapes using equations — turning pictures into algebra. The starting tools are formulas for measuring distance and direction between two points.</p>
 <div class="formula-box">Distance: $d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$</div>
+<p class="body">This is just the Pythagorean theorem applied to the horizontal and vertical separations.</p>
 <div class="formula-box">Midpoint: $M = \left(\dfrac{x_1+x_2}{2},\ \dfrac{y_1+y_2}{2}\right)$</div>
-<div class="formula-box">Slope: $m = \dfrac{y_2-y_1}{x_2-x_1}$, &nbsp; inclination: $\tan\theta = m$</div>
-<p class="body">Two lines are <strong>parallel</strong> iff $m_1=m_2$; <strong>perpendicular</strong> iff $m_1 m_2 = -1$.</p>
+<p class="body">Average the $x$-coordinates and average the $y$-coordinates.</p>
+<div class="formula-box">Slope: $m = \dfrac{y_2-y_1}{x_2-x_1} = \dfrac{\text{rise}}{\text{run}}$</div>
+<p class="body">Two lines are <strong>parallel</strong> iff $m_1 = m_2$ (same slope). Two lines are <strong>perpendicular</strong> iff $m_1 m_2 = -1$ (slopes are negative reciprocals).</p>
+<div class="warn"><strong>Common mistake:</strong> A vertical line has an undefined slope (division by zero), not slope = 0. Slope = 0 is a horizontal line.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Forms of a line</div>
 <div class="card">
-<div class="formula-box">Point-slope: $y - y_1 = m(x - x_1)$</div>
-<div class="formula-box">Slope-intercept: $y = mx + b$</div>
-<div class="formula-box">General (standard): $Ax + By + C = 0$</div>
-<div class="formula-box">Intercept form: $\dfrac{x}{a} + \dfrac{y}{b} = 1$ &nbsp; ($x$-intercept $a$, $y$-intercept $b$)</div>
-<div class="formula-box">Distance from point $(x_0,y_0)$ to $Ax+By+C=0$: &nbsp; $d = \dfrac{|Ax_0 + By_0 + C|}{\sqrt{A^2+B^2}}$</div>
+<p class="body">There are several equivalent ways to write the equation of a line. Choose based on what information you have.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Point-slope</strong>
+    <span>$y - y_1 = m(x - x_1)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Use when you know a point and the slope</span>
+  </div>
+  <div class="concept-card">
+    <strong>Slope-intercept</strong>
+    <span>$y = mx + b$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Easiest to graph; $b$ is the $y$-intercept</span>
+  </div>
+  <div class="concept-card">
+    <strong>General form</strong>
+    <span>$Ax + By + C = 0$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Standard form; works for vertical lines too</span>
+  </div>
+  <div class="concept-card">
+    <strong>Point-to-line distance</strong>
+    <span>$d = \dfrac{|Ax_0 + By_0 + C|}{\sqrt{A^2+B^2}}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Distance from $(x_0,y_0)$ to line $Ax+By+C=0$</span>
+  </div>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Conic sections — overview</div>
 <div class="card">
-<p class="body">A <strong>conic</strong> is the intersection of a plane with a double cone. Four types: circle, ellipse, parabola, hyperbola. Algebraically, the general second-degree equation is</p>
-<div class="formula-box">$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$</div>
-<p class="body">For axis-aligned conics (no $xy$ term), the discriminant $B^2 - 4AC$ classifies them:</p>
+<p class="body">A <strong>conic section</strong> is the curve you get by slicing a double cone with a plane at different angles. Each gives a different equation form. The general second-degree equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ covers all of them.</p>
+<div class="tip"><strong>Quick identification (no $xy$ term, i.e., axis-aligned):</strong>
 <ul class="list-styled">
-<li>$B^2-4AC < 0$: ellipse (circle if also $A=C$, $B=0$)</li>
-<li>$B^2-4AC = 0$: parabola</li>
-<li>$B^2-4AC > 0$: hyperbola</li>
+<li><strong>Circle:</strong> both $x^2$ and $y^2$ with equal positive coefficients ($A = C > 0$).</li>
+<li><strong>Ellipse:</strong> both $x^2$ and $y^2$ with different positive coefficients.</li>
+<li><strong>Parabola:</strong> only one of $x^2$ or $y^2$ appears (not both).</li>
+<li><strong>Hyperbola:</strong> both $x^2$ and $y^2$ with opposite signs (one positive, one negative).</li>
 </ul>
+Algebraically: $B^2-4AC < 0$ → ellipse/circle; $= 0$ → parabola; $> 0$ → hyperbola.
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Circle</div>
 <div class="card">
-<div class="formula-box">Standard: $(x-h)^2 + (y-k)^2 = r^2$ &nbsp; (center $(h,k)$, radius $r$)</div>
-<p class="body">From general $x^2 + y^2 + Dx + Ey + F = 0$, complete the square in $x$ and in $y$ to recover the standard form.</p>
-<div class="example-box"><strong>Example</strong>$x^2 + y^2 - 6x + 4y - 12 = 0$. Group: $(x^2-6x) + (y^2+4y) = 12$. Complete: $(x-3)^2 - 9 + (y+2)^2 - 4 = 12$. So $(x-3)^2 + (y+2)^2 = 25$ — circle, center $(3,-2)$, radius $5$.</div>
+<p class="body">A circle is the set of all points exactly $r$ units from the center $(h, k)$. The standard form lets you read off the center and radius directly.</p>
+<div class="formula-box">$(x-h)^2 + (y-k)^2 = r^2$ — center $(h,k)$, radius $r$</div>
+<p class="body"><strong>Key features to read off:</strong> center is $(h, k)$ — note the sign flip: $(x-3)^2$ means center $x = 3$. Radius is $\sqrt{r^2}$.</p>
+<p class="body"><strong>From general form:</strong> complete the square in $x$ and in $y$ separately to recover the standard form.</p>
+<div class="example-box">
+<strong>Example:</strong> Convert $x^2 + y^2 - 6x + 4y - 12 = 0$ to standard form.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Group: $(x^2-6x) + (y^2+4y) = 12$.</li>
+<li>Complete the square: $(x^2-6x+9) + (y^2+4y+4) = 12 + 9 + 4$.</li>
+<li>Factor: $(x-3)^2 + (y+2)^2 = 25$.</li>
+<li>Read off: center $(3,-2)$, radius $5$.</li>
+</ol>
+</div>
 <div class="desmos-graph" data-fns="(x-3)^2+(y+2)^2=25" data-xmin="-4" data-xmax="10" data-ymin="-9" data-ymax="5"></div>
 <div class="desmos-caption">Circle centered at $(3,-2)$ with radius $5$.</div>
 </div>
@@ -3362,25 +3802,35 @@ $\ln e^{2x} = 2x$.</div>
 <div class="section">
 <div class="section-label">Parabola</div>
 <div class="card">
-<p class="body">A parabola is the set of points equidistant from a fixed focus and a fixed directrix.</p>
-<div class="formula-box">Vertical axis, vertex $(h,k)$: $(x-h)^2 = 4p(y-k)$</div>
-<div class="formula-box">Horizontal axis, vertex $(h,k)$: $(y-k)^2 = 4p(x-h)$</div>
-<p class="body">For $(x-h)^2 = 4p(y-k)$ with $p>0$, the parabola opens up; focus at $(h, k+p)$, directrix $y = k-p$. For $p<0$, opens down.</p>
-<div class="example-box"><strong>Example</strong>$y = x^2 - 4x + 7 \Rightarrow y - 3 = (x-2)^2$, so vertex $(2,3)$, opens up, $4p=1 \Rightarrow p=\tfrac{1}{4}$, focus $(2,3.25)$.</div>
+<p class="body">A parabola is the set of points equidistant from a point (the <em>focus</em>) and a line (the <em>directrix</em>). The standard forms let you identify the vertex, opening direction, focus, and directrix.</p>
+<div class="formula-box">Vertical axis: $(x-h)^2 = 4p(y-k)$ — vertex $(h,k)$, opens up if $p>0$, down if $p&lt;0$</div>
+<div class="formula-box">Horizontal axis: $(y-k)^2 = 4p(x-h)$ — vertex $(h,k)$, opens right if $p>0$, left if $p&lt;0$</div>
+<p class="body">For the vertical case: focus at $(h, k+p)$, directrix is the line $y = k-p$. The parameter $p$ is the distance from vertex to focus.</p>
+<div class="example-box">
+<strong>Example:</strong> Analyze $y = x^2 - 4x + 7$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Complete the square: $y = (x^2-4x+4) + 3 = (x-2)^2 + 3$, so $y-3 = (x-2)^2$.</li>
+<li>Vertex: $(2, 3)$. Opens upward ($4p = 1$, so $p = \tfrac{1}{4}$).</li>
+<li>Focus: $(2, 3 + \tfrac{1}{4}) = (2, 3.25)$. Directrix: $y = 2.75$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Ellipse</div>
 <div class="card">
-<p class="body">Set of points whose distances to two foci sum to a constant $2a$.</p>
-<div class="formula-box">Horizontal major axis (center $(h,k)$): $\dfrac{(x-h)^2}{a^2} + \dfrac{(y-k)^2}{b^2} = 1$, &nbsp; $a > b > 0$</div>
-<ul class="list-styled">
-<li>Vertices: $(h\pm a, k)$. Co-vertices: $(h, k\pm b)$.</li>
-<li>Foci: $(h\pm c, k)$ with $c^2 = a^2 - b^2$.</li>
-<li>Eccentricity $e = c/a$, with $0 < e < 1$. (Circle: $e=0$.)</li>
-</ul>
-<div class="example-box"><strong>Example</strong>$\dfrac{x^2}{25} + \dfrac{y^2}{9} = 1$: $a=5, b=3, c=4$. Foci $(\pm 4, 0)$.</div>
+<p class="body">An ellipse is the set of points whose distances to two fixed points (foci) sum to a constant $2a$. It looks like a stretched circle. The longer axis is the <em>major axis</em> (length $2a$); the shorter is the <em>minor axis</em> (length $2b$).</p>
+<div class="formula-box">Horizontal major axis: $\dfrac{(x-h)^2}{a^2} + \dfrac{(y-k)^2}{b^2} = 1$, with $a > b > 0$</div>
+<p class="body"><strong>How to read the parameters:</strong> $a^2$ is under the term with the larger denominator. Vertices (ends of major axis): $(h\pm a, k)$. Foci at distance $c = \sqrt{a^2 - b^2}$ from center along the major axis.</p>
+<div class="example-box">
+<strong>Example:</strong> Analyze $\dfrac{x^2}{25} + \dfrac{y^2}{9} = 1$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Center: $(0,0)$. Major axis is horizontal ($a^2 = 25$ is under $x^2$).</li>
+<li>$a = 5$, $b = 3$. Vertices: $(\pm 5, 0)$. Co-vertices: $(0, \pm 3)$.</li>
+<li>$c = \sqrt{25-9} = \sqrt{16} = 4$. Foci: $(\pm 4, 0)$.</li>
+</ol>
+</div>
 <div class="desmos-graph" data-fns="x^2/25+y^2/9=1|(-4,0)|(4,0)" data-xmin="-7" data-xmax="7" data-ymin="-5" data-ymax="5"></div>
 <div class="desmos-caption">Ellipse with vertices at $(\pm 5,0)$ and foci marked at $(\pm 4,0)$.</div>
 </div>
@@ -3389,25 +3839,57 @@ $\ln e^{2x} = 2x$.</div>
 <div class="section">
 <div class="section-label">Hyperbola</div>
 <div class="card">
-<p class="body">Set of points whose distances to two foci differ by a constant $2a$.</p>
-<div class="formula-box">Horizontal transverse axis: $\dfrac{(x-h)^2}{a^2} - \dfrac{(y-k)^2}{b^2} = 1$</div>
-<div class="formula-box">Vertical: $\dfrac{(y-k)^2}{a^2} - \dfrac{(x-h)^2}{b^2} = 1$</div>
-<ul class="list-styled">
-<li>Vertices: $(h\pm a, k)$ for horizontal.</li>
-<li>Foci: $(h\pm c, k)$ with $c^2 = a^2 + b^2$.</li>
-<li>Asymptotes: $y - k = \pm \dfrac{b}{a}(x-h)$.</li>
-<li>Eccentricity $e = c/a > 1$.</li>
-</ul>
+<p class="body">A hyperbola is the set of points whose <em>difference</em> of distances to two fixed foci is a constant $2a$. Unlike an ellipse (which sums distances), a hyperbola has two separate branches that open away from each other, with two slant asymptotes the branches approach but never touch.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Horizontal transverse axis</strong>
+    <span>$\dfrac{(x-h)^2}{a^2} - \dfrac{(y-k)^2}{b^2} = 1$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Branches open left and right; $x^2$ term is positive</span>
+  </div>
+  <div class="concept-card">
+    <strong>Vertical transverse axis</strong>
+    <span>$\dfrac{(y-k)^2}{a^2} - \dfrac{(x-h)^2}{b^2} = 1$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Branches open up and down; $y^2$ term is positive</span>
+  </div>
+</div>
+<p class="body"><strong>How to read the parameters (horizontal case):</strong> center is $(h,k)$; vertices at $(h \pm a, k)$; foci at distance $c = \sqrt{a^2 + b^2}$ from center along the transverse axis; asymptotes pass through the center with slopes $\pm \dfrac{b}{a}$.</p>
+<div class="warn"><strong>Key difference from ellipse:</strong> For a hyperbola $c^2 = a^2 + b^2$ (foci are farther than vertices). For an ellipse $c^2 = a^2 - b^2$ (foci are inside the ellipse). The sign in the formula gives the sign in the relationship.</div>
+<div class="example-box">
+<strong>Example:</strong> Analyze $\dfrac{x^2}{4} - \dfrac{y^2}{9} = 1$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Center: $(0,0)$. Horizontal transverse axis ($x^2$ term is positive).</li>
+<li>$a^2 = 4 \Rightarrow a = 2$; $b^2 = 9 \Rightarrow b = 3$. Vertices: $(\pm 2, 0)$.</li>
+<li>$c = \sqrt{4+9} = \sqrt{13} \approx 3.6$. Foci: $(\pm\sqrt{13}, 0)$.</li>
+<li>Asymptotes: $y = \pm \dfrac{b}{a}x = \pm \dfrac{3}{2}x$. These are the "guide lines" the hyperbola approaches.</li>
+</ol>
+</div>
 <div class="desmos-graph" data-fns="x^2/4-y^2/9=1|y=1.5x|y=-1.5x" data-xmin="-8" data-xmax="8" data-ymin="-8" data-ymax="8"></div>
 <div class="desmos-caption">Hyperbola $\tfrac{x^2}{4}-\tfrac{y^2}{9}=1$ with its slant asymptotes $y=\pm\tfrac{3}{2}x$.</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">General → standard form</div>
+<div class="section-label">Converting general form to standard form</div>
 <div class="card">
-<p class="body">Group $x$'s and $y$'s, factor out leading coefficients, complete the square in each variable, and rearrange.</p>
-<div class="example-box"><strong>Example</strong>$9x^2 - 4y^2 - 36x - 8y - 4 = 0$. Group: $9(x^2-4x) - 4(y^2+2y) = 4$. Complete: $9[(x-2)^2-4] - 4[(y+1)^2-1]=4 \Rightarrow 9(x-2)^2 - 4(y+1)^2 = 36$. Divide: $\dfrac{(x-2)^2}{4} - \dfrac{(y+1)^2}{9} = 1$ — hyperbola, center $(2,-1)$.</div>
+<p class="body">Any second-degree equation $Ax^2 + Cy^2 + Dx + Ey + F = 0$ (no $xy$ term) can be converted to a recognizable conic by <strong>completing the square</strong> in $x$ and $y$ separately. The four-step process below works for circles, ellipses, and hyperbolas.</p>
+<div class="tip"><strong>The four steps:</strong>
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Move the constant to the right side and group $x$ terms and $y$ terms together.</li>
+<li>Factor out the leading coefficient from each group (keep it outside the parentheses).</li>
+<li>Complete the square inside each group; add the same value (times the outside factor) to the right side.</li>
+<li>Divide both sides to get 1 on the right, then identify the conic.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Convert $9x^2 - 4y^2 - 36x - 8y - 4 = 0$ to standard form.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Move constant and group: $9(x^2 - 4x) - 4(y^2 + 2y) = 4$.</li>
+<li>Complete the square — for $x$: $(-4/2)^2 = 4$; for $y$: $(2/2)^2 = 1$. Add $9\cdot 4 = 36$ and subtract $4\cdot 1 = 4$ on the right:<br>$9(x-2)^2 - 4(y+1)^2 = 4 + 36 - 4 = 36$.</li>
+<li>Divide everything by 36: $\dfrac{(x-2)^2}{4} - \dfrac{(y+1)^2}{9} = 1$.</li>
+<li>Identify: opposite signs on $x^2$ and $y^2$ terms, so this is a <strong>hyperbola</strong> with center $(2, -1)$, $a=2$, $b=3$.</li>
+</ol>
+<div class="tip"><strong>Check the signs:</strong> If both squared terms are <em>added</em> with equal denominators → circle. Unequal denominators → ellipse. One term <em>subtracted</em> → hyperbola. Only one squared term → parabola.</div>
+</div>
 </div>
 </div>
 ```
@@ -3984,40 +4466,90 @@ $\ln e^{2x} = 2x$.</div>
 </div>
 
 <div class="section">
-<div class="section-label">Conversion</div>
+<div class="section-label">Converting between coordinate systems</div>
 <div class="card">
-<div class="formula-box">Polar → rectangular: $x = r\cos\theta,\ y = r\sin\theta$</div>
-<div class="formula-box">Rectangular → polar: $r = \sqrt{x^2+y^2},\ \tan\theta = \dfrac{y}{x}$</div>
-<div class="warn">When converting to polar, the quadrant of $(x,y)$ determines $\theta$. The naive $\tan^{-1}(y/x)$ only returns angles in $(-\tfrac{\pi}{2}, \tfrac{\pi}{2})$. Always sketch the point and adjust.</div>
-<div class="example-box"><strong>Polar → rectangular</strong>$(4, 2\pi/3)$: $x = 4\cos(2\pi/3) = 4(-\tfrac{1}{2}) = -2$, $y = 4\sin(2\pi/3) = 4(\tfrac{\sqrt 3}{2}) = 2\sqrt 3$. Point $(-2, 2\sqrt 3)$.</div>
-<div class="example-box"><strong>Rectangular → polar</strong>$(-1, 1)$: $r = \sqrt 2$. Point is in Q-II; $\theta = \pi - \tfrac{\pi}{4} = \tfrac{3\pi}{4}$. Polar: $(\sqrt 2, 3\pi/4)$.</div>
+<p class="body">To go between polar $(r,\theta)$ and rectangular $(x,y)$, use the relationships from a right triangle: $r$ is the hypotenuse, $\theta$ is the angle from the positive $x$-axis.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Polar → Rectangular</strong>
+    <span>$x = r\cos\theta,\quad y = r\sin\theta$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Plug in $r$ and $\theta$, compute $x$ and $y$ directly</span>
+  </div>
+  <div class="concept-card">
+    <strong>Rectangular → Polar</strong>
+    <span>$r = \sqrt{x^2+y^2},\quad \tan\theta = \dfrac{y}{x}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Get $r$ from Pythagorean theorem; get $\theta$ from the quadrant</span>
+  </div>
+</div>
+<div class="warn"><strong>Common mistake with $\theta$:</strong> $\tan^{-1}(y/x)$ only returns values in $(-\tfrac{\pi}{2}, \tfrac{\pi}{2})$ — Quadrants I and IV only. If the point is in Q-II or Q-III, add $\pi$ to the calculator result. Always check which quadrant $(x,y)$ is in first.</div>
+<div class="example-box">
+<strong>Example A — Polar to rectangular:</strong> Convert $(4,\ 2\pi/3)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>$x = 4\cos(2\pi/3) = 4 \cdot (-\tfrac{1}{2}) = -2$.</li>
+<li>$y = 4\sin(2\pi/3) = 4 \cdot \tfrac{\sqrt{3}}{2} = 2\sqrt{3}$.</li>
+<li>Rectangular: $(-2,\ 2\sqrt{3})$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example B — Rectangular to polar:</strong> Convert $(-1, 1)$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>$r = \sqrt{(-1)^2 + 1^2} = \sqrt{2}$.</li>
+<li>Point is in Quadrant II (negative $x$, positive $y$).</li>
+<li>Reference angle: $\tan^{-1}(1/1) = \pi/4$. Since Q-II: $\theta = \pi - \pi/4 = 3\pi/4$.</li>
+<li>Polar: $(\sqrt{2},\ 3\pi/4)$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Converting equations</div>
+<div class="section-label">Converting equations between systems</div>
 <div class="card">
-<p class="body">Substitute $x=r\cos\theta$, $y=r\sin\theta$, $x^2+y^2=r^2$ to convert <em>rectangular → polar</em>. Multiply by $r$ or divide as needed to reach a clean form.</p>
-<div class="example-box"><strong>Example</strong>Convert $x^2 + y^2 = 9$ to polar: $r^2 = 9$, so $r = 3$ — a circle of radius 3 at the origin.</div>
-<div class="example-box"><strong>Example</strong>Convert $y = x$ to polar: $r\sin\theta = r\cos\theta \Rightarrow \tan\theta = 1 \Rightarrow \theta = \tfrac{\pi}{4}$.</div>
-<div class="example-box"><strong>Example</strong>Convert $r = 4\sin\theta$ to rectangular: multiply by $r$: $r^2 = 4r\sin\theta \Rightarrow x^2+y^2=4y \Rightarrow x^2 + (y-2)^2 = 4$ — circle through origin.</div>
+<p class="body">To convert an equation from rectangular to polar, replace every $x$ with $r\cos\theta$, every $y$ with $r\sin\theta$, and every $x^2+y^2$ with $r^2$. To go from polar to rectangular, multiply or divide by $r$ to create $r^2$, $r\cos\theta$, or $r\sin\theta$ — then substitute the rectangular equivalents.</p>
+<div class="tip"><strong>Key substitutions to memorize:</strong> $x^2+y^2 = r^2$; $x = r\cos\theta$; $y = r\sin\theta$; $r\cos\theta = x$; $r\sin\theta = y$.</div>
+<div class="example-box">
+<strong>Example 1 — Rectangular to polar:</strong> $x^2 + y^2 = 9$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Recognize $x^2+y^2 = r^2$, so substitute: $r^2 = 9$.</li>
+<li>Take positive root: $r = 3$ — a circle of radius 3 centered at the origin.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example 2 — Rectangular to polar:</strong> $y = x$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Substitute: $r\sin\theta = r\cos\theta$.</li>
+<li>Divide both sides by $r\cos\theta$: $\tan\theta = 1$.</li>
+<li>Result: $\theta = \pi/4$ — a line through the origin at 45°.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example 3 — Polar to rectangular:</strong> $r = 4\sin\theta$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Multiply both sides by $r$: $r^2 = 4r\sin\theta$.</li>
+<li>Substitute $r^2 = x^2+y^2$ and $r\sin\theta = y$: $x^2 + y^2 = 4y$.</li>
+<li>Rearrange and complete the square: $x^2 + (y-2)^2 = 4$.</li>
+<li>Result: circle of radius 2 centered at $(0, 2)$, passing through the origin.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Common polar curves</div>
 <div class="card">
+<p class="body">Many elegant curves are much simpler to express in polar form than in rectangular. Memorizing the equation pattern lets you instantly recognize the curve shape.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Equation</th><th>Curve</th></tr>
-<tr><td>$r = a$</td><td>Circle radius $a$ at origin</td></tr>
-<tr><td>$\theta = c$</td><td>Line through origin at angle $c$</td></tr>
-<tr><td>$r = a\cos\theta$</td><td>Circle through origin, diameter on $x$-axis</td></tr>
-<tr><td>$r = a\sin\theta$</td><td>Circle through origin, diameter on $y$-axis</td></tr>
-<tr><td>$r = a(1+\cos\theta)$</td><td>Cardioid</td></tr>
-<tr><td>$r = a + b\cos\theta\ (a\ne b)$</td><td>Limaçon</td></tr>
-<tr><td>$r = a\cos n\theta$ or $a\sin n\theta$</td><td>Rose curve ($n$ petals if odd, $2n$ if even)</td></tr>
+<tr><th>Equation</th><th>Curve</th><th>What to notice</th></tr>
+<tr><td>$r = a$</td><td>Circle</td><td>Constant radius; centered at origin</td></tr>
+<tr><td>$\theta = c$</td><td>Line through origin</td><td>All points at angle $c$, any radius</td></tr>
+<tr><td>$r = a\cos\theta$</td><td>Circle through origin</td><td>Diameter lies on the $x$-axis; radius $a/2$</td></tr>
+<tr><td>$r = a\sin\theta$</td><td>Circle through origin</td><td>Diameter lies on the $y$-axis; radius $a/2$</td></tr>
+<tr><td>$r = a(1+\cos\theta)$</td><td>Cardioid</td><td>Heart-shaped; passes through origin; cusp points left</td></tr>
+<tr><td>$r = a + b\cos\theta,\ a\ne b$</td><td>Limaçon</td><td>Inner loop if $a &lt; b$; dimple if $a &gt; b$</td></tr>
+<tr><td>$r = a\cos(n\theta)$ or $a\sin(n\theta)$</td><td>Rose curve</td><td>$n$ petals if $n$ odd; $2n$ petals if $n$ even</td></tr>
 </table>
+<div class="tip"><strong>Rose curve petal count rule:</strong> $r = \cos(2\theta)$ has $2 \times 2 = 4$ petals (even $n$). $r = \cos(3\theta)$ has $3$ petals (odd $n$). Even $n$ doubles the count; odd $n$ stays the same.</div>
 <div class="desmos-graph" data-fns="r=1+\cos(\theta)" data-polar="true" data-xmin="-1" data-xmax="3" data-ymin="-2" data-ymax="2"></div>
 <div class="desmos-caption">Cardioid $r = 1 + \cos\theta$.</div>
 <div class="desmos-graph" data-fns="r=\cos(3\theta)" data-polar="true" data-xmin="-1.5" data-xmax="1.5" data-ymin="-1.5" data-ymax="1.5"></div>
@@ -4589,68 +5121,129 @@ $\ln e^{2x} = 2x$.</div>
 ### content
 ```html
 <div class="section">
-<div class="section-label">Solving systems of linear equations</div>
+<div class="section-label">Systems of linear equations — overview</div>
 <div class="card">
-<p class="body">A 2×2 linear system has the form $\begin{cases}a_1 x + b_1 y = c_1\\ a_2 x + b_2 y = c_2\end{cases}$. Three solution methods:</p>
-<ol class="list-styled" style="list-style-type:decimal">
-<li><strong>Substitution</strong> — solve one equation for one variable, substitute into the other.</li>
-<li><strong>Elimination</strong> — multiply equations and add/subtract to cancel a variable.</li>
-<li><strong>Matrix methods</strong> — Gaussian elimination, Cramer's rule, inverse matrices.</li>
-</ol>
-<p class="body"><strong>Possible outcomes:</strong> unique solution (intersecting lines), no solution (parallel), infinitely many (coincident).</p>
+<p class="body">A <strong>system of equations</strong> is a set of equations that must all be true simultaneously. Real-world examples: finding where two lines intersect, mixing solutions to a target concentration, or balancing supply and demand. A 2×2 linear system looks like:</p>
+<div class="formula-box">$\begin{cases}a_1 x + b_1 y = c_1\\ a_2 x + b_2 y = c_2\end{cases}$</div>
+<p class="body"><strong>Three possible outcomes — always check which one you're in:</strong></p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Unique solution</strong>
+    <span>Lines intersect at one point</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">$\det A \ne 0$; one $(x,y)$ pair satisfies both equations</span>
+  </div>
+  <div class="concept-card">
+    <strong>No solution</strong>
+    <span>Lines are parallel</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Elimination gives $0 = k$ (contradiction); system is inconsistent</span>
+  </div>
+  <div class="concept-card">
+    <strong>Infinitely many</strong>
+    <span>Lines are the same (coincident)</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Elimination gives $0 = 0$; system is dependent</span>
+  </div>
+</div>
+<div class="tip"><strong>Three solution methods:</strong> (1) <strong>Substitution</strong> — solve one equation for one variable and plug into the other. (2) <strong>Elimination</strong> — scale and add equations to cancel a variable. (3) <strong>Matrix methods</strong> — Gaussian elimination, Cramer's rule, or inverse matrix for larger systems.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Non-linear systems</div>
 <div class="card">
-<p class="body">At least one equation is non-linear (quadratic, exponential, etc.). Substitution is usually best.</p>
-<div class="example-box"><strong>Example</strong>$\begin{cases}x^2+y^2=25\\ y = x-1\end{cases}$. Substitute: $x^2 + (x-1)^2 = 25 \Rightarrow 2x^2 - 2x - 24 = 0 \Rightarrow x^2-x-12=0 \Rightarrow x=4$ or $-3$. Points: $(4,3)$ and $(-3,-4)$.</div>
+<p class="body">A non-linear system has at least one equation with a degree higher than 1 (quadratic, exponential, circular, etc.). The intersection of a line and a circle, or two parabolas, are typical examples. <strong>Substitution</strong> is usually the most straightforward approach — express one variable from the simpler equation and substitute into the harder one.</p>
+<div class="warn"><strong>Watch out:</strong> Non-linear systems can have 0, 1, or 2+ solutions. After solving, always substitute back to check each solution — squaring or substituting can introduce extraneous results.</div>
+<div class="example-box">
+<strong>Example:</strong> Solve $\begin{cases}x^2+y^2=25\\ y = x-1\end{cases}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>The second equation is already solved for $y$. Substitute $y = x-1$ into the first: $x^2 + (x-1)^2 = 25$.</li>
+<li>Expand: $x^2 + x^2 - 2x + 1 = 25 \Rightarrow 2x^2 - 2x - 24 = 0$.</li>
+<li>Divide by 2: $x^2 - x - 12 = 0$. Factor: $(x-4)(x+3)=0$, so $x = 4$ or $x = -3$.</li>
+<li>Find $y$: if $x=4$, $y=3$; if $x=-3$, $y=-4$. Solutions: $(4,3)$ and $(-3,-4)$.</li>
+<li>Check: $4^2+3^2=25$ ✓ and $(-3)^2+(-4)^2=25$ ✓.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Matrices and operations</div>
+<div class="section-label">Matrix operations</div>
 <div class="card">
-<p class="body">A <strong>matrix</strong> is a rectangular array of numbers. An $m\times n$ matrix has $m$ rows and $n$ columns. Equal-size matrices add/subtract element-wise:</p>
+<p class="body">A <strong>matrix</strong> is a rectangular grid of numbers. You can think of it as a compact way to write a system of equations or to represent a transformation. An $m \times n$ matrix has $m$ rows and $n$ columns.</p>
+<p class="body"><strong>Addition and scalar multiplication</strong> are simple — done entry-by-entry. Two matrices must have the same size to add.</p>
 <div class="formula-box">$(A+B)_{ij} = A_{ij} + B_{ij}$, &nbsp; $(cA)_{ij} = c\cdot A_{ij}$</div>
-<p class="body"><strong>Matrix multiplication.</strong> The product $AB$ exists iff (columns of $A$) = (rows of $B$). If $A$ is $m\times n$ and $B$ is $n\times p$, then $AB$ is $m\times p$, with entry</p>
-<div class="formula-box">$(AB)_{ij} = \sum_{k=1}^n A_{ik}\,B_{kj}$</div>
-<div class="warn"><strong>Not commutative:</strong> in general $AB \ne BA$.</div>
-<div class="example-box"><strong>Example</strong>$\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}5&6\\7&8\end{pmatrix} = \begin{pmatrix}19&22\\43&50\end{pmatrix}$. (Row $\cdot$ column dot products.)</div>
+<p class="body"><strong>Matrix multiplication</strong> is more involved. To multiply $A \times B$, the number of columns in $A$ must equal the number of rows in $B$. Each entry of the result is a dot product of a row from $A$ with a column from $B$.</p>
+<div class="formula-box">$(AB)_{ij}$ = (row $i$ of $A$) $\cdot$ (column $j$ of $B$) $= \displaystyle\sum_{k=1}^n A_{ik}\,B_{kj}$</div>
+<div class="warn"><strong>Matrix multiplication is NOT commutative:</strong> $AB \ne BA$ in general. Order matters. Also, $AB$ requires cols($A$) = rows($B$); swapping gives $BA$ which may not even be defined.</div>
+<div class="example-box">
+<strong>Example:</strong> Compute $\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}5&6\\7&8\end{pmatrix}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Result will be $2\times 2$. Compute entry (1,1): row 1 of $A$ times col 1 of $B$: $1\cdot5 + 2\cdot7 = 5+14 = 19$.</li>
+<li>Entry (1,2): row 1 of $A$ times col 2 of $B$: $1\cdot6 + 2\cdot8 = 6+16 = 22$.</li>
+<li>Entry (2,1): row 2 of $A$ times col 1 of $B$: $3\cdot5 + 4\cdot7 = 15+28 = 43$.</li>
+<li>Entry (2,2): row 2 of $A$ times col 2 of $B$: $3\cdot6 + 4\cdot8 = 18+32 = 50$.</li>
+<li>Result: $\begin{pmatrix}19&22\\43&50\end{pmatrix}$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Determinants</div>
 <div class="card">
-<div class="formula-box">$\det\begin{pmatrix}a&b\\c&d\end{pmatrix} = ad - bc$</div>
-<div class="formula-box">$3\times 3$ expansion along row 1: &nbsp; $\det = a_{11}M_{11} - a_{12}M_{12} + a_{13}M_{13}$ &nbsp; (where $M_{ij}$ are 2×2 minors)</div>
-<p class="body">Determinant tells you whether a system has a unique solution (nonzero) and equals the signed area/volume of the parallelogram/parallelepiped spanned by the rows.</p>
+<p class="body">The <strong>determinant</strong> is a single number computed from a square matrix. It tells you two key things: (1) whether the matrix is invertible (nonzero det = invertible = unique solution exists), and (2) geometrically, the area/volume scaling factor of the transformation the matrix represents.</p>
+<div class="formula-box">$2\times 2$: $\det\begin{pmatrix}a&b\\c&d\end{pmatrix} = ad - bc$ — "diagonal down minus diagonal up"</div>
+<div class="formula-box">$3\times 3$ (cofactor expansion along row 1): $\det = a_{11}M_{11} - a_{12}M_{12} + a_{13}M_{13}$, where $M_{ij}$ is the $2\times 2$ determinant formed by deleting row $i$ and column $j$</div>
+<div class="tip"><strong>What the determinant tells you:</strong>
+<ul class="list-styled">
+<li>$\det A \ne 0$: matrix is invertible; system $A\mathbf{x}=\mathbf{b}$ has a unique solution.</li>
+<li>$\det A = 0$: matrix is singular; system has no solution or infinitely many.</li>
+<li>$|\det A|$: area of the parallelogram (2D) or volume (3D) spanned by the row vectors.</li>
+</ul>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Cramer's Rule</div>
 <div class="card">
-<p class="body">For an $n\times n$ system $A\mathbf{x}=\mathbf{b}$ with $\det A \ne 0$,</p>
-<div class="formula-box">$x_i = \dfrac{\det A_i}{\det A}$</div>
-<p class="body">where $A_i$ is $A$ with column $i$ replaced by $\mathbf{b}$.</p>
-<div class="example-box"><strong>Example</strong>$\begin{cases}2x+3y=8\\ x-y=1\end{cases}$. $\det A = -5$. $\det A_x = \det\begin{pmatrix}8&3\\1&-1\end{pmatrix} = -11$. $x = 11/5$. Similarly $y$.</div>
+<p class="body">Cramer's Rule gives you each variable directly using ratios of determinants. It works for any $n \times n$ system as long as $\det A \ne 0$. The idea: replace one column of the coefficient matrix with the right-hand side, compute the determinant, then divide by the original determinant.</p>
+<div class="formula-box">$x_i = \dfrac{\det A_i}{\det A}$, where $A_i$ is $A$ with column $i$ replaced by the constant vector $\mathbf{b}$</div>
+<div class="example-box">
+<strong>Example:</strong> Solve $\begin{cases}2x+3y=8\\ x-y=1\end{cases}$ using Cramer's Rule.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Coefficient matrix $A = \begin{pmatrix}2&3\\1&-1\end{pmatrix}$. $\det A = 2(-1) - 3(1) = -5$.</li>
+<li>For $x$: replace column 1 with $\mathbf{b} = \begin{pmatrix}8\\1\end{pmatrix}$: $A_x = \begin{pmatrix}8&3\\1&-1\end{pmatrix}$. $\det A_x = 8(-1) - 3(1) = -11$.</li>
+<li>$x = \dfrac{-11}{-5} = \dfrac{11}{5}$.</li>
+<li>For $y$: replace column 2: $A_y = \begin{pmatrix}2&8\\1&1\end{pmatrix}$. $\det A_y = 2(1)-8(1) = -6$. $y = \dfrac{-6}{-5} = \dfrac{6}{5}$.</li>
+</ol>
+</div>
+<div class="tip"><strong>When to use Cramer's Rule:</strong> Great for 2×2 and 3×3 systems when you only need one or two of the variables. For large systems, Gaussian elimination is more efficient.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Gaussian elimination (row reduction)</div>
 <div class="card">
-<p class="body">Convert the augmented matrix $[A\,|\,\mathbf b]$ to <strong>row-echelon form</strong> using three elementary row operations:</p>
+<p class="body">Gaussian elimination is the systematic algorithm for solving any linear system. Write the system as an <strong>augmented matrix</strong> $[A\,|\,\mathbf{b}]$, then use row operations to simplify it until the solution is easy to read off.</p>
+<div class="tip"><strong>Three allowed row operations (all preserve the solution):</strong>
+<ul class="list-styled">
+<li>Swap two rows ($R_i \leftrightarrow R_j$).</li>
+<li>Multiply a row by a nonzero scalar ($kR_i \to R_i$).</li>
+<li>Add a multiple of one row to another ($R_i + kR_j \to R_i$).</li>
+</ul>
+</div>
+<div class="example-box">
+<strong>Example:</strong> Solve $\begin{cases}2x - y + z = 1\\ x + y + z = 6\\ x - 2y + z = 0\end{cases}$ using Gaussian elimination.
 <ol class="list-styled" style="list-style-type:decimal">
-<li>Swap two rows.</li>
-<li>Multiply a row by a nonzero scalar.</li>
-<li>Add a scalar multiple of one row to another.</li>
+<li>Write augmented matrix: $\begin{pmatrix}2&-1&1&|&1\\1&1&1&|&6\\1&-2&1&|&0\end{pmatrix}$.</li>
+<li>Swap $R_1 \leftrightarrow R_2$ (pivot on $x$ coefficient = 1): $\begin{pmatrix}1&1&1&|&6\\2&-1&1&|&1\\1&-2&1&|&0\end{pmatrix}$.</li>
+<li>Eliminate $x$ from rows 2 and 3: $R_2 - 2R_1 \to R_2$; $R_3 - R_1 \to R_3$: $\begin{pmatrix}1&1&1&|&6\\0&-3&-1&|&-11\\0&-3&0&|&-6\end{pmatrix}$.</li>
+<li>Eliminate $y$ from row 3: $R_3 - R_2 \to R_3$: $\begin{pmatrix}1&1&1&|&6\\0&-3&-1&|&-11\\0&0&1&|&5\end{pmatrix}$. Now in row-echelon form.</li>
+<li>Back-substitute: $z = 5$; from row 2: $-3y - 5 = -11 \Rightarrow y = 2$; from row 1: $x + 2 + 5 = 6 \Rightarrow x = -1$.</li>
 </ol>
-<p class="body">Row-echelon form has all-zero rows at the bottom, leading 1's stepping right. <strong>Reduced row-echelon</strong> (RREF) additionally has zeros above each leading 1. Back-substitute to read off solutions.</p>
-<div class="example-box"><strong>Example</strong>$\begin{cases}x+y+z=6\\ 2y-z=1\\ 3z=9\end{cases}$. From bottom: $z=3$, $y=2$, $x=1$.</div>
+<div class="tip"><strong>Check:</strong> $2(-1)-2+5=1$ ✓; $-1+2+5=6$ ✓; $-1-4+5=0$ ✓.</div>
+</div>
+<div class="warn"><strong>RREF vs row-echelon:</strong> Row-echelon has a staircase of leading entries; you then back-substitute. Reduced row-echelon (RREF) has leading 1's and zeros above and below each pivot — no back-substitution needed, just read off the solution directly.</div>
 </div>
 </div>
 ```
@@ -5218,46 +5811,105 @@ $\ln e^{2x} = 2x$.</div>
 ### content
 ```html
 <div class="section">
-<div class="section-label">The idea of a limit</div>
+<div class="section-label">What calculus is about</div>
 <div class="card">
-<p class="body">A <strong>limit</strong> describes the value that $f(x)$ approaches as $x$ approaches some value $a$ — independently of what $f(a)$ actually is.</p>
-<div class="formula-box">$\displaystyle \lim_{x\to a} f(x) = L$</div>
-<p class="body">For the limit to exist, the left-hand limit ($x\to a^-$) and right-hand limit ($x\to a^+$) must agree.</p>
+<p class="body">Calculus has two main operations: <strong>derivatives</strong> and <strong>integrals</strong>. They are inverses of each other — the Fundamental Theorem of Calculus connects them. Derivatives measure <em>instantaneous rate of change</em> (slope at a single point); integrals measure <em>accumulated change</em> (area under a curve). Both are defined using <strong>limits</strong>.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Derivative</strong>
+    <span>$f'(x) = \displaystyle\lim_{h\to 0} \dfrac{f(x+h)-f(x)}{h}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Instantaneous rate of change; slope of the tangent line</span>
+  </div>
+  <div class="concept-card">
+    <strong>Integral</strong>
+    <span>$\displaystyle\int_a^b f(x)\,dx = F(b) - F(a)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Accumulated change; signed area under the curve</span>
+  </div>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Evaluating limits</div>
+<div class="section-label">Limits — the foundation</div>
 <div class="card">
-<strong style="font-size:13px">Strategy 1 — direct substitution.</strong> If $f$ is continuous at $a$, $\lim_{x\to a} f(x) = f(a)$. Try this first.
-<div class="example-box">$\lim_{x\to 2}(3x^2-1) = 3(4)-1 = 11$.</div>
-<strong style="font-size:13px">Strategy 2 — algebraic simplification.</strong> If direct substitution yields $\tfrac{0}{0}$, try factoring or rationalizing to cancel.
-<div class="example-box">$\lim_{x\to 3}\dfrac{x^2-9}{x-3} = \lim_{x\to 3}(x+3) = 6$.</div>
-<strong style="font-size:13px">Strategy 3 — limits at infinity.</strong> For rationals, compare degrees of numerator and denominator (same rule as horizontal asymptotes).
-<div class="example-box">$\lim_{x\to\infty}\dfrac{3x^2+1}{2x^2-5} = \dfrac{3}{2}$.</div>
-<strong style="font-size:13px">Strategy 4 — L'Hôpital's rule (preview).</strong> For $\tfrac{0}{0}$ or $\tfrac{\infty}{\infty}$ forms, $\lim \tfrac{f}{g} = \lim \tfrac{f'}{g'}$.
+<p class="body">A <strong>limit</strong> describes the value that $f(x)$ approaches as $x$ gets close to some value $a$ — regardless of what $f(a)$ actually equals (the function might not even be defined at $a$). This is the foundational concept that makes both derivatives and integrals precise.</p>
+<div class="formula-box">$\displaystyle \lim_{x\to a} f(x) = L$ means: as $x$ gets closer and closer to $a$, $f(x)$ gets closer and closer to $L$</div>
+<p class="body"><strong>One-sided limits:</strong> the limit exists only when the left-hand limit ($x\to a^-$) and right-hand limit ($x\to a^+$) agree. If they disagree, we say the limit does not exist (DNE).</p>
+<div class="warn"><strong>Limit vs. function value:</strong> $\lim_{x\to 2} f(x) = 5$ and $f(2) = 5$ are two different statements. A limit is about behavior <em>near</em> $a$, not <em>at</em> $a$. A removable discontinuity (hole in graph) has a limit but $f(a)$ may be undefined or different.</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Evaluating limits — four strategies</div>
+<div class="card">
+<p class="body">Always try the strategies in order — start with the simplest and escalate only if needed.</p>
+<p><strong>Strategy 1 — Direct substitution</strong> (always try this first)</p>
+<p class="body">If $f$ is continuous at $a$, simply plug in $x = a$.</p>
+<div class="example-box">$\displaystyle\lim_{x\to 2}(3x^2-1) = 3(2)^2-1 = 11$. Done.</div>
+<p><strong>Strategy 2 — Algebraic simplification</strong> (when you get $\tfrac{0}{0}$)</p>
+<p class="body">A $\tfrac{0}{0}$ result from direct substitution means there's a common factor to cancel. Factor, rationalize, or simplify, then substitute again.</p>
+<div class="example-box">
+$\displaystyle\lim_{x\to 3}\dfrac{x^2-9}{x-3}$: substituting gives $\tfrac{0}{0}$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Factor numerator: $x^2-9 = (x-3)(x+3)$.</li>
+<li>Cancel: $\dfrac{(x-3)(x+3)}{x-3} = x+3$ (valid for $x \ne 3$).</li>
+<li>Now substitute: $\lim_{x\to 3}(x+3) = 6$.</li>
+</ol>
+</div>
+<p><strong>Strategy 3 — Limits at infinity</strong> (for rational functions)</p>
+<p class="body">Compare the degrees of numerator and denominator. This gives the same result as horizontal asymptote rules.</p>
+<div class="tip"><strong>Degree comparison rule:</strong> If deg(num) = deg(den): limit = ratio of leading coefficients. If deg(num) &lt; deg(den): limit = 0. If deg(num) &gt; deg(den): limit = $\pm\infty$.</div>
+<div class="example-box">$\displaystyle\lim_{x\to\infty}\dfrac{3x^2+1}{2x^2-5}$: same degree; limit = $\dfrac{3}{2}$.</div>
+<p><strong>Strategy 4 — L'Hôpital's Rule</strong> (for $\tfrac{0}{0}$ or $\tfrac{\infty}{\infty}$ when factoring fails)</p>
+<p class="body">Differentiate numerator and denominator separately (not as a quotient), then take the limit again.</p>
+<div class="formula-box">If $\lim \dfrac{f}{g}$ gives $\dfrac{0}{0}$ or $\dfrac{\infty}{\infty}$, then $\displaystyle\lim_{x\to a}\dfrac{f(x)}{g(x)} = \lim_{x\to a}\dfrac{f'(x)}{g'(x)}$</div>
+<div class="warn"><strong>L'Hôpital's only applies to $\tfrac{0}{0}$ or $\tfrac{\infty}{\infty}$ forms.</strong> Never use it on a limit that would give a defined value by direct substitution.</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Limit laws</div>
 <div class="card">
-<p class="body">If $\lim f$ and $\lim g$ both exist:</p>
-<ul class="list-styled">
-<li>$\lim(f \pm g) = \lim f \pm \lim g$</li>
-<li>$\lim(fg) = \lim f \cdot \lim g$</li>
-<li>$\lim(f/g) = \lim f / \lim g$ &nbsp; (if denominator nonzero)</li>
-<li>$\lim c\cdot f = c\cdot \lim f$</li>
-</ul>
+<p class="body">If both $\lim_{x\to a} f(x)$ and $\lim_{x\to a} g(x)$ exist, limits distribute across arithmetic operations. These laws are what justify direct substitution for continuous functions.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Sum / Difference</strong>
+    <span>$\lim(f \pm g) = \lim f \pm \lim g$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Limits add and subtract</span>
+  </div>
+  <div class="concept-card">
+    <strong>Product</strong>
+    <span>$\lim(f \cdot g) = \lim f \cdot \lim g$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Limits multiply</span>
+  </div>
+  <div class="concept-card">
+    <strong>Quotient</strong>
+    <span>$\lim\dfrac{f}{g} = \dfrac{\lim f}{\lim g}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Only if $\lim g \ne 0$</span>
+  </div>
+  <div class="concept-card">
+    <strong>Constant multiple</strong>
+    <span>$\lim(c \cdot f) = c \cdot \lim f$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Constants factor out</span>
+  </div>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">The derivative</div>
+<div class="section-label">The derivative — instantaneous rate of change</div>
 <div class="card">
-<p class="body">The <strong>derivative</strong> $f'(x)$ gives the instantaneous rate of change — the slope of the tangent line at $x$.</p>
-<div class="formula-box">$f'(x) = \displaystyle\lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}$</div>
-<div class="example-box"><strong>Example (definition)</strong>For $f(x)=x^2$: $f'(x) = \lim_{h\to 0}\dfrac{(x+h)^2-x^2}{h} = \lim_{h\to 0}\dfrac{2xh+h^2}{h} = \lim_{h\to 0}(2x+h) = 2x$.</div>
+<p class="body">The <strong>derivative</strong> $f'(x)$ is the instantaneous rate of change of $f$ at the point $x$ — literally the slope of the tangent line touching the curve at that single point. It is defined as the limit of the average rate of change (slope of a secant line) as the interval shrinks to zero.</p>
+<div class="formula-box">$f'(x) = \displaystyle\lim_{h\to 0} \dfrac{f(x+h) - f(x)}{h}$ — the "difference quotient" definition</div>
+<div class="example-box">
+<strong>Example — derivative from the definition:</strong> Find $f'(x)$ for $f(x) = x^2$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Write the difference quotient: $\dfrac{(x+h)^2 - x^2}{h}$.</li>
+<li>Expand numerator: $\dfrac{x^2 + 2xh + h^2 - x^2}{h} = \dfrac{2xh + h^2}{h}$.</li>
+<li>Factor and cancel $h$: $\dfrac{h(2x+h)}{h} = 2x + h$.</li>
+<li>Take the limit as $h\to 0$: $f'(x) = 2x$. The slope at any point $x$ on $y=x^2$ is $2x$.</li>
+</ol>
+</div>
 <div class="desmos-graph" data-fns="y=x^2|a=1|y=2a(x-a)+a^2|(a,a^2)" data-xmin="-3" data-xmax="4" data-ymin="-2" data-ymax="8"></div>
 <div class="desmos-caption">$y=x^2$ with its tangent line at $x=a$. Drag the slider for $a$ in the side panel to see the slope $f'(a)=2a$ change.</div>
 </div>
@@ -5266,49 +5918,153 @@ $\ln e^{2x} = 2x$.</div>
 <div class="section">
 <div class="section-label">Differentiation rules</div>
 <div class="card">
-<div class="formula-box">Constant: $\dfrac{d}{dx}[c]=0$</div>
-<div class="formula-box">Power rule: $\dfrac{d}{dx}[x^n] = nx^{n-1}$</div>
-<div class="formula-box">Constant multiple: $\dfrac{d}{dx}[cf] = c\,f'$</div>
-<div class="formula-box">Sum/difference: $(f\pm g)' = f'\pm g'$</div>
-<div class="formula-box">Product rule: $(fg)' = f'g + fg'$</div>
-<div class="formula-box">Quotient rule: $\left(\dfrac{f}{g}\right)' = \dfrac{f'g - fg'}{g^2}$</div>
-<div class="formula-box">Chain rule: $\dfrac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)$</div>
-<div class="example-box"><strong>Examples</strong>
-$\dfrac{d}{dx}[5x^3 - 2x + 7] = 15x^2 - 2$. &nbsp;
-$\dfrac{d}{dx}[(x^2+1)(x-3)]$ by product rule $= 2x(x-3) + (x^2+1)(1) = 3x^2 - 6x + 1$.</div>
+<p class="body">In practice, you almost never use the limit definition — you use rules. The core rules below cover the vast majority of derivatives you'll encounter.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Constant rule</strong>
+    <span>$\dfrac{d}{dx}[c] = 0$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Constants have no rate of change</span>
+  </div>
+  <div class="concept-card">
+    <strong>Power rule</strong>
+    <span>$\dfrac{d}{dx}[x^n] = nx^{n-1}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Bring down the exponent, reduce it by 1</span>
+  </div>
+  <div class="concept-card">
+    <strong>Constant multiple</strong>
+    <span>$\dfrac{d}{dx}[cf] = c\,f'(x)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Constants factor out of derivatives</span>
+  </div>
+  <div class="concept-card">
+    <strong>Sum / Difference</strong>
+    <span>$(f \pm g)' = f' \pm g'$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Differentiate term by term</span>
+  </div>
+  <div class="concept-card">
+    <strong>Product rule</strong>
+    <span>$(fg)' = f'g + fg'$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">"First times derivative of second plus second times derivative of first"</span>
+  </div>
+  <div class="concept-card">
+    <strong>Quotient rule</strong>
+    <span>$\left(\dfrac{f}{g}\right)' = \dfrac{f'g - fg'}{g^2}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">"Low d-High minus High d-Low, over Low squared"</span>
+  </div>
+  <div class="concept-card">
+    <strong>Chain rule</strong>
+    <span>$[f(g(x))]' = f'(g(x))\cdot g'(x)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">For composite functions: "outer derivative × inner derivative"</span>
+  </div>
+</div>
+<div class="tip"><strong>Recognizing which rule to use:</strong>
+<ul class="list-styled">
+<li><strong>Single term like $x^n$, $cx^n$, or constant?</strong> Power rule + constant multiple.</li>
+<li><strong>Sum of terms?</strong> Sum rule — differentiate each term separately.</li>
+<li><strong>Two functions multiplied together?</strong> Product rule.</li>
+<li><strong>One function divided by another?</strong> Quotient rule.</li>
+<li><strong>Function inside another function?</strong> Chain rule (look for composition: $\sin(x^2)$, $(3x+1)^5$, $e^{x^2}$).</li>
+</ul>
+</div>
+<div class="example-box">
+<strong>Example A — sum rule:</strong> $\dfrac{d}{dx}[5x^3 - 2x + 7]$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Differentiate each term: $\dfrac{d}{dx}[5x^3] = 15x^2$; $\dfrac{d}{dx}[-2x] = -2$; $\dfrac{d}{dx}[7] = 0$.</li>
+<li>Result: $15x^2 - 2$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example B — product rule:</strong> $\dfrac{d}{dx}[(x^2+1)(x-3)]$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Label $f = x^2+1$, $g = x-3$. So $f' = 2x$, $g' = 1$.</li>
+<li>Apply: $f'g + fg' = 2x(x-3) + (x^2+1)(1) = 2x^2 - 6x + x^2 + 1 = 3x^2 - 6x + 1$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example C — chain rule:</strong> $\dfrac{d}{dx}[(3x+1)^5]$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Outer function: $u^5$ (with $u = 3x+1$). Outer derivative: $5u^4$.</li>
+<li>Inner derivative: $\dfrac{d}{dx}[3x+1] = 3$.</li>
+<li>Multiply: $5(3x+1)^4 \cdot 3 = 15(3x+1)^4$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
 <div class="section-label">Indefinite integrals (antiderivatives)</div>
 <div class="card">
-<p class="body">An <strong>antiderivative</strong> of $f$ is any function $F$ with $F' = f$. The indefinite integral $\int f(x)\,dx = F(x)+C$ collects all of them.</p>
-<div class="formula-box">Power rule: $\displaystyle\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C,\ n\ne -1$</div>
-<div class="formula-box">Constant multiple: $\int cf\,dx = c\int f\,dx$</div>
-<div class="formula-box">Sum/difference: $\int (f\pm g)\,dx = \int f\,dx \pm \int g\,dx$</div>
-<div class="example-box"><strong>Examples</strong>
-$\int (6x^2 - 4x + 3)\,dx = 2x^3 - 2x^2 + 3x + C$. &nbsp;
-$\int \dfrac{1}{x^2}\,dx = \int x^{-2}\,dx = -x^{-1}+C = -\dfrac{1}{x}+C$.</div>
+<p class="body">An <strong>antiderivative</strong> of $f$ is any function $F$ such that $F'(x) = f(x)$. The indefinite integral symbol $\int f(x)\,dx$ means "find all antiderivatives of $f$." The answer always includes $+C$ (a constant of integration) because constants disappear when you differentiate.</p>
+<div class="formula-box">$\displaystyle\int x^n\,dx = \dfrac{x^{n+1}}{n+1} + C,\quad n \ne -1$ — "reverse power rule": add 1 to exponent, divide by new exponent</div>
+<div class="formula-box">$\displaystyle\int cf(x)\,dx = c\int f(x)\,dx$, &nbsp; $\displaystyle\int [f\pm g]\,dx = \int f\,dx \pm \int g\,dx$</div>
+<div class="warn"><strong>Don't forget $+C$:</strong> The indefinite integral represents a family of functions, not one specific function. Leaving off $+C$ is incorrect. (In definite integrals the $C$'s cancel out, so you won't see it there.)</div>
+<div class="example-box">
+<strong>Example A:</strong> $\displaystyle\int (6x^2 - 4x + 3)\,dx$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Integrate term by term.</li>
+<li>$\int 6x^2\,dx = 6 \cdot \dfrac{x^3}{3} = 2x^3$.</li>
+<li>$\int -4x\,dx = -4 \cdot \dfrac{x^2}{2} = -2x^2$.</li>
+<li>$\int 3\,dx = 3x$.</li>
+<li>Result: $2x^3 - 2x^2 + 3x + C$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example B:</strong> $\displaystyle\int \dfrac{1}{x^2}\,dx$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Rewrite: $\dfrac{1}{x^2} = x^{-2}$.</li>
+<li>Apply power rule: $\int x^{-2}\,dx = \dfrac{x^{-1}}{-1} + C = -\dfrac{1}{x} + C$.</li>
+</ol>
+</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Definite integrals — the fundamental idea</div>
+<div class="section-label">Definite integrals and the Fundamental Theorem</div>
 <div class="card">
-<p class="body">The <strong>definite integral</strong> $\displaystyle\int_a^b f(x)\,dx$ represents the signed area between the graph of $f$ and the $x$-axis from $a$ to $b$.</p>
-<div class="formula-box">Fundamental Theorem of Calculus: $\displaystyle\int_a^b f(x)\,dx = F(b) - F(a)$ &nbsp; where $F'=f$</div>
-<div class="example-box"><strong>Example</strong>$\int_0^2 3x^2\,dx = [x^3]_0^2 = 8 - 0 = 8$.</div>
-<div class="example-box"><strong>Example</strong>$\int_1^4 (2x - 1)\,dx = [x^2 - x]_1^4 = (16-4)-(1-1) = 12$.</div>
+<p class="body">The <strong>definite integral</strong> $\displaystyle\int_a^b f(x)\,dx$ gives the <em>signed area</em> between the graph of $f$ and the $x$-axis from $x=a$ to $x=b$. (Signed means area below the $x$-axis counts as negative.) The Fundamental Theorem of Calculus (FTC) tells you how to compute it: find an antiderivative, then subtract the values at the endpoints.</p>
+<div class="formula-box">Fundamental Theorem of Calculus: $\displaystyle\int_a^b f(x)\,dx = F(b) - F(a)$, where $F$ is any antiderivative of $f$ (i.e. $F' = f$)</div>
+<div class="tip"><strong>The FTC bridges derivatives and integrals:</strong> differentiation and integration are inverse operations. Finding the antiderivative (integration) "undoes" differentiation — and the FTC lets you use that inverse relationship to compute areas exactly.</div>
+<div class="example-box">
+<strong>Example A:</strong> Compute $\displaystyle\int_0^2 3x^2\,dx$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Find antiderivative: $F(x) = x^3$ (since $(x^3)' = 3x^2$).</li>
+<li>Evaluate at endpoints: $F(2) - F(0) = 8 - 0 = 8$.</li>
+</ol>
+</div>
+<div class="example-box">
+<strong>Example B:</strong> Compute $\displaystyle\int_1^4 (2x-1)\,dx$.
+<ol class="list-styled" style="list-style-type:decimal">
+<li>Find antiderivative: $F(x) = x^2 - x$.</li>
+<li>Evaluate: $F(4) - F(1) = (16-4) - (1-1) = 12 - 0 = 12$.</li>
+<li>This equals the area of the trapezoid-like region under the line $y=2x-1$ from $x=1$ to $x=4$.</li>
+</ol>
+</div>
 <div class="desmos-graph" data-fns="y=2x-1\left\{1\le x\le 4\right\}|y=2x-1" data-xmin="-1" data-xmax="6" data-ymin="-3" data-ymax="9"></div>
 <div class="desmos-caption">The shaded region between $y=2x-1$ and the $x$-axis on $[1,4]$ has area $12$ (FTC).</div>
 </div>
 </div>
 
 <div class="section">
-<div class="section-label">Putting it together</div>
+<div class="section-label">The big picture — how it all connects</div>
 <div class="card">
-<p class="body">Calculus connects three fundamental operations: <em>limits</em> formalize "approaching"; <em>derivatives</em> are limits of difference quotients; <em>integrals</em> are limits of Riemann sums — and the Fundamental Theorem ties differentiation and integration together as inverses.</p>
-<div class="tip">From here you'd extend the toolkit to trig/exp/log derivatives, implicit and related-rate problems, integration techniques (substitution, parts, partial fractions), and applications (areas, volumes, optimization, differential equations).</div>
+<p class="body">The three core calculus ideas form a chain: <em>limits</em> give a precise meaning to "infinitely close"; <em>derivatives</em> are defined as limits of difference quotients (slopes of secants approaching a tangent); <em>definite integrals</em> are limits of Riemann sums (adding up infinitely thin rectangles). The Fundamental Theorem stitches derivatives and integrals together — they are inverse operations.</p>
+<div class="concept-grid">
+  <div class="concept-card">
+    <strong>Limit</strong>
+    <span>$\displaystyle\lim_{x\to a} f(x) = L$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Foundation: precise meaning of "approaching"</span>
+  </div>
+  <div class="concept-card">
+    <strong>Derivative</strong>
+    <span>$f'(x) = \displaystyle\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Rate of change; slope of tangent; defined via limit</span>
+  </div>
+  <div class="concept-card">
+    <strong>Integral (FTC)</strong>
+    <span>$\displaystyle\int_a^b f\,dx = F(b)-F(a)$</span>
+    <span style="color:var(--gc-text-muted);font-size:12px">Accumulated change; inverse of differentiation</span>
+  </div>
+</div>
+<div class="tip"><strong>Where to go next:</strong> Derivatives of $\sin x$, $\cos x$, $e^x$, $\ln x$; implicit differentiation and related rates; integration by substitution and by parts; applications such as areas between curves, volumes of solids, and optimization problems.</div>
 </div>
 </div>
 ```
